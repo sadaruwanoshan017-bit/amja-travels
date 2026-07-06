@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage · Amja Travels Admin</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <aside class="sidebar"><!-- rendered by admin-core.js --></aside>
+
+  <main class="main-content">
+    <header class="top-header">
+      <h1 id="pageTitle">Manage</h1>
+      <div class="admin-info">
+        <span>Welcome, <span id="displayUsername">Admin</span></span>
+      </div>
+    </header>
+
+    <!-- Packages / Items section -->
+    <section class="section">
+      <div class="section-head">
+        <h2>Manage Items</h2>
+        <button class="btn-primary" id="addBtn">+ Add</button>
+      </div>
+      <div id="pkgList"></div>
+    </section>
+
+    <!-- Enquiries section -->
+    <section class="section">
+      <div class="section-head">
+        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11Z"/></svg> Enquiries</h2>
+      </div>
+      <div id="enqList"></div>
+    </section>
+  </main>
+
+  <!-- Add/Edit modal -->
+  <div class="modal" id="pkgModal">
+    <div class="modal-box">
+      <h3 id="pkgModalTitle">Add Item</h3>
+      <div id="pkgModalBody"></div>
+    </div>
+  </div>
+
+  <script src="js/admin-categories.js"></script>
+  <script src="js/admin-core.js"></script>
+  <script>
+    // Read the category from the URL: category.html?cat=hajj
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get('cat') || 'hajj';
+    AdminCore.initCategoryPage(cat, { basePath: '' });
+  </script>
+</body>
+</html>

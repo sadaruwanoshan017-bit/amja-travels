@@ -1,0 +1,43 @@
+AMJA TRAVELS — HOMEPAGE IMAGE GUIDE
+====================================
+Drop these files into this /images folder using the EXACT filenames below
+(lowercase, .jpg). The homepage already points to every one of them.
+
+────────────────────────────────────────────────────────────
+1. "WHO WE ARE" NEWSPAPER — feature photo (optional)
+────────────────────────────────────────────────────────────
+  about-feature.jpg     The big central newspaper photo (a Sri Lanka →
+                        Makkah montage works beautifully, like the mock-up).
+   • Aspect: square-ish (1:1). ~1200 x 1200 px.
+   • If you DON'T add it, the section automatically falls back to the
+     existing zoom-makkah.jpg — so it already looks finished.
+
+────────────────────────────────────────────────────────────
+2. HOTEL BOOKING — 4 portrait photos (3:4, ~900 x 1200 px)
+────────────────────────────────────────────────────────────
+  hotel-eden.jpg        Eden Resort & Spa,   Beruwala      (card 01)
+  hotel-aditya.jpg      Aditya Resort,       Galle         (card 02)
+  hotel-deerpark.jpg    Deer Park Hotel,     Polonnaruwa   (card 03)
+  hotel-mahaweli.jpg    Mahaweli Reach Hotel, Kandy        (card 04)
+   • Keep the main subject in the TOP two-thirds — the bottom is covered
+     by a dark gradient where the hotel name sits.
+   • Until added, each card shows a dark teal placeholder + name (not broken).
+
+────────────────────────────────────────────────────────────
+3. DESTINATIONS (bento grid) — 5 landscape photos (~1200 x 900 px)
+   [these were already missing in the original site]
+────────────────────────────────────────────────────────────
+  dest-beach.jpg        Beach & Coast     (Mirissa / Bentota / Unawatuna)
+  dest-highlands.jpg    Tea Highlands     (Ella / Nuwara Eliya / Hatton)
+  dest-sigiriya.jpg     Ancient Cities    (Sigiriya / Polonnaruwa / Kandy)
+  dest-wildlife.jpg     Wildlife Safari   (Yala / Udawalawe / Wilpattu)
+  dest-surfing.jpg      White Water & Surf (Kitulgala / Arugam Bay)
+  (dest-outbound.jpg already exists ✓)
+
+────────────────────────────────────────────────────────────
+GENERAL SPECS
+────────────────────────────────────────────────────────────
+  • Format .jpg, optimised (aim < 400 KB each).
+  • The "What We Do" full-screen scroll uses the existing service-*.jpg
+    files — swap those for higher-res versions if you want more punch
+    (they now fill the entire screen, so 2000px-wide looks best).

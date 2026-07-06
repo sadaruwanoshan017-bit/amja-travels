@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard · Amja Travels</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <aside class="sidebar"><!-- rendered by admin-core.js --></aside>
+
+  <main class="main-content">
+    <header class="top-header">
+      <h1>Dashboard</h1>
+      <div class="admin-info">
+        <span>Welcome, <span id="displayUsername">Admin</span></span>
+      </div>
+    </header>
+
+    <div class="stats-grid" id="statsGrid"><!-- filled by JS --></div>
+
+    <div class="quick-actions">
+      <h2>Quick Actions</h2>
+      <div class="action-grid" id="actionGrid"><!-- filled by JS --></div>
+    </div>
+  </main>
+
+  <script src="js/admin-categories.js"></script>
+  <script src="js/admin-core.js"></script>
+  <script>
+    AdminCore.requireLogin('');
+    AdminCore.renderSidebar(document.querySelector('.sidebar'), '', 'dashboard');
+    document.getElementById('displayUsername').textContent = localStorage.getItem('adminUsername') || 'Admin';
+
+    const API = window.ADMIN_API_BASE;
+    const order = window.ADMIN_CATEGORY_ORDER;
+
+    // Build quick-action cards for every category.
+    document.getElementById('actionGrid').innerHTML = order.map(cat => {
+      const c = window.ADMIN_CATEGORIES[cat];
+      return `<a href="category.html?cat=${cat}" class="action-card">
+        <span class="icon">${c.icon}</span>
+        <h3>Manage ${c.label}</h3>
+        <p>Add, edit or delete ${c.label.toLowerCase()} and view enquiries.</p>
+      </a>`;
+    }).join('');
+
+    // Load counts per category for the stats grid.
+    async function loadStats() {
+      const cards = await Promise.all(order.map(async (cat) => {
+        const c = window.ADMIN_CATEGORIES[cat];
+        let count = 0;
+        try {
+          const res = await fetch(API + `/api/packages/${cat}`);
+          const json = await res.json();
+          if (json.success) count = (json.data || []).length;
+        } catch (e) {}
+        return `<div class="stat-card">
+          <h3>${c.icon} ${c.label}</h3>
+          <p class="stat-number">${count}</p>
+          <span class="stat-label">Total items</span>
+        </div>`;
+      }));
+      document.getElementById('statsGrid').innerHTML = cards.join('');
+    }
+    loadStats();
+
+    // Notifications
+    AdminCore.refreshNotifications();
+    setInterval(AdminCore.refreshNotifications, 20000);
+  </script>
+</body>
+</html>

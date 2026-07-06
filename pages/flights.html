@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Airline Ticketing Agent in Sri Lanka | Online Ticket Booking | Amja Travels</title>
+<meta name="description" content="Amja Travels is the leading IATA-accredited airline ticketing agent in Sri Lanka since 1998. Best price guarantee, all major airlines, one-way, return and multi-city flights."/>
+<link rel="icon" id="fav" type="image/png" href=""/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky:#05090f;
+  --dusk:#08111e;
+  --hzn:#0c1c30;
+  --blue:#1a5cb0;
+  --blue-l:#2570d0;
+  --blue-g:rgba(26,92,176,.12);
+  --teal:#0e8a7a;
+  --gold:#c5943a;
+  --gold-b:#daa84a;
+  --pearl:#eef2f8;
+  --mist:rgba(238,242,248,.52);
+  --chrome:#7a8899;
+  --line:rgba(238,242,248,.09);
+  --ease:cubic-bezier(.16,.84,.44,1);
+  --spring:cubic-bezier(.34,1.56,.64,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{background:var(--sky);scroll-behavior:auto;}
+body{background:var(--sky);color:var(--pearl);font-family:"Montserrat",sans-serif;font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.65;}
+h1,h2,h3,h4,.serif{font-family:"Cormorant",serif;font-weight:600;line-height:1.1;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+::selection{background:var(--blue);color:#fff;}
+.wrap{max-width:1280px;margin:0 auto;padding:0 clamp(1.2rem,4.5vw,3.5rem);}
+.eyebrow{font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;font-weight:700;color:var(--gold);display:inline-flex;align-items:center;gap:.5rem;}
+.eyebrow::before{content:"";width:18px;height:1px;background:var(--gold-b);}
+body::before{content:"";position:fixed;inset:0;z-index:9000;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.022;background-size:160px;}
+#prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--blue-l),var(--gold));z-index:9999;transform-origin:left;transform:scaleX(0);pointer-events:none;}
+
+/* HEADER */
+header{position:fixed;top:0;left:0;right:0;z-index:800;padding:1.3rem 0;transition:background .4s,padding .3s,border-color .4s;border-bottom:1px solid transparent;}
+header.s{background:rgba(5,9,15,.96);backdrop-filter:blur(20px);border-color:var(--line);padding:.8rem 0;}
+.h-in{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;}
+.h-logo img{height:36px;filter:drop-shadow(0 2px 10px rgba(0,0,0,.8));transition:height .3s;}
+header.s .h-logo img{height:30px;}
+.h-nav{display:flex;align-items:center;gap:1.8rem;}
+.h-nav a{font-size:.71rem;font-weight:500;letter-spacing:.05em;color:rgba(238,242,248,.6);transition:color .25s;}
+.h-nav a:hover,.h-nav a.cur{color:var(--pearl);}
+.h-pill{padding:.6rem 1.4rem;background:var(--blue);border-radius:100px;font-size:.69rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#fff;transition:background .3s,transform .3s;}
+.h-pill:hover{background:var(--blue-l);transform:translateY(-1px);}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;width:38px;height:38px;align-items:center;justify-content:center;}
+.burger span{display:block;width:22px;height:1px;background:var(--pearl);transition:all .3s;}
+.burger.o span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+.burger.o span:nth-child(2){opacity:0;}
+.burger.o span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+@media(max-width:860px){.h-nav,.h-pill{display:none;}.burger{display:flex;}}
+.drawer{position:fixed;top:0;right:0;width:min(84vw,340px);height:100vh;background:var(--dusk);border-left:1px solid var(--line);z-index:900;transform:translateX(110%);transition:transform .45s var(--ease);padding:5.5rem 2rem 2rem;display:flex;flex-direction:column;gap:.25rem;overflow-y:auto;}
+.drawer.o{transform:translateX(0);}
+.drawer a{font-size:.92rem;font-weight:500;color:var(--pearl);padding:.75rem 0;border-bottom:1px solid var(--line);transition:color .2s;}
+.drawer a:hover{color:var(--gold);}
+.drawer .dcta{margin-top:1.4rem;padding:.9rem;background:var(--blue);border-radius:100px;color:#fff;text-align:center;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;}
+.ov{position:fixed;inset:0;background:rgba(5,9,15,.7);z-index:850;opacity:0;pointer-events:none;transition:opacity .4s;}
+.ov.o{opacity:1;pointer-events:auto;}
+
+/* ═══ HERO ═══ */
+#hero{position:relative;min-height:100vh;display:flex;align-items:flex-start;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:url("../images/flights-hero-bg.jpg") center/cover no-repeat;transform:scale(1.04);will-change:transform;}
+.hero-bg::after{content:"";position:absolute;inset:0;background:transparent;}
+.hero-body{position:relative;z-index:2;padding:clamp(7rem,20vh,13rem) 0 0;}
+.hero-pre{display:inline-flex;align-items:center;gap:.55rem;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--gold);border:1px solid rgba(197,148,58,.3);padding:.38rem .85rem;border-radius:100px;background:rgba(197,148,58,.07);margin-bottom:1.3rem;opacity:0;transform:translateY(14px);}
+.hero-title{font-size:clamp(2.8rem,8vw,6.5rem);line-height:.92;color:var(--pearl);margin-bottom:1.2rem;overflow:hidden;text-shadow:0 2px 24px rgba(0,0,0,.5),0 1px 4px rgba(0,0,0,.45);}
+.hero-title .lw{display:block;overflow:hidden;}
+.hero-title .lt{display:block;transform:translateY(110%);}
+.hero-title em{color:var(--blue-l);font-style:italic;}
+.hero-sub{font-size:.95rem;color:var(--mist);max-width:520px;line-height:1.85;opacity:0;transform:translateY(14px);}
+.hero-accreds{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;opacity:0;}
+.accred-badge{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:rgba(238,242,248,.6);border:1px solid rgba(238,242,248,.18);padding:.35rem .75rem;border-radius:100px;}
+.accred-badge.gold{color:var(--gold);border-color:rgba(197,148,58,.35);}
+
+/* ═══ FLIGHT SEARCH WIDGET ═══ */
+#search{position:relative;z-index:10;margin-top:2.5rem;}
+.search-box{background:rgba(8,17,30,.92);backdrop-filter:blur(24px);border:1px solid rgba(238,242,248,.1);border-radius:12px;overflow:hidden;box-shadow:0 40px 80px rgba(5,9,15,.6);}
+.search-tabs{display:flex;border-bottom:1px solid var(--line);}
+.stab{padding:1rem 1.6rem;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:rgba(238,242,248,.45);cursor:pointer;border-bottom:2px solid transparent;transition:color .3s,border-color .3s;background:none;border-top:none;border-left:none;border-right:none;font-family:"Montserrat",sans-serif;}
+.stab.active{color:var(--blue-l);border-bottom-color:var(--blue-l);}
+.stab:hover:not(.active){color:var(--pearl);}
+.search-form{padding:1.6rem;}
+.sf-row{display:grid;gap:.9rem;margin-bottom:.9rem;}
+.sf-row.main{grid-template-columns:1fr 1fr 1fr 1fr auto;}
+@media(max-width:900px){.sf-row.main{grid-template-columns:1fr 1fr;}}
+@media(max-width:520px){.sf-row.main{grid-template-columns:1fr;}}
+.sf-field{display:flex;flex-direction:column;gap:.35rem;position:relative;}
+.sf-label{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold);}
+.sf-input{background:rgba(238,242,248,.05);border:1px solid var(--line);border-radius:7px;padding:.82rem 1rem;font-size:.85rem;color:var(--pearl);font-family:"Montserrat",sans-serif;outline:none;transition:border-color .3s,background .3s;width:100%;}
+.sf-input:focus{border-color:rgba(37,112,208,.6);background:rgba(37,112,208,.06);}
+.sf-input::placeholder{color:var(--chrome);}
+.sf-select{background:rgba(238,242,248,.05);border:1px solid var(--line);border-radius:7px;padding:.82rem 1rem;font-size:.85rem;color:var(--pearl);font-family:"Montserrat",sans-serif;outline:none;transition:border-color .3s;width:100%;cursor:pointer;}
+.sf-select:focus{border-color:rgba(37,112,208,.6);}
+.sf-select option{background:var(--dusk);}
+.pax-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.9rem;margin-bottom:1.2rem;}
+.swap-btn{position:absolute;right:-18px;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;background:var(--blue);border:2px solid var(--dusk);display:flex;align-items:center;justify-content:center;z-index:2;cursor:pointer;transition:background .3s,transform .3s;flex-shrink:0;}
+.swap-btn:hover{background:var(--blue-l);transform:translateY(-50%) rotate(180deg);}
+.swap-btn svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.route-wrap{position:relative;display:grid;grid-template-columns:1fr 34px 1fr;align-items:center;gap:0;}
+.search-submit{padding:.85rem 2rem;background:var(--blue);color:#fff;border-radius:7px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;border:none;cursor:pointer;white-space:nowrap;font-family:"Montserrat",sans-serif;transition:background .3s,transform .3s;height:100%;display:flex;align-items:center;gap:.5rem;}
+.search-submit:hover{background:var(--blue-l);transform:translateY(-1px);}
+.search-submit svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.mc-add{font-size:.7rem;color:var(--blue-l);cursor:pointer;border:none;background:none;font-family:"Montserrat",sans-serif;font-weight:600;padding:.4rem 0;display:inline-flex;align-items:center;gap:.3rem;transition:color .25s;}
+.mc-add:hover{color:var(--gold);}
+.mc-row-extra{display:none;}
+.mc-row-extra.show{display:grid;}
+
+/* ═══ TRUST STRIP ═══ */
+#trust{background:linear-gradient(90deg,var(--dusk),var(--hzn) 40%,var(--dusk));border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:.8rem 0;overflow:hidden;white-space:nowrap;margin-top:2.5rem;}
+#trust .tk{display:inline-flex;gap:3rem;animation:mq 28s linear infinite;}
+#trust .ti{display:inline-flex;align-items:center;gap:.5rem;font-size:.68rem;font-weight:500;color:rgba(238,242,248,.6);}
+#trust .ti::before{content:"✦";color:var(--gold);font-size:.44rem;}
+@keyframes mq{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ═══ SPECIAL FARES ═══ */
+#fares{padding:6rem 0 5rem;}
+.fares-head{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:end;margin-bottom:2.8rem;}
+@media(max-width:700px){.fares-head{grid-template-columns:1fr;}}
+.fares-head h2{font-size:clamp(2rem,4.5vw,3.2rem);}
+.fares-head p{font-size:.88rem;color:var(--mist);line-height:1.85;}
+.fares-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+@media(max-width:860px){.fares-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.fares-grid{grid-template-columns:1fr;}}
+.fare-card{background:var(--dusk);border:1px solid var(--line);border-radius:10px;overflow:hidden;transition:border-color .4s,transform .4s var(--ease),box-shadow .4s;cursor:pointer;opacity:0;transform:translateY(32px);}
+.fare-card:hover{border-color:rgba(37,112,208,.4);transform:translateY(-5px)!important;box-shadow:0 20px 50px -20px rgba(5,9,15,.7);}
+.fare-thumb{aspect-ratio:16/9;overflow:hidden;position:relative;}
+.fare-thumb img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform .8s var(--ease);}
+.fare-card:hover .fare-thumb img{transform:scale(1.12);}
+.fare-badge{position:absolute;top:.8rem;left:.8rem;background:var(--blue);color:#fff;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:.3rem .7rem;border-radius:100px;}
+.fare-badge.hot{background:linear-gradient(90deg,#c0302a,#e04838);}
+.fare-body{padding:1.4rem;}
+.fare-airline{font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--chrome);margin-bottom:.4rem;display:flex;align-items:center;gap:.5rem;}
+.fare-airline::before{content:"✈";color:var(--blue-l);font-size:.8rem;}
+.fare-route{display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;}
+.fare-route .city{font-family:"Cormorant",serif;font-size:1.4rem;color:var(--pearl);}
+.fare-route .code{font-size:.62rem;color:var(--chrome);letter-spacing:.06em;display:block;margin-top:.05rem;}
+.fare-arrow{color:var(--blue-l);font-size:1rem;flex-shrink:0;}
+.fare-chips{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem;}
+.fchip{font-size:.56rem;letter-spacing:.07em;text-transform:uppercase;font-weight:700;color:var(--chrome);border:1px solid var(--line);padding:.24rem .55rem;border-radius:100px;}
+.fare-foot{display:flex;align-items:center;justify-content:space-between;padding-top:.9rem;border-top:1px solid var(--line);}
+.fare-price .from{font-size:.58rem;color:var(--chrome);letter-spacing:.06em;text-transform:uppercase;display:block;}
+.fare-price .amt{font-family:"Cormorant",serif;font-size:1.6rem;color:var(--gold);}
+.fare-book{padding:.62rem 1.2rem;background:var(--blue);color:#fff;border-radius:100px;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;transition:background .3s,transform .3s;}
+.fare-book:hover{background:var(--blue-l);transform:translateY(-1px);}
+
+/* ═══ POPULAR DESTINATIONS ═══ */
+#destinations{padding:5rem 0 7rem;background:var(--dusk);}
+.dest-head{text-align:center;margin-bottom:2.8rem;}
+.dest-head h2{font-size:clamp(2rem,4.5vw,3.2rem);margin:.4rem 0 .7rem;}
+.dest-head p{font-size:.88rem;color:var(--mist);max-width:500px;margin:0 auto;}
+.dest-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;}
+@media(max-width:960px){.dest-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:580px){.dest-grid{grid-template-columns:1fr 1fr;}}
+.dest-card{border-radius:8px;overflow:hidden;position:relative;aspect-ratio:2/3;cursor:pointer;opacity:0;transform:scale(.92);}
+.dest-card .bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.07);transition:transform .8s var(--ease);}
+.dest-card:hover .bg{transform:scale(1.14);}
+.dest-card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,9,15,.92) 0%,rgba(5,9,15,.05) 50%);}
+.dest-card .dl{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:1.1rem;}
+.dest-card .flag{font-size:1.6rem;margin-bottom:.4rem;}
+.dest-card h4{font-family:"Cormorant",serif;font-size:1.1rem;color:var(--pearl);}
+.dest-card .code{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-l);margin-top:.2rem;}
+
+/* ═══ AIRLINES WE WORK WITH ═══ */
+#airlines{padding:5rem 0;background:var(--sky);}
+.airlines-head{text-align:center;margin-bottom:2.5rem;}
+.airlines-head h2{font-size:clamp(1.8rem,3.5vw,2.6rem);}
+.airline-strip{display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;}
+.airline-chip{display:flex;align-items:center;gap:.5rem;padding:.7rem 1.2rem;border:1px solid var(--line);border-radius:8px;transition:border-color .3s,background .3s,transform .3s var(--ease);cursor:default;opacity:0;transform:translateY(20px);}
+.airline-chip:hover{border-color:rgba(37,112,208,.4);background:rgba(37,112,208,.07);transform:translateY(-2px)!important;}
+.airline-chip .ac-code{font-size:.65rem;letter-spacing:.1em;font-weight:700;color:var(--pearl);text-transform:uppercase;}
+.airline-chip .ac-name{font-size:.7rem;color:var(--chrome);}
+.airline-chip .ac-icon{font-size:1.1rem;}
+
+/* ═══ HOW TO BOOK ═══ */
+#howtobk{padding:6rem 0;background:var(--hzn);position:relative;overflow:hidden;}
+.htb-geo{position:absolute;inset:0;pointer-events:none;opacity:.04;}
+.htb-geo svg{width:100%;height:100%;}
+.htb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;position:relative;z-index:2;}
+@media(max-width:800px){.htb-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:440px){.htb-grid{grid-template-columns:1fr;}}
+.htb-connector{position:absolute;top:30px;left:7%;right:7%;height:1px;background:linear-gradient(90deg,transparent,rgba(37,112,208,.3) 20%,rgba(37,112,208,.3) 80%,transparent);}
+@media(max-width:800px){.htb-connector{display:none;}}
+.htb-step{text-align:center;position:relative;z-index:1;opacity:0;transform:translateY(26px);}
+.htb-num{width:60px;height:60px;border-radius:50%;background:var(--blue-g);border:1.5px solid rgba(37,112,208,.4);font-family:"Cormorant",serif;font-size:1.5rem;color:var(--blue-l);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;transition:background .4s,border-color .4s;}
+.htb-step:hover .htb-num{background:var(--blue);border-color:var(--blue);}
+.htb-step h4{font-family:"Cormorant",serif;font-size:1.15rem;color:var(--pearl);margin-bottom:.45rem;}
+.htb-step p{font-size:.78rem;color:var(--chrome);line-height:1.7;}
+
+/* ═══ WHY CHOOSE US ═══ */
+#why{padding:6rem 0 7rem;background:var(--sky);}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:2.5rem;}
+@media(max-width:800px){.why-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.why-grid{grid-template-columns:1fr;}}
+.why-card{padding:1.9rem 1.7rem;border:1px solid var(--line);border-radius:8px;transition:border-color .35s,background .35s,transform .35s var(--ease);opacity:0;transform:translateY(24px);}
+.why-card:hover{border-color:rgba(37,112,208,.3);background:rgba(37,112,208,.05);transform:translateY(-4px)!important;}
+.why-num{font-family:"Cormorant",serif;font-size:2.6rem;color:rgba(37,112,208,.2);margin-bottom:.8rem;line-height:1;}
+.why-card h3{font-family:"Cormorant",serif;font-size:1.18rem;color:var(--pearl);margin-bottom:.4rem;}
+.why-card p{font-size:.78rem;color:var(--chrome);line-height:1.75;}
+
+/* ═══ CTA ═══ */
+#cta{padding:8rem 0 7rem;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(26,92,176,.18),transparent 60%),var(--sky);}
+#cta .eyebrow{display:block;margin-bottom:1rem;justify-content:center;}
+#cta h2{font-size:clamp(2.4rem,7vw,5.5rem);line-height:.93;color:var(--pearl);}
+#cta h2 em{color:var(--blue-l);font-style:italic;}
+#cta p{font-size:.9rem;color:var(--mist);max-width:440px;margin:1.2rem auto 2.4rem;line-height:1.85;}
+.cta-btns{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;}
+.btn-blue{padding:.9rem 2rem;background:var(--blue);color:#fff;border-radius:100px;font-size:.71rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;transition:background .3s,transform .3s;}
+.btn-blue:hover{background:var(--blue-l);transform:translateY(-2px);}
+.btn-ghost{padding:.9rem 2rem;border:1.5px solid rgba(238,242,248,.28);color:var(--pearl);border-radius:100px;font-size:.71rem;letter-spacing:.12em;text-transform:uppercase;transition:border-color .3s,background .3s;}
+.btn-ghost:hover{border-color:var(--pearl);background:rgba(238,242,248,.07);}
+.mag-btn{display:inline-flex;align-items:center;gap:.7rem;padding:1rem 2.3rem;border:1.5px solid var(--gold);border-radius:100px;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--pearl);position:relative;overflow:hidden;transition:color .4s;}
+.mag-btn::before{content:"";position:absolute;inset:0;background:var(--gold);border-radius:100px;transform:translateY(102%);transition:transform .45s var(--ease);z-index:-1;}
+.mag-btn:hover{color:var(--sky);}
+.mag-btn:hover::before{transform:translateY(0);}
+.c-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;max-width:860px;margin:3.2rem auto 0;}
+@media(max-width:680px){.c-grid{grid-template-columns:1fr;}}
+.cblk{border:1px solid rgba(37,112,208,.18);border-radius:8px;padding:1.4rem;text-align:left;opacity:0;transform:translateY(20px);}
+.cblk .cl{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--blue-l);margin-bottom:.4rem;}
+.cblk .cv{font-size:.84rem;color:var(--pearl);line-height:1.7;font-weight:300;}
+
+/* FOOTER */
+footer{background:#020406;border-top:1px solid var(--line);padding:5rem 0 0;}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;padding-bottom:3.5rem;border-bottom:1px solid var(--line);}
+@media(max-width:680px){.foot-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:380px){.foot-grid{grid-template-columns:1fr;}}
+.flogo img{height:32px;filter:brightness(0) invert(1);opacity:.75;margin-bottom:.9rem;}
+.fa{font-size:.8rem;color:rgba(238,242,248,.4);line-height:1.85;max-width:260px;margin-bottom:.9rem;}
+.fbdg{display:inline-block;font-size:.56rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;border:1px solid rgba(197,148,58,.22);padding:.26rem .6rem;border-radius:100px;color:rgba(197,148,58,.55);margin:.2rem .3rem .2rem 0;}
+.fcol h5{font-size:.63rem;letter-spacing:.15em;text-transform:uppercase;color:var(--pearl);font-weight:700;margin-bottom:1rem;}
+.fcol ul li{margin-bottom:.55rem;}
+.fcol ul a{font-size:.78rem;color:rgba(238,242,248,.4);transition:color .2s;}
+.fcol ul a:hover{color:var(--gold);}
+.faddr{font-size:.78rem;color:rgba(238,242,248,.4);line-height:1.85;}
+.faddr a{display:block;transition:color .2s;}
+.faddr a:hover{color:var(--gold);}
+.fbot{display:flex;justify-content:space-between;padding:1.4rem 0;flex-wrap:wrap;gap:.6rem;font-size:.66rem;color:rgba(238,242,248,.28);}
+.rv{opacity:0;transform:translateY(24px);}
+@media(prefers-reduced-motion:reduce){.rv,.fare-card,.dest-card,.airline-chip,.htb-step,.why-card,.cblk{opacity:1;transform:none;}*{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+<div class="ov" id="ov"></div>
+<div class="drawer" id="dr">
+  <a href="index.html">Home</a>
+  <a href="#search" class="cur">Book a Flight</a>
+  <a href="#fares">Special Fares</a>
+  <a href="#destinations">Destinations</a>
+  <a href="#why">Why Choose Us</a>
+  <a href="#cta">Contact</a>
+  <a href="tel:+94112335657" class="dcta">+94 11 233 5657</a>
+</div>
+
+<header id="hdr">
+  <div class="wrap h-in">
+    <a href="index.html" class="h-logo"><img id="li" alt="Amja Travels"/></a>
+    <nav class="h-nav">
+      <a href="index.html">Home</a>
+      <a href="#search" class="cur">Flights</a>
+      <a href="#fares">Special Fares</a>
+      <a href="#destinations">Destinations</a>
+      <a href="amja-hajj-umrah.html">Hajj &amp; Umrah</a>
+      <a href="amja-tours.html">Tours</a>
+    </nav>
+    <a href="#search" class="h-pill">Search Flights</a>
+    <div class="burger" id="bg"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-body">
+    <h1 class="hero-title">
+      <span class="lw"><span class="lt" id="lt1">Search &amp; Save on</span></span>
+      <span class="lw"><span class="lt" id="lt2">Every <em>Flight</em></span></span>
+    </h1>
+  </div>
+</section>
+
+<!-- ═══ FLIGHT SEARCH (moved below hero) ═══ -->
+<section id="search-section" style="padding:3.5rem 0;">
+  <div class="wrap">
+    <div id="search" style="margin-top:0;">
+      <div class="search-box">
+        <div class="search-tabs">
+          <button class="stab active" data-type="roundtrip">⇄ Round Trip</button>
+          <button class="stab" data-type="oneway">→ One Way</button>
+          <button class="stab" data-type="multicity">+ Multi City</button>
+        </div>
+        <div class="search-form" id="searchForm">
+
+          <!-- ONE WAY / ROUND TRIP -->
+          <div id="pane-simple">
+            <div class="sf-row" style="grid-template-columns:1fr;margin-bottom:.6rem;">
+              <div style="display:flex;gap:1rem;align-items:flex-end;">
+                <div class="sf-field" style="flex:1;min-width:0;">
+                  <label class="sf-label">From</label>
+                  <input class="sf-input" type="text" placeholder="City or Airport" id="fromCity" style="min-height:52px;font-size:1rem;width:100%;"/>
+                </div>
+                <button class="swap-btn" id="swapBtn" title="Swap cities" style="position:relative;right:auto;top:auto;transform:none;align-self:flex-end;margin-bottom:9px;flex-shrink:0;">
+                  <svg viewBox="0 0 24 24"><path d="M7 16V4m0 0L3 8m4-4 4 4M17 8v12m0 0 4-4m-4 4-4-4"/></svg>
+                </button>
+                <div class="sf-field" style="flex:1;min-width:0;">
+                  <label class="sf-label">To</label>
+                  <input class="sf-input" type="text" placeholder="City or Airport" id="toCity" style="min-height:52px;font-size:1rem;width:100%;"/>
+                </div>
+              </div>
+            </div>
+            <div class="sf-row main">
+              <div class="sf-field">
+                <label class="sf-label">Departure Date</label>
+                <input class="sf-input" type="date" id="depDate"/>
+              </div>
+              <div class="sf-field" id="retDateWrap">
+                <label class="sf-label">Return Date</label>
+                <input class="sf-input" type="date" id="retDate"/>
+              </div>
+              <div class="sf-field">
+                <label class="sf-label">Adults (12+)</label>
+                <select class="sf-select">
+                  <option>1 Adult</option><option>2 Adults</option><option>3 Adults</option>
+                  <option>4 Adults</option><option>5 Adults</option><option>6 Adults</option>
+                </select>
+              </div>
+              <div class="sf-field">
+                <label class="sf-label">Children (2–12)</label>
+                <select class="sf-select">
+                  <option>0 Children</option><option>1 Child</option><option>2 Children</option>
+                  <option>3 Children</option><option>4 Children</option>
+                </select>
+              </div>
+              <div class="sf-field">
+                <button class="search-submit" onclick="submitSearch()">
+                  <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                  Search
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- MULTI CITY -->
+          <div id="pane-multi" style="display:none;">
+            <div class="sf-row" style="grid-template-columns:1fr 34px 1fr 1fr;align-items:end;" id="mc1">
+              <div class="sf-field"><label class="sf-label">From</label><input class="sf-input" type="text" placeholder="City or Airport"/></div>
+              <div style="display:flex;align-items:center;justify-content:center;padding-top:1.5rem;"><span style="color:var(--blue-l);font-size:1rem;">→</span></div>
+              <div class="sf-field"><label class="sf-label">To</label><input class="sf-input" type="text" placeholder="City or Airport"/></div>
+              <div class="sf-field"><label class="sf-label">Date</label><input class="sf-input" type="date"/></div>
+            </div>
+            <div class="sf-row mc-row-extra" style="grid-template-columns:1fr 34px 1fr 1fr;align-items:end;" id="mc2">
+              <div class="sf-field"><label class="sf-label">From</label><input class="sf-input" type="text" placeholder="City or Airport"/></div>
+              <div style="display:flex;align-items:center;justify-content:center;padding-top:1.5rem;"><span style="color:var(--blue-l);font-size:1rem;">→</span></div>
+              <div class="sf-field"><label class="sf-label">To</label><input class="sf-input" type="text" placeholder="City or Airport"/></div>
+              <div class="sf-field"><label class="sf-label">Date</label><input class="sf-input" type="date"/></div>
+            </div>
+            <div style="display:flex;gap:1rem;align-items:center;margin-bottom:1rem;flex-wrap:wrap;">
+              <button class="mc-add" id="addFlight">+ Add Another Flight</button>
+              <button class="mc-add" id="remFlight" style="color:var(--chrome);display:none;">✕ Remove Last Flight</button>
+            </div>
+            <div class="sf-row" style="grid-template-columns:1fr 1fr 1fr auto;align-items:end;">
+              <div class="sf-field"><label class="sf-label">Adults (12+)</label><select class="sf-select"><option>1 Adult</option><option>2 Adults</option><option>3 Adults</option></select></div>
+              <div class="sf-field"><label class="sf-label">Children (2–12)</label><select class="sf-select"><option>0 Children</option><option>1 Child</option><option>2 Children</option></select></div>
+              <div class="sf-field"><label class="sf-label">Infants (0–2)</label><select class="sf-select"><option>0 Infants</option><option>1 Infant</option><option>2 Infants</option></select></div>
+              <div class="sf-field"><button class="search-submit" onclick="submitSearch()"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>Search</button></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ SPECIAL FARES ═══ -->
+<section id="fares">
+  <div class="wrap">
+    <div class="fares-head">
+      <div class="rv">
+        <span class="eyebrow">Special Fares</span>
+        <h2>Exclusive Deals on<br>Popular <em>Routes</em></h2>
+      </div>
+      <div class="rv">
+        <p>Our IATA-accredited status gives us access to exclusive airline fares that aren't always available through standard booking channels. Contact us to confirm the latest pricing and availability.</p>
+      </div>
+    </div>
+    <!-- DYNAMIC FLIGHTS (managed in admin panel) -->
+    <div class="pkg-grid" data-packages="flights" data-empty="No flights listed yet. Add them from the admin panel."></div>
+
+    <div class="fares-grid" style="display:none;">
+
+      <div class="fare-card">
+        <div class="fare-thumb">
+          <img src="../images/flight-dubai.jpg" alt="Dubai" loading="lazy"/>
+          <span class="fare-badge hot">Special Fare</span>
+        </div>
+        <div class="fare-body">
+          <div class="fare-airline">SriLankan Airlines</div>
+          <div class="fare-route">
+            <div><div class="city">CMB</div><div class="code">Colombo</div></div>
+            <div class="fare-arrow">→</div>
+            <div><div class="city">DXB</div><div class="code">Dubai</div></div>
+          </div>
+          <div class="fare-chips"><span class="fchip">Economy</span><span class="fchip">Return</span><span class="fchip">Direct</span></div>
+          <div class="fare-foot">
+            <div class="fare-price"><span class="from">From</span><span class="amt">Contact Us</span></div>
+            <a href="#cta" class="fare-book">Enquire</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="fare-card">
+        <div class="fare-thumb">
+          <img src="../images/flight-maldives.jpg" alt="Maldives" loading="lazy"/>
+          <span class="fare-badge">Great Deal</span>
+        </div>
+        <div class="fare-body">
+          <div class="fare-airline">Multiple Airlines</div>
+          <div class="fare-route">
+            <div><div class="city">CMB</div><div class="code">Colombo</div></div>
+            <div class="fare-arrow">→</div>
+            <div><div class="city">MLE</div><div class="code">Maldives</div></div>
+          </div>
+          <div class="fare-chips"><span class="fchip">Economy</span><span class="fchip">Return</span></div>
+          <div class="fare-foot">
+            <div class="fare-price"><span class="from">From</span><span class="amt">Contact Us</span></div>
+            <a href="#cta" class="fare-book">Enquire</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="fare-card">
+        <div class="fare-thumb">
+          <img src="../images/flight-jeddah.jpg" alt="Jeddah" loading="lazy"/>
+          <span class="fare-badge">Pilgrimage</span>
+        </div>
+        <div class="fare-body">
+          <div class="fare-airline">SriLankan · Emirates</div>
+          <div class="fare-route">
+            <div><div class="city">CMB</div><div class="code">Colombo</div></div>
+            <div class="fare-arrow">→</div>
+            <div><div class="city">JED</div><div class="code">Jeddah</div></div>
+          </div>
+          <div class="fare-chips"><span class="fchip">Economy</span><span class="fchip">Return</span><span class="fchip">Umrah</span></div>
+          <div class="fare-foot">
+            <div class="fare-price"><span class="from">From</span><span class="amt">Contact Us</span></div>
+            <a href="#cta" class="fare-book">Enquire</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="fare-card">
+        <div class="fare-thumb">
+          <img src="../images/flight-singapore.jpg" alt="Singapore" loading="lazy"/>
+          <span class="fare-badge">Popular</span>
+        </div>
+        <div class="fare-body">
+          <div class="fare-airline">Singapore Airlines · SriLankan</div>
+          <div class="fare-route">
+            <div><div class="city">CMB</div><div class="code">Colombo</div></div>
+            <div class="fare-arrow">→</div>
+            <div><div class="city">SIN</div><div class="code">Singapore</div></div>
+          </div>
+          <div class="fare-chips"><span class="fchip">Economy</span><span class="fchip">Business</span></div>
+          <div class="fare-foot">
+            <div class="fare-price"><span class="from">From</span><span class="amt">Contact Us</span></div>
+            <a href="#cta" class="fare-book">Enquire</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="fare-card">
+        <div class="fare-thumb">
+          <img src="../images/flight-london.jpg" alt="London" loading="lazy"/>
+          <span class="fare-badge">Long Haul</span>
+        </div>
+        <div class="fare-body">
+          <div class="fare-airline">SriLankan · British Airways</div>
+          <div class="fare-route">
+            <div><div class="city">CMB</div><div class="code">Colombo</div></div>
+            <div class="fare-arrow">→</div>
+            <div><div class="city">LHR</div><div class="code">London</div></div>
+          </div>
+          <div class="fare-chips"><span class="fchip">Economy</span><span class="fchip">Business</span></div>
+          <div class="fare-foot">
+            <div class="fare-price"><span class="from">From</span><span class="amt">Contact Us</span></div>
+            <a href="#cta" class="fare-book">Enquire</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="fare-card">
+        <div class="fare-thumb">
+          <img src="../images/flight-tokyo.jpg" alt="Tokyo" loading="lazy"/>
+          <span class="fare-badge">Special Fare</span>
+        </div>
+        <div class="fare-body">
+          <div class="fare-airline">Japan Airlines · SriLankan</div>
+          <div class="fare-route">
+            <div><div class="city">CMB</div><div class="code">Colombo</div></div>
+            <div class="fare-arrow">→</div>
+            <div><div class="city">NRT</div><div class="code">Tokyo</div></div>
+          </div>
+          <div class="fare-chips"><span class="fchip">Economy</span><span class="fchip">Return</span></div>
+          <div class="fare-foot">
+            <div class="fare-price"><span class="from">From</span><span class="amt">Contact Us</span></div>
+            <a href="#cta" class="fare-book">Enquire</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p style="text-align:center;font-size:.8rem;color:var(--chrome);margin-top:1.8rem;">All fares are subject to availability and may change. Contact our team for the latest confirmed rates and booking.</p>
+  </div>
+</section>
+
+<!-- ═══ POPULAR DESTINATIONS ═══ -->
+<section id="destinations">
+  <div class="wrap">
+    <div class="dest-head rv">
+      <span class="eyebrow">Where We Fly</span>
+      <h2>Popular Destinations<br>from <em>Colombo</em></h2>
+      <p>We book flights to every major destination worldwide — below are some of the most popular routes from Bandaranaike International Airport (CMB).</p>
+    </div>
+    <!-- DYNAMIC POPULAR DESTINATIONS (managed in admin panel) -->
+    <div class="dest-grid" data-packages="flight_destinations" data-variant="destination" data-empty="No destinations listed yet. Add them from the admin panel."></div>
+  </div>
+</section>
+
+<!-- ═══ AIRLINES ═══ -->
+<section id="airlines">
+  <div class="wrap">
+    <div class="airlines-head rv">
+      <span class="eyebrow">Airlines We Work With</span>
+      <h2>All Major Airlines,<br>One <em>Trusted Agent</em></h2>
+    </div>
+    <div class="airline-strip">
+      <div class="airline-chip"><span class="ac-icon">✈</span><div><div class="ac-code">UL</div><div class="ac-name">SriLankan Airlines</div></div></div>
+      <div class="airline-chip"><span class="ac-icon">✈</span><div><div class="ac-code">EK</div><div class="ac-name">Emirates</div></div></div>
+      <div class="airline-chip"><span class="ac-icon">✈</span><div><div class="ac-code">QR</div><div class="ac-name">Qatar Airways</div></div></div>
+      <div class="airline-chip"><span class="ac-icon">✈</span><div><div class="ac-code">SQ</div><div class="ac-name">Singapore Airlines</div></div></div>
+      <div class="airline-chip"><span class="ac-icon">✈</span><div><div class="ac-code">EY</div><div class="ac-name">Etihad Airways</div></div></div>
+      <div class="airline-chip"><span class="ac-icon">✈</span><div><div class="ac-code">BA</div><div class="ac-name">British Airways</div></div></div>
+      <div class="airline-chip"><span class="ac-icon">✈</span><div><div class="ac-code">TG</div><div class="ac-name">Thai Airways</div></div></div>
+      <div class="airline-chip"><span class="ac-icon">✈</span><div><div class="ac-code">MH</div><div class="ac-name">Malaysia Airlines</div></div></div>
+      <div class="airline-chip"><span class="ac-icon">✈</span><div><div class="ac-code">AI</div><div class="ac-name">Air India</div></div></div>
+      <div class="airline-chip"><span class="ac-icon">✈</span><div><div class="ac-code">KU</div><div class="ac-name">Kuwait Airways</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW TO BOOK ═══ -->
+<section id="howtobk">
+  <div class="htb-geo">
+    <svg viewBox="0 0 1400 400" preserveAspectRatio="xMidYMid slice">
+      <defs><pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="#1a5cb0"/></pattern></defs>
+      <rect width="1400" height="400" fill="url(#dots)"/>
+    </svg>
+  </div>
+  <div class="wrap" style="position:relative;z-index:2;">
+    <div class="rv" style="text-align:center;margin-bottom:3.5rem;">
+      <span class="eyebrow">How to Book</span>
+      <h2 style="font-size:clamp(2rem,4vw,3rem);margin:.4rem 0;">Your Flight,<br>in <em>Four Steps</em></h2>
+    </div>
+    <div class="htb-grid">
+      <div class="htb-connector"></div>
+      <div class="htb-step"><div class="htb-num">01</div><h4>Tell Us Your Route</h4><p>Call, email or use the search above. Share your departure city, destination, dates and number of passengers.</p></div>
+      <div class="htb-step"><div class="htb-num">02</div><h4>We Find Your Best Fare</h4><p>Our IATA-accredited team searches across all major airlines to find you the best available fare for your route and dates.</p></div>
+      <div class="htb-step"><div class="htb-num">03</div><h4>Review &amp; Confirm</h4><p>We present your options clearly — no hidden fees, no surprise charges. You confirm the fare and we proceed to booking.</p></div>
+      <div class="htb-step"><div class="htb-num">04</div><h4>Receive Your Ticket</h4><p>Your confirmed e-ticket is issued and sent to you promptly. Need hotel or transport? We handle that too.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY CHOOSE US ═══ -->
+<section id="why">
+  <div class="wrap">
+    <div class="rv" style="text-align:center;margin-bottom:.5rem;">
+      <span class="eyebrow">Why Book With Amja Travels</span>
+      <h2 style="font-size:clamp(2rem,4.5vw,3.2rem);margin:.4rem 0;">The IATA Difference</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-num">01</div><h3>IATA Accredited</h3><p>As a fully accredited IATA member, we have direct access to airline inventory, fares and booking systems — giving you better options and better prices.</p></div>
+      <div class="why-card"><div class="why-num">02</div><h3>Best Price Guarantee</h3><p>We compare fares across all major carriers to find you the most competitive rate. If you find a lower price, we'll do our best to match or beat it.</p></div>
+      <div class="why-card"><div class="why-num">03</div><h3>No Hidden Charges</h3><p>The fare we quote is the fare you pay. No surprise booking fees, no processing charges — complete price transparency from the first call.</p></div>
+      <div class="why-card"><div class="why-num">04</div><h3>All Major Airlines</h3><p>SriLankan, Emirates, Qatar, Singapore Airlines, Etihad, British Airways and more — we book them all with equal expertise.</p></div>
+      <div class="why-card"><div class="why-num">05</div><h3>One Way, Return &amp; Multi-City</h3><p>Whatever your itinerary — a simple one-way ticket or a complex multi-city journey — our team handles it with the same care.</p></div>
+      <div class="why-card"><div class="why-num">06</div><h3>Trusted Since 1998</h3><p>Over 25 years of booking flights for Sri Lankan travellers — our reputation is built on reliability, honesty and genuine expertise.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section id="cta">
+  <div class="wrap">
+    <span class="eyebrow">Book Your Flight Today</span>
+    <h2>Where Are You<br><em>Flying To?</em></h2>
+    <p>Call our team in Colombo — we'll find you the best available fare on your route, guaranteed.</p>
+    <div class="cta-btns">
+      <a href="tel:+94112335657" class="btn-blue">Call +94 11 233 5657</a>
+      <a href="mailto:amjatrvl@sltnet.lk" class="btn-ghost">Email Us</a>
+    </div>
+    <div class="c-grid">
+      <div class="cblk"><div class="cl">Head Office</div><div class="cv">No. 30, Dias Place, Gunasinghapura, Colombo 12, Sri Lanka</div></div>
+      <div class="cblk"><div class="cl">Telephone &amp; Fax</div><div class="cv">+94 11 233 5657<br>+94 77 730 8079<br>Fax: +94 11 243 7308</div></div>
+      <div class="cblk"><div class="cl">Email &amp; Hours</div><div class="cv">amjatrvl@sltnet.lk<br>Mon – Sat · 8:30 AM – 5:30 PM</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ENQUIRY FORM ═══ -->
+<section class="amja-section" id="enquire">
+  <h2>Make an <em>Enquiry</em></h2>
+  <form class="enq-form" data-enquiry-form="flights">
+    <h3>Send us your details</h3>
+    <p class="enq-note" data-enquiry-note></p>
+    <input type="hidden" name="item_id">
+    <input type="hidden" name="item_title">
+    <div class="enq-row">
+      <input type="text" name="name" placeholder="Your Name *" required>
+      <input type="tel" name="phone" placeholder="Phone Number *" required>
+    </div>
+    <input type="email" name="email" placeholder="Email (optional)">
+    <div class="enq-extra" data-enquiry-extra></div>
+    <textarea name="message" placeholder="Your message or requirements..."></textarea>
+    <button type="submit" class="enq-submit">Send Enquiry</button>
+    <p class="enq-msg" data-enquiry-msg></p>
+  </form>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="flogo"><img id="fi" alt="Amja Travels"/></div>
+        <p class="fa">Sri Lanka's IATA-accredited airline ticketing agent since 1998 — all major airlines, all routes, best price guarantee, no hidden charges.</p>
+        <span class="fbdg">IATA</span><span class="fbdg">TAASL</span><span class="fbdg">Civil Aviation Authority</span>
+      </div>
+      <div class="fcol">
+        <h5>Our Services</h5>
+        <ul>
+          <li><a href="#search">Airline Ticketing</a></li>
+          <li><a href="amja-hajj-umrah.html">Hajj &amp; Umrah</a></li>
+          <li><a href="amja-tours.html">Tours</a></li>
+          <li><a href="amja-hotels.html">Hotels</a></li>
+          <li><a href="amja-fleet.html">Rent A Car</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h5>Contact</h5>
+        <div class="faddr">
+          No. 30, Dias Place,<br>Gunasinghapura,<br>Colombo 12, Sri Lanka<br><br>
+          <a href="tel:+94112335657">+94 11 233 5657</a>
+          <a href="tel:+94777308079">+94 77 730 8079</a>
+          <a href="mailto:amjatrvl@sltnet.lk">amjatrvl@sltnet.lk</a>
+        </div>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© <span id="yr"></span> Amja Travels (Pvt) Ltd. All Rights Reserved.</span>
+      <span>IATA Airline Ticketing Agent · Sri Lanka · Est. 1998</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+const LOGO="../images/logo.png";
+document.getElementById("li").src=LOGO;
+document.getElementById("fi").src=LOGO;
+document.getElementById("fav").href=LOGO;
+document.getElementById("yr").textContent=new Date().getFullYear();
+gsap.registerPlugin(ScrollTrigger);
+const PR=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+/* PROGRESS */
+const prog=document.getElementById("prog");
+window.addEventListener("scroll",()=>prog.style.transform="scaleX("+(scrollY/(document.body.scrollHeight-innerHeight))+")",{passive:true});
+
+/* LENIS */
+let lenis;
+if(!PR&&window.Lenis){
+  lenis=new Lenis({duration:1.05,smoothWheel:true,lerp:.075});
+  lenis.on("scroll",ScrollTrigger.update);
+  gsap.ticker.add(t=>lenis.raf(t*1000));
+  gsap.ticker.lagSmoothing(0);
+}
+
+/* ANCHORS */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener("click",e=>{
+    const id=a.getAttribute("href");if(!id||id.length<2)return;
+    const t=document.querySelector(id);if(!t)return;
+    e.preventDefault();
+    if(lenis)lenis.scrollTo(t,{duration:1.2,offset:-90});
+    else window.scrollTo({top:t.getBoundingClientRect().top+scrollY-90,behavior:"smooth"});
+  });
+});
+
+/* HEADER */
+const hdr=document.getElementById("hdr");
+window.addEventListener("scroll",()=>hdr.classList.toggle("s",scrollY>55),{passive:true});
+
+/* BURGER */
+const bgEl=document.getElementById("bg"),dr=document.getElementById("dr"),ov=document.getElementById("ov");
+function tog(v){bgEl.classList.toggle("o",v);dr.classList.toggle("o",v);ov.classList.toggle("o",v);}
+bgEl.addEventListener("click",()=>tog(!dr.classList.contains("o")));
+ov.addEventListener("click",()=>tog(false));
+dr.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>tog(false)));
+
+/* HERO ENTRANCE */
+setTimeout(()=>{
+  if(PR)return;
+  const tl=gsap.timeline({defaults:{ease:"power3.out"}});
+  tl.to("#hPre",{opacity:1,y:0,duration:.7},0)
+    .to(["#lt1","#lt2"],{y:"0%",duration:1,stagger:.12},.08)
+    .to("#hSub",{opacity:1,y:0,duration:.85},.5)
+    .to("#hAccreds",{opacity:1,duration:.7},.72);
+},200);
+
+/* HERO BG PARALLAX */
+if(!PR)gsap.to(".hero-bg",{y:"10%",ease:"none",scrollTrigger:{trigger:"#hero",start:"top top",end:"bottom top",scrub:true}});
+
+/* SEARCH TABS */
+const tabs=document.querySelectorAll(".stab");
+const paneSimple=document.getElementById("pane-simple");
+const paneMulti=document.getElementById("pane-multi");
+const retDateWrap=document.getElementById("retDateWrap");
+tabs.forEach(tab=>{
+  tab.addEventListener("click",()=>{
+    tabs.forEach(t=>t.classList.remove("active"));
+    tab.classList.add("active");
+    const type=tab.getAttribute("data-type");
+    if(type==="multicity"){
+      paneSimple.style.display="none";paneMulti.style.display="block";
+    } else {
+      paneSimple.style.display="block";paneMulti.style.display="none";
+      retDateWrap.style.display=type==="oneway"?"none":"flex";
+    }
+  });
+});
+
+/* MULTI CITY ADD/REMOVE */
+let mcCount=1;
+document.getElementById("addFlight").addEventListener("click",()=>{
+  if(mcCount>=2)return;
+  mcCount++;
+  document.getElementById("mc2").classList.add("show");
+  document.getElementById("remFlight").style.display="inline-flex";
+  document.getElementById("addFlight").style.display=mcCount>=2?"none":"inline-flex";
+});
+document.getElementById("remFlight").addEventListener("click",()=>{
+  if(mcCount<=1)return;
+  mcCount--;
+  document.getElementById("mc2").classList.remove("show");
+  document.getElementById("remFlight").style.display="none";
+  document.getElementById("addFlight").style.display="inline-flex";
+});
+
+/* SWAP CITIES */
+document.getElementById("swapBtn").addEventListener("click",()=>{
+  const f=document.getElementById("fromCity"),t=document.getElementById("toCity");
+  [f.value,t.value]=[t.value,f.value];
+  gsap.from("#swapBtn",{rotate:-180,duration:.5,ease:"power2.out"});
+});
+
+/* SEARCH SUBMIT */
+function submitSearch(){
+  if(lenis)lenis.scrollTo(document.getElementById("cta"),{duration:1.2,offset:-90});
+  else document.getElementById("cta").scrollIntoView({behavior:"smooth"});
+}
+
+/* SET MIN DATE */
+const today=new Date().toISOString().split("T")[0];
+document.querySelectorAll('input[type="date"]').forEach(i=>i.setAttribute("min",today));
+
+/* FARE CARDS */
+gsap.utils.toArray(".fare-card").forEach((c,i)=>{
+  gsap.to(c,{opacity:1,y:0,duration:.8,delay:(i%3)*.08,ease:"power3.out",
+    scrollTrigger:{trigger:c,start:"top 90%"}});
+});
+
+/* DESTINATION CARDS */
+gsap.utils.toArray(".dest-card").forEach((c,i)=>{
+  gsap.to(c,{opacity:1,scale:1,duration:.7,delay:(i%5)*.07,ease:"back.out(1.3)",
+    scrollTrigger:{trigger:c,start:"top 92%"}});
+});
+
+/* AIRLINE CHIPS */
+gsap.utils.toArray(".airline-chip").forEach((c,i)=>{
+  gsap.to(c,{opacity:1,y:0,duration:.65,delay:(i%5)*.06,ease:"power2.out",
+    scrollTrigger:{trigger:c,start:"top 92%"}});
+});
+
+/* HOW TO BOOK STEPS */
+gsap.utils.toArray(".htb-step").forEach((s,i)=>{
+  gsap.to(s,{opacity:1,y:0,duration:.8,delay:i*.1,ease:"power3.out",
+    scrollTrigger:{trigger:"#howtobk",start:"top 82%"}});
+});
+
+/* WHY CARDS */
+gsap.utils.toArray(".why-card").forEach((c,i)=>{
+  gsap.to(c,{opacity:1,y:0,duration:.75,delay:(i%3)*.08,ease:"power2.out",
+    scrollTrigger:{trigger:c,start:"top 90%"}});
+});
+
+/* GENERIC REVEALS */
+gsap.utils.toArray(".rv").forEach(el=>{
+  gsap.to(el,{opacity:1,y:0,duration:.85,ease:"power3.out",
+    scrollTrigger:{trigger:el,start:"top 90%"}});
+});
+
+/* CTA BLOCKS */
+gsap.utils.toArray(".cblk").forEach((b,i)=>{
+  gsap.to(b,{opacity:1,y:0,duration:.8,delay:i*.09,ease:"power3.out",
+    scrollTrigger:{trigger:b,start:"top 90%"}});
+});
+
+/* MAGNETIC BUTTON */
+const mb=document.getElementById("magBtn");
+if(mb&&!PR){
+  mb.addEventListener("mousemove",e=>{
+    const r=mb.getBoundingClientRect();
+    gsap.to(mb,{x:(e.clientX-r.left-r.width/2)*.3,y:(e.clientY-r.top-r.height/2)*.5,duration:.35,ease:"power2.out"});
+  });
+  mb.addEventListener("mouseleave",()=>gsap.to(mb,{x:0,y:0,duration:.6,ease:"elastic.out(1,.4)"}));
+}
+
+window.addEventListener("load",()=>ScrollTrigger.refresh());
+</script>
+<!-- ═══ SHARED SITE SCRIPTS (config + nav) ═══ -->
+<script>
+(function(){
+  var onFile = location.protocol === 'file:';
+  var base = onFile ? '../shared/' : '/shared/';
+  var link = document.createElement('link');
+  link.rel = 'stylesheet'; link.href = base + 'client.css';
+  document.head.appendChild(link);
+  var cfg = document.createElement('script'); cfg.src = base + 'config.js';
+  cfg.onload = function(){
+    ['nav.js','render.js','footer.js'].forEach(function(f){
+      var s = document.createElement('script'); s.src = base + f; s.defer = true;
+      document.body.appendChild(s);
+    });
+  };
+  document.body.appendChild(cfg);
+})();
+</script>
+</body>
+</html>

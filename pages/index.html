@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Amja Travels (Pvt) Ltd — Sri Lanka's Trusted Travel Partner Since 1998</title>
+<meta name="description" content="Amja Travels — IATA-accredited flights, Hajj & Umrah, inbound & outbound tours, hotels and rent-a-car services from Colombo, Sri Lanka."/>
+<link rel="icon" type="image/png" href="../images/logo.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════
+   AMJA TRAVELS — "CEYLON SUNSET" EDITION
+   Deep Teal · Burnt Clay · Sunset Coral · Brass · Porcelain
+   ═══════════════════════════════════════════════════════ */
+:root{
+  --mid:#0F2A25;          /* deep teal-green — primary dark  */
+  --mid-2:#17403A;
+  --ink:#141009;          /* warm espresso black             */
+  --paper:#F7F2E8;        /* warm porcelain                  */
+  --paper-2:#ECE2D0;
+  --em:#7C3A24;           /* burnt sienna / clay surface     */
+  --em-d:#5A2A19;         /* deep clay                       */
+  --terra:#D2703F;        /* sunset coral — signature accent */
+  --terra-d:#B0552A;
+  --gold:#C99A52;         /* brass                           */
+  --gold-l:#EBD3A0;       /* champagne highlight             */
+  --cream:#F7F2E8;
+  --ink-60:rgba(20,16,9,.64);
+  --ink-40:rgba(20,16,9,.4);
+  --cream-70:rgba(247,242,232,.72);
+  --cream-45:rgba(247,242,232,.46);
+  --line-d:rgba(20,16,9,.1);
+  --line-l:rgba(247,242,232,.14);
+  --ease:cubic-bezier(.19,1,.22,1);
+  --ease-io:cubic-bezier(.83,0,.17,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{background:var(--mid);scroll-behavior:auto;}
+body{background:var(--paper);color:var(--ink);font-family:"Inter",sans-serif;font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4,.serif{font-family:"Playfair Display",serif;font-weight:500;letter-spacing:-.015em;}
+em{font-family:"Playfair Display",serif;font-style:italic;font-weight:400;}
+::selection{background:var(--gold);color:var(--ink);}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+button{background:none;border:none;color:inherit;font-family:inherit;cursor:pointer;}
+.wrap{max-width:1420px;margin:0 auto;padding:0 clamp(1.3rem,5vw,4.5rem);}
+
+/* labels */
+.kick{display:inline-flex;align-items:center;gap:.65rem;font-size:.64rem;font-weight:600;letter-spacing:.34em;text-transform:uppercase;}
+.kick .dot{width:7px;height:7px;border-radius:50%;background:currentColor;flex-shrink:0;}
+
+/* ── FILM GRAIN (premium texture over everything) ── */
+#grain{position:fixed;inset:0;z-index:930;pointer-events:none;opacity:.045;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+/* ── PROGRESS ── */
+#prog{position:fixed;top:0;left:0;right:0;height:2px;z-index:950;background:linear-gradient(90deg,var(--terra),var(--gold));transform:scaleX(0);transform-origin:left;pointer-events:none;}
+
+/* ── LOADER (dark stage w/ 3D globe) ── */
+#loader{position:fixed;inset:0;background:radial-gradient(ellipse at 50% 42%,#123c34 0%,#0F2A25 46%,#0A1E1A 100%);z-index:1000;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+#loadGlobe{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;}
+.load-in{position:relative;z-index:2;text-align:center;}
+.load-in img{height:72px;margin:0 auto 1.5rem;filter:drop-shadow(0 8px 26px rgba(0,0,0,.55));}
+.load-tag{font-size:.62rem;letter-spacing:.38em;text-transform:uppercase;color:var(--cream-70);font-weight:600;}
+.load-track{width:min(300px,58vw);height:2px;background:rgba(247,242,232,.14);margin:1.7rem auto .9rem;overflow:hidden;border-radius:2px;}
+.load-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--terra),var(--gold-l));border-radius:2px;box-shadow:0 0 14px rgba(210,112,63,.6);}
+.load-num{font-size:.62rem;letter-spacing:.5em;color:var(--cream-45);font-weight:600;}
+#shutterA,#shutterB{position:fixed;left:0;right:0;height:51vh;z-index:999;transform:scaleY(0);pointer-events:none;}
+#shutterA{top:0;background:var(--mid);transform-origin:top;}
+#shutterB{bottom:0;background:var(--mid);transform-origin:bottom;}
+
+/* ── HEADER ── */
+header{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:1.3rem clamp(1.3rem,4vw,3.4rem);transition:all .45s ease;}
+header.s{background:rgba(15,42,37,.86);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line-l);padding:.85rem clamp(1.3rem,4vw,3.4rem);}
+.hlogo img{height:40px;width:auto;transition:height .3s ease;filter:drop-shadow(0 2px 10px rgba(0,0,0,.45));}
+header.s .hlogo img{height:32px;}
+nav ul{display:flex;gap:.4rem;list-style:none;background:rgba(15,42,37,.35);border:1px solid rgba(247,242,232,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:100px;padding:.35rem;}
+nav a{display:block;font-size:.64rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(247,242,232,.78);padding:.55rem 1.05rem;border-radius:100px;transition:all .3s ease;}
+nav a:hover{color:var(--cream);background:rgba(247,242,232,.1);}
+nav a.cur{background:var(--gold);color:var(--ink);}
+.hcta{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:.8rem 1.6rem;border-radius:100px;background:var(--gold);color:var(--ink);transition:transform .3s var(--ease),box-shadow .3s ease,background .3s ease;}
+.hcta:hover{background:var(--gold-l);transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(201,154,82,.6);}
+.burger{display:none;flex-direction:column;gap:6px;padding:8px;z-index:960;}
+.burger span{display:block;width:26px;height:2px;background:var(--cream);border-radius:2px;transition:all .4s var(--ease);}
+.burger.open span:nth-child(1){transform:translateY(8px) rotate(45deg);}
+.burger.open span:nth-child(2){opacity:0;transform:scaleX(.2);}
+.burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
+@media(max-width:920px){nav,.hcta{display:none;}.burger{display:flex;}}
+
+/* ── FULLSCREEN MENU ── */
+#menu{position:fixed;inset:0;background:var(--paper);z-index:890;clip-path:inset(0 0 100% 0);transition:clip-path .8s var(--ease-io);pointer-events:none;display:flex;flex-direction:column;justify-content:center;padding:6rem clamp(1.6rem,8vw,7rem) 3rem;}
+#menu.open{clip-path:inset(0 0 0% 0);pointer-events:auto;}
+#menu .m-links a{display:flex;align-items:baseline;gap:1.2rem;padding:.5rem 0;border-bottom:1px solid var(--line-d);opacity:0;transform:translateY(24px);}
+#menu .mi{font-size:.6rem;letter-spacing:.3em;color:var(--terra);font-weight:700;}
+#menu .mt{font-family:"Playfair Display",serif;font-size:clamp(2rem,7vw,3.6rem);color:var(--ink);transition:color .3s ease;}
+#menu .m-links a:hover .mt{color:var(--terra);font-style:italic;}
+#menu .m-foot{margin-top:2.4rem;display:flex;flex-wrap:wrap;gap:1.4rem;font-size:.72rem;color:var(--ink-60);opacity:0;}
+#menu .m-foot a{color:var(--terra);font-weight:600;}
+
+/* ── HERO (original image, frame-morph on scroll — no zoom) ── */
+#hero{position:relative;height:170vh;background:var(--mid);}
+#hero-stage{position:sticky;top:0;height:100vh;overflow:hidden;}
+.hero-media{position:absolute;inset:0;will-change:clip-path;}
+.hero-pan{position:absolute;inset:-3% -6%;background:url("../images/hero-bg.jpg") center/cover no-repeat;will-change:transform;}
+.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(78deg,rgba(15,42,37,.9) 0%,rgba(15,42,37,.55) 42%,rgba(15,42,37,.12) 75%),linear-gradient(0deg,rgba(15,42,37,.85) 0%,transparent 38%);}
+.hero-frame{position:absolute;inset:0;z-index:2;pointer-events:none;border:0 solid var(--mid);}
+.hero-c{position:absolute;z-index:3;left:0;right:0;bottom:0;padding:0 clamp(1.3rem,5vw,4.5rem) clamp(5.5rem,9vh,7.5rem);max-width:1420px;margin:0 auto;}
+.hero-c .kick{color:var(--gold-l);margin-bottom:1.6rem;opacity:0;}
+.hero-title{font-size:clamp(3.2rem,10.5vw,8.8rem);line-height:.92;color:var(--cream);max-width:12ch;}
+.hero-title em{color:var(--gold-l);}
+.chm{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.07em;margin-bottom:-.07em;perspective:640px;}
+.ch{display:inline-block;transform:translateY(120%) rotateX(-92deg);transform-origin:bottom center;will-change:transform;}
+.hero-row{display:flex;justify-content:space-between;align-items:flex-end;gap:2.5rem;margin-top:2.2rem;flex-wrap:wrap;}
+.hero-sub{font-size:.92rem;color:var(--cream-70);max-width:480px;line-height:1.85;opacity:0;}
+.hero-btns{display:flex;gap:.9rem;flex-wrap:wrap;opacity:0;}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2.1rem;border-radius:100px;font-size:.64rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;transition:transform .35s var(--ease),box-shadow .35s ease,background .3s ease,border-color .3s ease,color .3s ease;}
+.btn-terra{background:var(--gold);color:var(--ink);}
+.btn-terra:hover{background:var(--gold-l);transform:translateY(-3px);box-shadow:0 18px 38px -14px rgba(201,154,82,.55);}
+.btn-ghost{border:1px solid rgba(247,242,232,.35);color:var(--cream);}
+.btn-ghost:hover{border-color:var(--gold-l);color:var(--gold-l);transform:translateY(-3px);}
+.hero-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem;opacity:0;}
+.hero-pill{font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:rgba(247,242,232,.8);border:1px solid rgba(247,242,232,.22);padding:.48rem 1rem;border-radius:100px;backdrop-filter:blur(6px);}
+.hero-scroll{position:absolute;right:clamp(1.3rem,4vw,3.4rem);bottom:2.2rem;z-index:3;display:flex;align-items:center;gap:.8rem;opacity:0;}
+.hero-scroll span{font-size:.55rem;letter-spacing:.4em;text-transform:uppercase;color:var(--cream-45);}
+.hero-scroll .wheel{width:22px;height:36px;border:1.5px solid rgba(247,242,232,.35);border-radius:12px;position:relative;}
+.hero-scroll .wheel::after{content:"";position:absolute;top:6px;left:50%;width:3px;height:7px;margin-left:-1.5px;border-radius:3px;background:var(--gold-l);animation:whl 1.9s ease-in-out infinite;}
+@keyframes whl{0%{transform:translateY(0);opacity:1;}70%{transform:translateY(12px);opacity:0;}100%{transform:translateY(0);opacity:0;}}
+/* hero coordinate HUD — subtle "boarding pass" flourish */
+.hero-hud{position:absolute;top:clamp(6.2rem,13vh,8.5rem);right:clamp(1.3rem,4vw,3.4rem);z-index:3;display:flex;flex-direction:column;align-items:flex-end;gap:.5rem;opacity:0;pointer-events:none;}
+.hero-hud .hud-co{font-family:"Playfair Display",serif;font-size:1rem;letter-spacing:.06em;color:var(--gold-l);}
+.hero-hud .hud-lb{font-size:.52rem;letter-spacing:.4em;text-transform:uppercase;color:var(--cream-45);font-weight:600;}
+.hero-hud .hud-ln{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-l));margin-top:.15rem;}
+@media(max-width:820px){.hero-hud{display:none;}}
+@media(max-width:700px){.hero-c{padding-bottom:6.5rem;}.hero-scroll{display:none;}#hero{height:150vh;}}
+
+/* ── TICKER BANDS ── */
+#ticker{position:relative;background:var(--mid);padding:4.2rem 0 0;overflow:hidden;}
+.band{margin:0;overflow:hidden;white-space:nowrap;}
+.band.b1{border-top:1px solid rgba(201,154,82,.25);border-bottom:1px solid rgba(201,154,82,.25);padding:1.3rem 0;}
+.band.b2{background:var(--gold);padding:.66rem 0;margin-top:0;}
+.band-track{display:inline-flex;align-items:center;gap:2.8rem;padding-right:2.8rem;will-change:transform;}
+.b1 .city{font-family:"Playfair Display",serif;font-size:clamp(1.5rem,3.2vw,2.3rem);color:var(--cream-70);}
+.b1 .city.it{font-style:italic;color:var(--gold-l);}
+.b1 .st{color:rgba(201,154,82,.6);font-size:.7rem;}
+.b2 .ti{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;font-weight:700;color:var(--ink);}
+.b2 .st{color:rgba(20,16,9,.5);font-size:.5rem;}
+
+/* ── SHEET (light sections w/ rounded top) ── */
+.sheet{position:relative;background:var(--paper);border-radius:34px 34px 0 0;margin-top:-34px;z-index:2;}
+.sec-pad{padding:clamp(5.5rem,11vw,10rem) 0;}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2.4rem;margin-bottom:clamp(2.6rem,6vw,4.6rem);flex-wrap:wrap;}
+.sec-head h2{font-size:clamp(2.6rem,6.5vw,5.2rem);line-height:.98;margin-top:1.2rem;}
+.sec-head p{max-width:340px;font-size:.88rem;line-height:1.9;}
+.rv{opacity:0;transform:translateY(44px);}
+
+@keyframes spin{to{transform:rotate(360deg);}}
+/* ── ABOUT — FULL-SCREEN NEWSPAPER IMAGE ── */
+#about{position:relative;height:100vh;height:100dvh;overflow:hidden;background:#e3d4b2;}
+.about-img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
+@media(max-width:820px){#about{height:auto;min-height:100vh;}.about-img{height:100vh;}}
+
+/* ── SERVICES — FULL-SCREEN CINEMATIC HORIZONTAL SCROLL ── */
+#services{background:#0A1613;color:var(--cream);position:relative;overflow:hidden;padding:0;}
+#svcPin{position:relative;height:100vh;height:100dvh;overflow:hidden;}
+#svcTrack{display:flex;height:100%;width:max-content;will-change:transform;}
+/* intro slide */
+.svc-intro{flex:0 0 auto;position:relative;width:100vw;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 clamp(1.6rem,8vw,9rem);}
+.svc-intro::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(20,120,90,.18),transparent 60%),radial-gradient(ellipse at 85% 80%,rgba(201,154,82,.12),transparent 55%);}
+.svc-intro>*{position:relative;}
+.svc-intro .kick{color:var(--gold-l);margin-bottom:1.4rem;}
+.svc-intro h2{font-size:clamp(2.8rem,8vw,6.5rem);line-height:.96;color:var(--cream);}
+.svc-intro h2 em{color:var(--gold-l);}
+.svc-intro p{margin-top:1.6rem;max-width:440px;font-size:.95rem;line-height:1.9;color:var(--cream-70);}
+.svc-hint{margin-top:2.4rem;display:inline-flex;align-items:center;gap:.8rem;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-l);font-weight:700;}
+.svc-hint .ln{width:60px;height:1px;background:rgba(235,211,160,.4);position:relative;overflow:hidden;}
+.svc-hint .ln::after{content:"";position:absolute;inset:0;background:var(--gold-l);transform:translateX(-100%);animation:hintln 2.2s var(--ease) infinite;}
+@keyframes hintln{0%{transform:translateX(-100%);}60%,100%{transform:translateX(100%);}}
+/* full-screen image panel */
+.svc-panel{flex:0 0 auto;position:relative;width:100vw;height:100%;overflow:hidden;}
+.svc-bg{position:absolute;inset:0 -14%;background-size:cover;background-position:center;will-change:transform;}
+.svc-panel::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,20,17,.9) 0%,rgba(9,20,17,.45) 34%,rgba(9,20,17,.05) 62%),linear-gradient(0deg,rgba(9,20,17,.92) 0%,rgba(9,20,17,0) 46%);}
+.svc-ghost{position:absolute;right:clamp(1rem,4vw,4rem);top:clamp(4rem,10vh,7rem);z-index:1;font-family:"Playfair Display",serif;font-size:clamp(9rem,26vw,24rem);line-height:.7;color:rgba(247,242,232,.06);pointer-events:none;font-weight:600;}
+.svc-c{position:absolute;inset:0;z-index:2;padding:0 clamp(1.6rem,8vw,9rem) clamp(4rem,12vh,8rem);display:flex;flex-direction:column;justify-content:flex-end;max-width:min(92vw,900px);will-change:transform;}
+.svc-idx{font-size:.62rem;letter-spacing:.34em;font-weight:700;color:var(--gold-l);margin-bottom:1rem;display:inline-flex;align-items:center;gap:.8rem;}
+.svc-idx::after{content:"";width:44px;height:1px;background:var(--gold-l);opacity:.5;}
+.svc-panel h3{font-size:clamp(2.6rem,8vw,6rem);line-height:.94;color:var(--cream);}
+.svc-panel h3 em{color:var(--gold-l);font-style:italic;}
+.svc-lead{margin-top:1.2rem;max-width:420px;font-size:.92rem;line-height:1.8;color:var(--cream-70);}
+.svc-meta{display:flex;gap:2.4rem;flex-wrap:wrap;margin-top:1.8rem;}
+.svc-meta div{font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-45);font-weight:600;}
+.svc-meta strong{display:block;font-family:"Playfair Display",serif;font-size:1.25rem;font-weight:400;letter-spacing:0;text-transform:none;color:var(--gold-l);margin-top:4px;}
+.svc-pill{position:absolute;top:clamp(5.5rem,12vh,8rem);right:clamp(1.6rem,8vw,9rem);z-index:3;font-size:.54rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:var(--cream);border:1px solid rgba(247,242,232,.4);padding:.5rem 1.1rem;border-radius:100px;backdrop-filter:blur(6px);background:rgba(9,20,17,.25);}
+.svc-progress{position:absolute;left:0;bottom:0;height:3px;width:100%;background:rgba(247,242,232,.1);z-index:5;}
+.svc-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--terra),var(--gold-l));box-shadow:0 0 14px rgba(210,112,63,.6);}
+@media(max-width:820px){
+  #services{padding:0;}
+  #svcPin{height:auto;overflow:visible;}
+  #svcTrack{width:auto;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;transform:none!important;}
+  .svc-intro,.svc-panel{width:100vw;height:88vh;scroll-snap-align:center;}
+  .svc-bg{inset:0;}
+  .svc-progress{display:none;}
+}
+
+/* ── HAJJ — ARCH (emerald) ── */
+#hajj{background:linear-gradient(165deg,#0E4634 0%,#0B3A2B 55%,#082C20 100%);color:var(--cream);border-radius:34px 34px 0 0;margin-top:-34px;position:relative;z-index:2;overflow:hidden;}
+#hajj::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 80% 8%,rgba(201,154,82,.18),transparent 52%),radial-gradient(ellipse at 12% 88%,rgba(20,120,90,.28),transparent 46%);pointer-events:none;}
+#hajj .grid{display:grid;grid-template-columns:1fr .95fr;gap:clamp(2.5rem,6vw,6rem);align-items:center;}
+#hajj .kick{color:var(--gold-l);}
+#hajj h2{font-size:clamp(2.7rem,6.5vw,5.4rem);line-height:.98;margin-top:1.3rem;}
+#hajj h2 em{color:var(--gold-l);}
+#hajj p.hx{font-size:.92rem;color:var(--cream-70);margin-top:1.7rem;line-height:2;max-width:480px;}
+#hajj .h-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:2rem;}
+#hajj .h-tags span{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;border:1px solid rgba(201,154,82,.5);color:var(--gold-l);padding:.45rem .9rem;border-radius:100px;}
+#hajj .btn-gold{margin-top:2.4rem;background:var(--gold);color:var(--ink);}
+#hajj .btn-gold:hover{background:var(--gold-l);transform:translateY(-3px);box-shadow:0 18px 38px -14px rgba(201,154,82,.5);}
+.arch{position:relative;width:min(440px,84vw);aspect-ratio:.76;margin:0 auto;border-radius:999px 999px 26px 26px;overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.6);}
+.arch>div{position:absolute;inset:-12% 0;background:url("../images/zoom-makkah.jpg") center/cover no-repeat;will-change:transform;}
+.arch::after{content:"";position:absolute;inset:0;border-radius:999px 999px 26px 26px;box-shadow:inset 0 0 0 1px rgba(201,154,82,.45);background:linear-gradient(0deg,rgba(8,44,33,.6) 0%,transparent 45%);}
+.arch-ring{position:absolute;top:-26px;right:-26px;width:130px;height:130px;border:1px dashed rgba(201,154,82,.6);border-radius:50%;animation:spin 22s linear infinite;pointer-events:none;}
+.arch-wrap{position:relative;}
+@media(max-width:860px){#hajj .grid{grid-template-columns:1fr;}.arch{margin-top:1rem;}}
+
+/* ── DESTINATIONS — BENTO ── */
+#dest .sec-head .kick{color:var(--terra);}
+#dest .sec-head p{color:var(--ink-60);}
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:215px;gap:1.1rem;}
+.b-tile{position:relative;border-radius:20px;overflow:hidden;opacity:0;transform:translateY(50px);background:var(--paper-2);}
+.b-tile .bi{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .8s var(--ease);}
+.b-tile:hover .bi{transform:scale(1.07);}
+.b-tile::before{content:"";position:absolute;inset:0;background:linear-gradient(8deg,rgba(15,42,37,.88) 4%,rgba(15,42,37,.05) 55%);z-index:1;}
+.b-tile .bd{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:1.4rem 1.5rem;}
+.b-tile .bt{display:inline-block;font-size:.53rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--cream);padding:.36rem .8rem;border-radius:100px;margin-bottom:.7rem;}
+.b-tile h3{font-size:clamp(1.5rem,2.4vw,2.1rem);color:var(--cream);line-height:1;}
+.b-tile .fr{margin-top:.5rem;font-size:.62rem;color:var(--cream-70);letter-spacing:.12em;text-transform:uppercase;}
+.b-tile .go{position:absolute;top:1.1rem;right:1.1rem;z-index:2;width:40px;height:40px;border-radius:50%;background:rgba(247,242,232,.14);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;color:var(--cream);transform:rotate(-45deg);transition:all .4s var(--ease);}
+.b-tile:hover .go{background:var(--terra);transform:rotate(0deg);}
+.t1{grid-column:1/3;grid-row:1/3;}
+.t2{grid-column:3/5;grid-row:1/2;}
+.t3{grid-column:3/4;grid-row:2/3;}
+.t4{grid-column:4/5;grid-row:2/3;}
+.t5{grid-column:1/3;grid-row:3/4;}
+.t6{grid-column:3/5;grid-row:3/4;}
+.t1 h3{font-size:clamp(2rem,3.6vw,3rem);}
+@media(max-width:860px){.bento{grid-template-columns:1fr 1fr;grid-auto-rows:190px;}
+ .t1{grid-column:1/3;grid-row:auto/span 2;}.t2,.t3,.t4,.t5,.t6{grid-column:auto;grid-row:auto;}
+ .t5{grid-column:1/3;}}
+@media(max-width:520px){.bento{grid-template-columns:1fr;}.t1,.t2,.t3,.t4,.t5,.t6{grid-column:1/2;grid-row:auto;}.t1{grid-row:auto/span 1;}}
+
+/* ── STATS (no background — sits on the page) ── */
+#stats{background:transparent;color:var(--ink);position:relative;overflow:hidden;border-top:1px solid var(--line-d);border-bottom:1px solid var(--line-d);}
+#stats .fp{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.22;}
+#stats .inner{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;padding:clamp(4rem,8vw,6.5rem) 0;}
+.stat-item{text-align:center;opacity:0;transform:translateY(36px);position:relative;}
+.stat-item+.stat-item::before{content:"";position:absolute;left:-1rem;top:12%;bottom:12%;width:1px;background:var(--line-d);}
+.stat-item h3{font-size:clamp(3rem,6.5vw,5.4rem);line-height:1;color:var(--ink);}
+.stat-item h3 .sf{color:var(--terra);}
+.stat-item p{font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-60);margin-top:.7rem;font-weight:600;}
+@media(max-width:760px){#stats .inner{grid-template-columns:1fr 1fr;gap:2.6rem 1rem;}.stat-item+.stat-item::before{display:none;}}
+
+/* ── HOTELS — IMAGE CARDS ── */
+#hotels .sec-head .kick{color:var(--em);}
+#hotels .sec-head p{color:var(--ink-60);}
+.hotel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;}
+@media(max-width:900px){.hotel-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.hotel-grid{grid-template-columns:1fr;}}
+.hotel-card{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:3/4;opacity:0;transform:translateY(34px);box-shadow:0 26px 52px -32px rgba(20,16,9,.5);isolation:isolate;}
+.hotel-card .hc-img{position:absolute;inset:0;background-color:#163a34;background-size:cover;background-position:center;background-repeat:no-repeat;transition:transform .9s var(--ease);}
+.hotel-card:hover .hc-img{transform:scale(1.08);}
+.hotel-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,42,37,.12) 0%,rgba(15,42,37,0) 30%,rgba(9,22,19,.55) 62%,rgba(9,22,19,.94) 100%);z-index:1;}
+.hotel-card::before{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,var(--terra),var(--gold-l));transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease);z-index:3;}
+.hotel-card:hover::before{transform:scaleX(1);}
+.hc-num{position:absolute;top:1rem;left:1.15rem;z-index:2;font-size:.56rem;letter-spacing:.26em;color:var(--gold-l);font-weight:700;}
+.hc-body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:1.5rem 1.35rem 1.4rem;}
+.hotel-card .stars{display:flex;gap:3px;margin-bottom:.65rem;}
+.hotel-card .stars svg{width:12px;height:12px;fill:var(--gold-l);}
+.hotel-card h4{font-size:1.32rem;color:var(--cream);line-height:1.06;}
+.hotel-card .loc{display:flex;align-items:center;gap:.4rem;font-size:.68rem;color:var(--cream-70);margin-top:.4rem;letter-spacing:.06em;font-weight:500;}
+.hotel-card .loc::before{content:"✦";color:var(--terra);font-size:.45rem;}
+.hotel-card .badge{display:inline-block;margin-top:1rem;font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold-l);border:1px solid rgba(201,154,82,.5);padding:.34rem .78rem;border-radius:100px;backdrop-filter:blur(4px);}
+
+/* ── FLEET — CLEAN DIRECTORY LIST ── */
+#fleet{background:var(--ink);color:var(--cream);border-radius:34px 34px 0 0;position:relative;z-index:2;}
+#fleet .sec-head .kick{color:var(--gold-l);}
+#fleet .sec-head p{color:var(--cream-70);}
+.fleet-list{border-top:1px solid rgba(247,242,232,.14);}
+.fl-row{display:grid;grid-template-columns:3rem minmax(0,1.25fr) minmax(0,1.55fr) auto 1.4rem;align-items:center;
+  gap:clamp(1rem,3vw,2.5rem);padding:clamp(1.35rem,2.6vw,1.95rem) .3rem;border-bottom:1px solid rgba(247,242,232,.12);
+  color:var(--cream);opacity:0;transform:translateY(18px);transition:background .35s ease,padding-left .35s var(--ease);}
+.fl-row:hover{background:rgba(247,242,232,.035);padding-left:1rem;}
+.fl-no{font-size:.62rem;letter-spacing:.24em;font-weight:700;color:var(--gold-l);}
+.fl-name{font-family:"Playfair Display",serif;font-weight:500;font-size:clamp(1.35rem,2.6vw,2.05rem);line-height:1;transition:color .3s ease;}
+.fl-row:hover .fl-name{color:var(--gold-l);}
+.fl-desc{font-size:.84rem;color:var(--cream-70);line-height:1.5;}
+.fl-seat{font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--cream-45);white-space:nowrap;}
+.fl-ar{justify-self:end;color:var(--gold-l);font-size:1.05rem;opacity:.5;transform:translateX(-5px);transition:all .35s var(--ease);}
+.fl-row:hover .fl-ar{opacity:1;transform:translateX(0);}
+@media(max-width:720px){
+  .fl-row{grid-template-columns:2.2rem 1fr auto;gap:.9rem;}
+  .fl-desc{display:none;}
+}
+
+/* ── TESTIMONIAL (professional) ── */
+#quote{background:linear-gradient(180deg,var(--mid-2) 0%,#0B211D 100%);color:var(--cream);position:relative;overflow:hidden;}
+#quote::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% -10%,rgba(201,154,82,.12),transparent 58%);pointer-events:none;}
+.tm{max-width:940px;margin:0 auto;text-align:center;position:relative;}
+.tm .kick{color:var(--gold-l);justify-content:center;margin-bottom:1.8rem;}
+.tm-stars{display:inline-flex;gap:6px;margin-bottom:1.9rem;}
+.tm-stars svg{width:17px;height:17px;fill:var(--gold-l);}
+#quote blockquote{font-family:"Playfair Display",serif;font-weight:500;font-size:clamp(1.6rem,3.7vw,2.9rem);line-height:1.42;position:relative;}
+#quote blockquote em{color:var(--gold-l);font-style:italic;}
+#quote blockquote .qw{display:inline-block;opacity:.16;}
+.tm-div{width:64px;height:1px;background:rgba(201,154,82,.5);margin:2.4rem auto 1.7rem;}
+.tm-who{display:inline-flex;align-items:center;gap:.95rem;text-align:left;}
+.tm-mono{width:48px;height:48px;flex-shrink:0;border-radius:50%;border:1px solid rgba(201,154,82,.55);display:flex;align-items:center;justify-content:center;font-family:"Playfair Display",serif;font-size:1.15rem;color:var(--gold-l);}
+.tm-meta .n{font-size:.92rem;color:var(--cream);font-weight:500;}
+.tm-meta .r{font-size:.56rem;letter-spacing:.24em;text-transform:uppercase;color:var(--cream-45);font-weight:600;margin-top:.28rem;}
+
+/* ── CTA (midnight + aurora) ── */
+#cta{background:var(--mid);color:var(--cream);text-align:center;position:relative;overflow:hidden;}
+#cta .wrap{position:relative;z-index:1;}
+.cta-sub{max-width:560px;margin:1.7rem auto 0;color:var(--cream-70);font-size:.96rem;line-height:1.9;position:relative;}
+.cta-btns{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;margin-top:2.4rem;position:relative;}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;pointer-events:none;}
+.bl-1{width:520px;height:520px;background:rgba(20,58,52,.6);top:-140px;left:-120px;}
+.bl-2{width:460px;height:460px;background:rgba(201,154,82,.16);bottom:-160px;right:-100px;}
+.bl-3{width:340px;height:340px;background:rgba(124,58,38,.35);top:30%;right:22%;}
+#cta .kick{color:var(--gold-l);justify-content:center;}
+#cta h2{font-size:clamp(2.8rem,8.5vw,7rem);line-height:.96;margin-top:1.4rem;position:relative;}
+#cta h2 em{color:var(--gold-l);}
+#cta .cta-btns .btn-terra{padding:1.25rem 3rem;font-size:.68rem;}
+#cta .cta-btns .btn-ghost{padding:1.25rem 2.4rem;font-size:.68rem;}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin:4.2rem auto 0;max-width:1000px;position:relative;}
+@media(max-width:720px){.contact-grid{grid-template-columns:1fr;}}
+.c-block{border:1px solid var(--line-l);background:rgba(247,242,232,.045);backdrop-filter:blur(8px);border-radius:18px;padding:1.8rem;text-align:left;opacity:0;transform:translateY(28px);transition:border-color .3s ease;}
+.c-block:hover{border-color:rgba(201,154,82,.5);}
+.c-block .cl{font-size:.56rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-l);font-weight:700;margin-bottom:.8rem;}
+.c-block .cv{font-size:.9rem;color:var(--cream);line-height:1.9;font-weight:300;}
+
+/* ── FOOTER ── */
+footer{background:#0C0A07;color:var(--cream);padding-top:5.5rem;position:relative;z-index:2;}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:3rem;padding-bottom:4rem;border-bottom:1px solid var(--line-l);}
+@media(max-width:860px){.foot-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.foot-grid{grid-template-columns:1fr;}}
+.flogo img{height:38px;}
+.fabout{font-size:.84rem;line-height:1.95;color:var(--cream-45);margin:1.1rem 0 1.2rem;max-width:300px;}
+.fbadges{display:flex;gap:.45rem;flex-wrap:wrap;}
+.fbadges span{font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;border:1px solid rgba(201,154,82,.35);padding:.32rem .7rem;border-radius:100px;color:var(--gold-l);}
+.fsocial{display:flex;gap:.6rem;margin-top:1.3rem;}
+.fsocial a{width:36px;height:36px;border-radius:50%;border:1px solid var(--line-l);display:flex;align-items:center;justify-content:center;transition:all .3s ease;}
+.fsocial a:hover{background:var(--terra);border-color:var(--terra);transform:translateY(-3px);}
+.fsocial svg{width:14px;height:14px;stroke:var(--cream);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.fcol h5{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-l);font-weight:700;margin-bottom:1.4rem;}
+.fcol ul{list-style:none;}
+.fcol ul li{margin-bottom:.7rem;}
+.fcol ul a{font-size:.82rem;color:var(--cream-45);transition:color .25s ease,padding-left .3s var(--ease);}
+.fcol ul a:hover{color:var(--gold-l);padding-left:6px;}
+.faddr{font-size:.84rem;color:var(--cream-45);line-height:1.95;}
+.faddr a{display:block;color:var(--cream-45);transition:color .25s;}
+.faddr a:hover{color:var(--gold-l);}
+.foot-bot{display:flex;justify-content:space-between;align-items:center;padding:1.7rem 0;flex-wrap:wrap;gap:.8rem;font-size:.66rem;letter-spacing:.06em;color:rgba(247,242,232,.3);}
+.foot-bot .fb-r{display:flex;align-items:center;gap:1.1rem;}
+#adminLoginLink{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.85);display:inline-block;flex-shrink:0;transition:transform .3s var(--ease),box-shadow .3s ease;}
+#adminLoginLink:hover{transform:scale(1.5);box-shadow:0 0 12px rgba(255,255,255,.7);}
+
+/* ── REDUCED MOTION ── */
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important;}
+  .rv,.b-tile,.stat-item,.hotel-card,.fl-row,.about-img,.svc-panel,.c-block,.hero-c .kick,.hero-sub,.hero-btns,.hero-pills,.hero-scroll,.hero-hud{opacity:1!important;transform:none!important;}
+  .ch{transform:none!important;}
+  #quote blockquote .qw{opacity:1!important;}
+  #hero{height:100vh;}
+  #loadGlobe{display:none;}
+  #svcPin{height:auto;}#svcTrack{overflow-x:auto;transform:none!important;scroll-snap-type:x mandatory;}
+  .svc-intro{height:auto;}.svc-panel{height:62vh;scroll-snap-align:center;}
+}
+</style>
+</head>
+<body>
+
+<div id="grain"></div>
+<div id="prog"></div>
+<div id="shutterA"></div><div id="shutterB"></div>
+
+<!-- LOADER (3D globe stage) -->
+<div id="loader">
+  <canvas id="loadGlobe"></canvas>
+  <div class="load-in">
+    <img src="../images/logo.png" alt="Amja Travels"/>
+    <div class="load-tag">Sri Lanka's Trusted Travel Partner · Since 1998</div>
+    <div class="load-track"><div class="load-fill" id="loadFill"></div></div>
+    <div class="load-num" id="loadNum">00</div>
+  </div>
+</div>
+
+<!-- FULLSCREEN MENU -->
+<div id="menu">
+  <div class="m-links">
+    <a href="index.html"><span class="mi">01</span><span class="mt">Home</span></a>
+    <a href="hajj-umrah.html"><span class="mi">02</span><span class="mt">Hajj &amp; Umrah</span></a>
+    <a href="tours.html"><span class="mi">03</span><span class="mt">Tours</span></a>
+    <a href="hotels.html"><span class="mi">04</span><span class="mt">Hotels</span></a>
+    <a href="fleet.html"><span class="mi">05</span><span class="mt">Fleet</span></a>
+    <a href="flights.html"><span class="mi">06</span><span class="mt">Flights</span></a>
+  </div>
+  <div class="m-foot">
+    <span>Colombo 12, Sri Lanka</span>
+    <a href="tel:+94112335657">+94 11 233 5657</a>
+    <a href="mailto:amjatrvl@sltnet.lk">amjatrvl@sltnet.lk</a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="hdr">
+  <a href="index.html" class="hlogo"><img src="../images/logo.png" alt="Amja Travels"/></a>
+  <nav><ul>
+    <li><a href="index.html" class="cur">Home</a></li>
+    <li><a href="hajj-umrah.html">Hajj &amp; Umrah</a></li>
+    <li><a href="tours.html">Tours</a></li>
+    <li><a href="hotels.html">Hotels</a></li>
+    <li><a href="fleet.html">Fleet</a></li>
+    <li><a href="flights.html">Flights</a></li>
+  </ul></nav>
+  <a href="#cta" class="hcta">Get a Quote</a>
+  <div class="burger" id="bg"><span></span><span></span><span></span></div>
+</header>
+
+<main id="top">
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div id="hero-stage">
+    <div class="hero-media" id="heroMedia"><div class="hero-pan" id="heroPan"></div></div>
+    <div class="hero-c" id="heroC">
+      <span class="kick"><span class="dot"></span>Sri Lanka's Trusted Travel Partner · Est. 1998</span>
+      <h1 class="hero-title">
+        <span data-split>Your Journey</span><br>
+        <span data-split>Starts</span> <em data-split>Here</em>
+      </h1>
+      <div class="hero-row">
+        <p class="hero-sub">Amja Travels (Pvt) Ltd has guided travellers and pilgrims since 1998 — flights, Hajj &amp; Umrah, inbound &amp; outbound tours, hotels and car rentals, all handled with care from Colombo.</p>
+        <div class="hero-btns">
+          <a href="#cta" class="btn btn-terra">Plan My Journey</a>
+          <a href="tel:+94112335657" class="btn btn-ghost">+94 11 233 5657</a>
+        </div>
+      </div>
+      <div class="hero-pills">
+        <span class="hero-pill">IATA Accredited</span>
+        <span class="hero-pill">TAASL Member</span>
+        <span class="hero-pill">Civil Aviation Approved</span>
+        <span class="hero-pill">28 Years Experience</span>
+      </div>
+    </div>
+    <div class="hero-hud" id="heroHud">
+      <div class="hud-co">06.9°N · 79.8°E</div>
+      <div class="hud-lb">Colombo · Sri Lanka</div>
+      <div class="hud-ln"></div>
+    </div>
+    <div class="hero-scroll" id="heroScroll"><span>Scroll</span><div class="wheel"></div></div>
+  </div>
+</section>
+
+<!-- ═══ TICKER ═══ -->
+<div id="ticker">
+  <div class="band b1">
+    <div class="band-track" data-band="1">
+      <span class="city">COLOMBO</span><span class="st">✦</span><span class="city it">Kandy</span><span class="st">✦</span><span class="city">ELLA</span><span class="st">✦</span><span class="city it">Sigiriya</span><span class="st">✦</span><span class="city">MIRISSA</span><span class="st">✦</span><span class="city it">Makkah</span><span class="st">✦</span><span class="city">MALDIVES</span><span class="st">✦</span><span class="city it">Dubai</span><span class="st">✦</span><span class="city">LONDON</span><span class="st">✦</span><span class="city it">Singapore</span><span class="st">✦</span>
+    </div>
+    <div class="band-track" data-band="1" aria-hidden="true">
+      <span class="city">COLOMBO</span><span class="st">✦</span><span class="city it">Kandy</span><span class="st">✦</span><span class="city">ELLA</span><span class="st">✦</span><span class="city it">Sigiriya</span><span class="st">✦</span><span class="city">MIRISSA</span><span class="st">✦</span><span class="city it">Makkah</span><span class="st">✦</span><span class="city">MALDIVES</span><span class="st">✦</span><span class="city it">Dubai</span><span class="st">✦</span><span class="city">LONDON</span><span class="st">✦</span><span class="city it">Singapore</span><span class="st">✦</span>
+    </div>
+  </div>
+  <div class="band b2">
+    <div class="band-track" data-band="2">
+      <span class="ti">IATA Accredited Agency</span><span class="st">✦</span><span class="ti">TAASL Member</span><span class="st">✦</span><span class="ti">Best Price Guarantee</span><span class="st">✦</span><span class="ti">No Hidden Charges</span><span class="st">✦</span><span class="ti">Civil Aviation Authority Approved</span><span class="st">✦</span><span class="ti">Secure Booking System</span><span class="st">✦</span><span class="ti">Satisfied Customers</span><span class="st">✦</span><span class="ti">Expert Staff Since 1998</span><span class="st">✦</span>
+    </div>
+    <div class="band-track" data-band="2" aria-hidden="true">
+      <span class="ti">IATA Accredited Agency</span><span class="st">✦</span><span class="ti">TAASL Member</span><span class="st">✦</span><span class="ti">Best Price Guarantee</span><span class="st">✦</span><span class="ti">No Hidden Charges</span><span class="st">✦</span><span class="ti">Civil Aviation Authority Approved</span><span class="st">✦</span><span class="ti">Secure Booking System</span><span class="st">✦</span><span class="ti">Satisfied Customers</span><span class="st">✦</span><span class="ti">Expert Staff Since 1998</span><span class="st">✦</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ABOUT — FULL-SCREEN NEWSPAPER IMAGE ═══ -->
+<section id="about">
+  <img class="about-img" src="../images/who-we-are.jpg" alt="Amja Travels — Connecting Dreams Since 1998. Sri Lanka's trusted travel partner: IATA, TAASL and Civil Aviation Authority approved.">
+</section>
+
+<!-- ═══ SERVICES — HORIZONTAL SCROLL GALLERY ═══ -->
+<section id="services">
+  <div id="svcPin">
+    <div id="svcTrack">
+
+      <div class="svc-intro">
+        <span class="kick"><span class="dot"></span>02 — What We Do</span>
+        <h2>Six Services,<br>One <em>Standard</em></h2>
+        <p>From a single air ticket to a complete pilgrimage — every service is handled end-to-end by our own team in Colombo.</p>
+        <span class="svc-hint"><span class="ln"></span>Scroll to explore</span>
+      </div>
+
+      <article class="svc-panel">
+        <div class="svc-bg" style="background-image:url('../images/service-flights.jpg')"></div>
+        <div class="svc-ghost">01</div>
+        <span class="svc-pill">Flights</span>
+        <div class="svc-c">
+          <span class="svc-idx">01 / 06 — Flights</span>
+          <h3>Airline <em>Ticketing</em></h3>
+          <p class="svc-lead">IATA-certified fares to every corner of the world, issued and reconfirmed by our own team — never a call centre.</p>
+          <div class="svc-meta"><div>Accreditation<strong>IATA Certified</strong></div><div>Coverage<strong>Worldwide</strong></div></div>
+        </div>
+      </article>
+
+      <article class="svc-panel">
+        <div class="svc-bg" style="background-image:url('../images/service-hajj.jpg')"></div>
+        <div class="svc-ghost">02</div>
+        <span class="svc-pill">Pilgrimage</span>
+        <div class="svc-c">
+          <span class="svc-idx">02 / 06 — Pilgrimage</span>
+          <h3>Hajj &amp; <em>Umrah</em></h3>
+          <p class="svc-lead">Complete pilgrimages to Makkah &amp; Madinah — accommodation, meals, transport and the guidance of experienced Ulama.</p>
+          <div class="svc-meta"><div>Guidance<strong>Expert Ulama</strong></div><div>Service<strong>Complete Package</strong></div></div>
+        </div>
+      </article>
+
+      <article class="svc-panel">
+        <div class="svc-bg" style="background-image:url('../images/service-inbound.jpg')"></div>
+        <div class="svc-ghost">03</div>
+        <span class="svc-pill">Sri Lanka</span>
+        <div class="svc-c">
+          <span class="svc-idx">03 / 06 — Inbound</span>
+          <h3>Inbound <em>Tours</em></h3>
+          <p class="svc-lead">Bespoke journeys across the island — ancient cities, misty highlands, wild parks and southern beaches, tailored to you.</p>
+          <div class="svc-meta"><div>Region<strong>Sri Lanka</strong></div><div>Style<strong>Bespoke</strong></div></div>
+        </div>
+      </article>
+
+      <article class="svc-panel">
+        <div class="svc-bg" style="background-image:url('../images/service-outbound.jpg')"></div>
+        <div class="svc-ghost">04</div>
+        <span class="svc-pill">Worldwide</span>
+        <div class="svc-c">
+          <span class="svc-idx">04 / 06 — Outbound</span>
+          <h3>Outbound <em>Tours</em></h3>
+          <p class="svc-lead">Tailored holidays beyond Sri Lanka — Dubai, Singapore, the Maldives and further, planned around your pace and budget.</p>
+          <div class="svc-meta"><div>Reach<strong>Global</strong></div><div>Style<strong>Tailored</strong></div></div>
+        </div>
+      </article>
+
+      <article class="svc-panel">
+        <div class="svc-bg" style="background-image:url('../images/service-hotels.jpg')"></div>
+        <div class="svc-ghost">05</div>
+        <span class="svc-pill">Hotels</span>
+        <div class="svc-c">
+          <span class="svc-idx">05 / 06 — Hotels</span>
+          <h3>Hotel <em>Booking</em></h3>
+          <p class="svc-lead">A curated portfolio of trusted properties — coastal resorts to highland retreats, at home and worldwide, every budget.</p>
+          <div class="svc-meta"><div>Range<strong>Local &amp; Global</strong></div><div>Budget<strong>All Ranges</strong></div></div>
+        </div>
+      </article>
+
+      <article class="svc-panel">
+        <div class="svc-bg" style="background-image:url('../images/service-fleet.jpg')"></div>
+        <div class="svc-ghost">06</div>
+        <span class="svc-pill">Fleet</span>
+        <div class="svc-c">
+          <span class="svc-idx">06 / 06 — Fleet</span>
+          <h3>Rent <em>A Car</em></h3>
+          <p class="svc-lead">Eight vehicle classes with experienced drivers — airport transfers, city runs and full island tours, all A/C, all maintained.</p>
+          <div class="svc-meta"><div>Fleet<strong>8 Categories</strong></div><div>Drivers<strong>Experienced</strong></div></div>
+        </div>
+      </article>
+
+    </div>
+    <div class="svc-progress"><i id="svcProg"></i></div>
+  </div>
+</section>
+
+<!-- ═══ HAJJ — ARCH ═══ -->
+<section id="hajj" class="sec-pad">
+  <div class="wrap grid">
+    <div class="rv">
+      <span class="kick"><span class="dot"></span>03 — Hajj &amp; Umrah</span>
+      <h2>A Journey to<br>the <em>Holy Land</em></h2>
+      <p class="hx">Complete pilgrimages to Makkah &amp; Madinah — with comfortable accommodation, all meals, A/C transport and the guidance of experienced Ulama throughout your spiritual journey.</p>
+      <div class="h-tags"><span>Accommodation</span><span>All Meals</span><span>A/C Transport</span><span>Expert Ulama</span></div>
+      <a href="hajj-umrah.html" class="btn btn-gold">View Packages</a>
+    </div>
+    <div class="arch-wrap rv">
+      <div class="arch"><div id="archImg"></div></div>
+      <div class="arch-ring"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DESTINATIONS — BENTO ═══ -->
+<section id="dest" class="sheet sec-pad">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <span class="kick"><span class="dot"></span>04 — Inbound Tours</span>
+        <h2>Discover<br><em>Sri Lanka</em></h2>
+      </div>
+      <p>A teardrop island with an astonishing range of experiences — ancient ruins, misty highlands, pristine beaches and wild jungles, all within hours of each other.</p>
+    </div>
+    <div class="bento">
+      <div class="b-tile t1">
+        <div class="bi" style="background-image:url('../images/dest-beach.jpg')"></div>
+        <div class="go">→</div>
+        <div class="bd"><span class="bt" style="background:var(--terra);">South Coast</span><h3>Beach &amp; Coast</h3><div class="fr">Mirissa · Bentota · Unawatuna</div></div>
+      </div>
+      <div class="b-tile t2">
+        <div class="bi" style="background-image:url('../images/dest-highlands.jpg')"></div>
+        <div class="go">→</div>
+        <div class="bd"><span class="bt" style="background:var(--em);">Hill Country</span><h3>Tea Highlands</h3><div class="fr">Ella · Nuwara Eliya · Hatton</div></div>
+      </div>
+      <div class="b-tile t3">
+        <div class="bi" style="background-image:url('../images/dest-sigiriya.jpg')"></div>
+        <div class="go">→</div>
+        <div class="bd"><span class="bt" style="background:var(--gold);color:var(--ink);">Cultural Triangle</span><h3>Ancient Cities</h3><div class="fr">Sigiriya · Polonnaruwa · Kandy</div></div>
+      </div>
+      <div class="b-tile t4">
+        <div class="bi" style="background-image:url('../images/dest-wildlife.jpg')"></div>
+        <div class="go">→</div>
+        <div class="bd"><span class="bt" style="background:var(--em);">National Parks</span><h3>Wildlife Safari</h3><div class="fr">Yala · Udawalawe · Wilpattu</div></div>
+      </div>
+      <div class="b-tile t5">
+        <div class="bi" style="background-image:url('../images/dest-surfing.jpg')"></div>
+        <div class="go">→</div>
+        <div class="bd"><span class="bt" style="background:var(--mid-2);">Adventure</span><h3>White Water &amp; Surf</h3><div class="fr">Kitulgala · Arugam Bay · Hikkaduwa</div></div>
+      </div>
+      <div class="b-tile t6">
+        <div class="bi" style="background-image:url('../images/dest-outbound.jpg')"></div>
+        <div class="go">→</div>
+        <div class="bd"><span class="bt" style="background:#17403A;">Outbound</span><h3>Beyond Sri Lanka</h3><div class="fr">Dubai · Singapore · London · Maldives</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS BAND ═══ -->
+<section id="stats">
+  <svg class="fp" viewBox="0 0 1440 320" preserveAspectRatio="none" aria-hidden="true">
+    <path id="fpath" d="M-40,260 C240,120 420,300 720,170 C1000,50 1200,230 1490,80" fill="none" stroke="#B0552A" stroke-width="1.6" stroke-dasharray="7 9"/>
+  </svg>
+  <div class="wrap inner">
+    <div class="stat-item"><h3><span data-count="28">0</span></h3><p>Years of Service</p></div>
+    <div class="stat-item"><h3><span data-count="6">0</span></h3><p>Core Services</p></div>
+    <div class="stat-item"><h3><span data-count="1000">0</span><span class="sf">+</span></h3><p>Happy Travellers</p></div>
+    <div class="stat-item"><h3><span data-count="24">0</span><span class="sf">/7</span></h3><p>Support Available</p></div>
+  </div>
+</section>
+
+<!-- ═══ HOTELS ═══ -->
+<section id="hotels" class="sec-pad" style="background:var(--paper);">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <span class="kick"><span class="dot"></span>05 — Hotel Booking</span>
+        <h2>Partner<br><em>Hotels</em></h2>
+      </div>
+      <p>A curated selection of trusted properties across Sri Lanka — from coastal resorts to highland retreats. International hotel bookings also available worldwide.</p>
+    </div>
+    <div class="hotel-grid">
+      <article class="hotel-card">
+        <div class="hc-img" style="background-image:url('../images/hotel-eden.jpg')"></div>
+        <span class="hc-num">01</span>
+        <div class="hc-body">
+          <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></div>
+          <h4>Eden Resort &amp; Spa</h4><div class="loc">Beruwala</div><span class="badge">Partner Hotel</span>
+        </div>
+      </article>
+      <article class="hotel-card">
+        <div class="hc-img" style="background-image:url('../images/hotel-aditya.jpg')"></div>
+        <span class="hc-num">02</span>
+        <div class="hc-body">
+          <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></div>
+          <h4>Aditya Resort</h4><div class="loc">Galle</div><span class="badge">Partner Hotel</span>
+        </div>
+      </article>
+      <article class="hotel-card">
+        <div class="hc-img" style="background-image:url('../images/hotel-deerpark.jpg')"></div>
+        <span class="hc-num">03</span>
+        <div class="hc-body">
+          <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></div>
+          <h4>Deer Park Hotel</h4><div class="loc">Polonnaruwa</div><span class="badge">Partner Hotel</span>
+        </div>
+      </article>
+      <article class="hotel-card">
+        <div class="hc-img" style="background-image:url('../images/hotel-mahaweli.jpg')"></div>
+        <span class="hc-num">04</span>
+        <div class="hc-body">
+          <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></div>
+          <h4>Mahaweli Reach Hotel</h4><div class="loc">Kandy</div><span class="badge">Partner Hotel</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FLEET ═══ -->
+<section id="fleet" class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <span class="kick"><span class="dot"></span>06 — Rent A Car</span>
+        <h2>Our<br><em>Fleet</em></h2>
+      </div>
+      <p>Eight vehicle categories with experienced drivers — city transfers, airport pickups and full island tours. All A/C, all maintained.</p>
+    </div>
+    <div class="fleet-list">
+      <a class="fl-row" href="fleet.html"><span class="fl-no">01</span><span class="fl-name">Mini Cars</span><span class="fl-desc">Compact and economical — ideal for city runs and short trips.</span><span class="fl-seat">3 Seats</span><span class="fl-ar">→</span></a>
+      <a class="fl-row" href="fleet.html"><span class="fl-no">02</span><span class="fl-name">Standard Cars</span><span class="fl-desc">Comfortable everyday saloons for couples and small families.</span><span class="fl-seat">4 Seats</span><span class="fl-ar">→</span></a>
+      <a class="fl-row" href="fleet.html"><span class="fl-no">03</span><span class="fl-name">Semi Executive</span><span class="fl-desc">A step up in comfort — business-ready and refined.</span><span class="fl-seat">4 Seats</span><span class="fl-ar">→</span></a>
+      <a class="fl-row" href="fleet.html"><span class="fl-no">04</span><span class="fl-name">Executive Cars</span><span class="fl-desc">Premium sedans for corporate travel and airport transfers.</span><span class="fl-seat">4 Seats</span><span class="fl-ar">→</span></a>
+      <a class="fl-row" href="fleet.html"><span class="fl-no">05</span><span class="fl-name">Luxury Cars</span><span class="fl-desc">First-class comfort for weddings, VIPs and special occasions.</span><span class="fl-seat">4 Seats</span><span class="fl-ar">→</span></a>
+      <a class="fl-row" href="fleet.html"><span class="fl-no">06</span><span class="fl-name">Mini SUV (4×4)</span><span class="fl-desc">Light adventure and hill-country roads with extra ground clearance.</span><span class="fl-seat">5 Seats</span><span class="fl-ar">→</span></a>
+      <a class="fl-row" href="fleet.html"><span class="fl-no">07</span><span class="fl-name">Large SUV (4×4)</span><span class="fl-desc">Full off-road capability for safaris and rugged terrain.</span><span class="fl-seat">7 Seats</span><span class="fl-ar">→</span></a>
+      <a class="fl-row" href="fleet.html"><span class="fl-no">08</span><span class="fl-name">Minivan / Wagon</span><span class="fl-desc">Spacious transport for groups, families and island tours.</span><span class="fl-seat">9 Seats</span><span class="fl-ar">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIAL ═══ -->
+<section id="quote" class="sec-pad">
+  <div class="wrap">
+    <div class="tm">
+      <span class="kick"><span class="dot"></span>Client Voices</span>
+      <div class="tm-stars" aria-label="Five star rating">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+      </div>
+      <blockquote id="quoteBq">We have used four travel agencies over the years. Amja is the only one that felt like a <em>real partner</em> — no surprises, no shortcuts, just exactly what was promised.</blockquote>
+      <div class="tm-div"></div>
+      <div class="tm-who">
+        <span class="tm-mono">A</span>
+        <div class="tm-meta">
+          <div class="n">Verified Client</div>
+          <div class="r">Colombo · Hajj Pilgrimage</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA / CONTACT ═══ -->
+<section id="cta" class="sec-pad">
+  <div class="blob bl-1"></div><div class="blob bl-2"></div><div class="blob bl-3"></div>
+  <div class="wrap">
+    <span class="kick"><span class="dot"></span>07 — Begin Your Journey</span>
+    <h2>Let's Plan Your<br><em>Next Departure</em></h2>
+    <p class="cta-sub">Tell us where you're headed — a pilgrimage, a family holiday or a single air ticket — and our Colombo team will take care of every detail from here.</p>
+    <div class="cta-btns">
+      <a href="tel:+94112335657" class="btn btn-terra">Call +94 11 233 5657 →</a>
+      <a href="mailto:amjatrvl@sltnet.lk" class="btn btn-ghost">Email Us</a>
+    </div>
+    <div class="contact-grid">
+      <div class="c-block"><div class="cl">Head Office</div><div class="cv">No. 30, Dias Place (Purwarama Place),<br>Gunasinghapura,<br>Colombo 12, Sri Lanka</div></div>
+      <div class="c-block"><div class="cl">Telephone &amp; Fax</div><div class="cv">+94 11 233 5657<br>+94 77 730 8079<br>Fax: +94 11 243 7308</div></div>
+      <div class="c-block"><div class="cl">Email &amp; Hours</div><div class="cv">amjatrvl@sltnet.lk<br><br>Mon – Sat<br>8:30 AM – 5:30 PM</div></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="flogo"><img src="../images/logo.png" alt="Amja Travels"/></div>
+        <p class="fabout">Sri Lanka's trusted travel partner since 1998 — flights, Hajj &amp; Umrah, inbound &amp; outbound tours, hotels and car rentals, all handled personally from Colombo 12.</p>
+        <div class="fbadges"><span>IATA</span><span>TAASL</span><span>Civil Aviation Authority</span></div>
+        <div class="fsocial">
+          <a href="https://www.facebook.com/amjatravels/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3Z"/></svg></a>
+          <a href="https://twitter.com/amja_travels" target="_blank" rel="noopener" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3Z"/></svg></a>
+          <a href="https://www.youtube.com/channel/UCwWbAdW1H5Xb99yLWRk8tBA" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="m10 9 5 3-5 3Z"/></svg></a>
+        </div>
+      </div>
+      <div class="fcol"><h5>Quick Links</h5><ul>
+        <li><a href="#top">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Our Services</a></li>
+        <li><a href="#dest">Destinations</a></li>
+        <li><a href="#cta">Contact</a></li>
+      </ul></div>
+      <div class="fcol"><h5>Services</h5><ul>
+        <li><a href="#services">Airline Ticketing</a></li>
+        <li><a href="#hajj">Hajj &amp; Umrah</a></li>
+        <li><a href="#dest">Inbound Tours</a></li>
+        <li><a href="#services">Outbound Tours</a></li>
+        <li><a href="#hotels">Hotel Booking</a></li>
+        <li><a href="#fleet">Rent A Car</a></li>
+      </ul></div>
+      <div class="fcol"><h5>Contact</h5>
+        <div class="faddr">
+          No. 30, Dias Place,<br>Gunasinghapura,<br>Colombo 12, Sri Lanka<br><br>
+          <a href="tel:+94112335657">+94 11 233 5657</a>
+          <a href="tel:+94777308079">+94 77 730 8079</a>
+          <a href="mailto:amjatrvl@sltnet.lk">amjatrvl@sltnet.lk</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span id="yr"></span> Amja Travels (Pvt) Ltd. All Rights Reserved.</span>
+      <span class="fb-r">
+        Colombo 12, Sri Lanka · Est. 1998
+        <a id="adminLoginLink" href="/admin/login.html" aria-label="Staff access"></a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Failsafe: if animation libraries fail to load, hide loader & show content */
+setTimeout(function(){
+  if(typeof gsap === "undefined"){
+    var l=document.getElementById("loader"); if(l) l.style.display="none";
+    if(window.__killGlobe)window.__killGlobe();
+    var st=document.createElement("style");
+    st.textContent=".rv,.b-tile,.stat-item,.hotel-card,.fl-row,.about-img,.svc-panel,.c-block,.hero-c .kick,.hero-sub,.hero-btns,.hero-pills,.hero-scroll,.hero-hud{opacity:1!important;transform:none!important}.ch{transform:none!important}#quote blockquote .qw{opacity:1!important}#hero{height:100vh!important}#svcPin{height:auto!important}#svcTrack{overflow-x:auto!important;transform:none!important}.svc-intro{height:auto!important}.svc-panel{height:62vh!important}";
+    document.head.appendChild(st);
+  }
+},4000);
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<!-- ═══════════════════════════════════════════════
+     3D PRELOADER — rotating globe + Colombo flight arcs
+     ═══════════════════════════════════════════════ -->
+<script>
+(function(){
+  if(typeof THREE==="undefined")return;
+  if(window.matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+  var canvas=document.getElementById("loadGlobe");
+  var loader=document.getElementById("loader");
+  if(!canvas||!loader)return;
+
+  var renderer;
+  try{ renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:true}); }
+  catch(e){ return; }   /* no WebGL → loader still works on its own */
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.setSize(innerWidth,innerHeight,false);
+  var scene=new THREE.Scene();
+  var camera=new THREE.PerspectiveCamera(40,innerWidth/innerHeight,.1,100);
+  camera.position.z=6.2;
+
+  scene.add(new THREE.HemisphereLight(0xbfe6d8,0x08110f,1.15));
+  var key=new THREE.DirectionalLight(0xffe6bd,1.35); key.position.set(4,5,6); scene.add(key);
+  var rim=new THREE.DirectionalLight(0xd2703f,.9);    rim.position.set(-5,-2,-4); scene.add(rim);
+
+  var globe=new THREE.Group();
+  globe.rotation.z=0.38;                 /* axial tilt */
+  scene.add(globe);
+  var R=1.9;
+
+  /* earth sphere — procedural fallback, upgraded to a real map when it loads */
+  var core=new THREE.Mesh(new THREE.SphereGeometry(R,72,72),
+    new THREE.MeshStandardMaterial({color:0x123b4a,metalness:.2,roughness:.85}));
+  globe.add(core);
+  /* faint graticule (removed once texture loads) */
+  var wire=new THREE.Mesh(new THREE.SphereGeometry(R*1.002,40,26),
+    new THREE.MeshBasicMaterial({color:0x2f6a5c,wireframe:true,transparent:true,opacity:.26}));
+  globe.add(wire);
+  /* procedural "landmass" dots (removed once texture loads) */
+  var N=1500, pos=new Float32Array(N*3);
+  for(var i=0;i<N;i++){
+    var y=1-(i/(N-1))*2, r=Math.sqrt(1-y*y), th=i*2.399963229728653;
+    pos[i*3]=Math.cos(th)*r*R*1.008; pos[i*3+1]=y*R*1.008; pos[i*3+2]=Math.sin(th)*r*R*1.008;
+  }
+  var dotGeo=new THREE.BufferGeometry();
+  dotGeo.setAttribute("position",new THREE.BufferAttribute(pos,3));
+  var dots=new THREE.Points(dotGeo,new THREE.PointsMaterial({color:0xc99a52,size:.02,transparent:true,opacity:.5}));
+  globe.add(dots);
+  /* realistic atmosphere glow */
+  globe.add(new THREE.Mesh(new THREE.SphereGeometry(R*1.16,48,48),
+    new THREE.MeshBasicMaterial({color:0x4aa8de,transparent:true,opacity:.09,side:THREE.BackSide})));
+  globe.add(new THREE.Mesh(new THREE.SphereGeometry(R*1.04,48,48),
+    new THREE.MeshBasicMaterial({color:0x6fc3ff,transparent:true,opacity:.05,side:THREE.BackSide})));
+  /* upgrade to a real Earth texture (day map) if it loads in time */
+  try{
+    var tl=new THREE.TextureLoader(); tl.crossOrigin="anonymous";
+    tl.load("https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg",
+      function(tex){
+        core.material=new THREE.MeshStandardMaterial({map:tex,metalness:.08,roughness:.82,emissive:0x0b1c24,emissiveIntensity:.3});
+        wire.visible=false; dots.visible=false;
+      }, undefined, function(){} /* onError → keep procedural */);
+  }catch(e){}
+
+  function ll(lat,lon,rad){
+    var phi=(90-lat)*Math.PI/180, th=(lon+180)*Math.PI/180;
+    return new THREE.Vector3(-rad*Math.sin(phi)*Math.cos(th),rad*Math.cos(phi),rad*Math.sin(phi)*Math.sin(th));
+  }
+  function arc(a,b,color){
+    var v0=ll(a[0],a[1],R), v1=ll(b[0],b[1],R);
+    var mid=v0.clone().add(v1).multiplyScalar(.5);
+    mid.normalize().multiplyScalar(R*(1+v0.distanceTo(v1)*0.30));
+    var curve=new THREE.QuadraticBezierCurve3(v0,mid,v1);
+    globe.add(new THREE.Line(
+      new THREE.BufferGeometry().setFromPoints(curve.getPoints(64)),
+      new THREE.LineBasicMaterial({color:color,transparent:true,opacity:.9})
+    ));
+    [v0,v1].forEach(function(v){
+      var m=new THREE.Mesh(new THREE.SphereGeometry(.03,10,10),new THREE.MeshBasicMaterial({color:color}));
+      m.position.copy(v); globe.add(m);
+    });
+    return curve;
+  }
+  var CMB=[6.9,79.86];
+  var routes=[
+    [[21.42,39.83],0xebd3a0],  /* Makkah   */
+    [[25.20,55.27],0xd2703f],  /* Dubai    */
+    [[1.35,103.82],0xc99a52],  /* Singapore*/
+    [[51.51,-0.13],0xebd3a0],  /* London   */
+    [[3.20,73.22],0xd2703f],   /* Maldives */
+    [[7.29,80.64],0xf4efe4]    /* Kandy    */
+  ];
+  var curves=routes.map(function(r){ return {c:arc(CMB,r[0],r[1]),col:r[1]}; });
+  /* travelling light along each arc */
+  var planes=curves.map(function(r,i){
+    var m=new THREE.Mesh(new THREE.SphereGeometry(.045,12,12),new THREE.MeshBasicMaterial({color:0xfff6e6}));
+    globe.add(m); return {m:m,c:r.c,off:i/curves.length};
+  });
+  /* Colombo hub pulse */
+  var hub=new THREE.Mesh(new THREE.SphereGeometry(.05,14,14),new THREE.MeshBasicMaterial({color:0xd2703f}));
+  hub.position.copy(ll(CMB[0],CMB[1],R)); globe.add(hub);
+
+  var clock=new THREE.Clock(), alive=true;
+  window.__killGlobe=function(){ alive=false; };
+  function resize(){
+    renderer.setSize(innerWidth,innerHeight,false);
+    camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix();
+  }
+  addEventListener("resize",resize,{passive:true});
+  (function loop(){
+    if(!alive)return;
+    if(loader.style.display==="none"){ alive=false; return; }
+    requestAnimationFrame(loop);
+    var t=clock.getElapsedTime();
+    globe.rotation.y=t*0.16;
+    globe.position.y=Math.sin(t*0.6)*0.04;
+    var pulse=1+Math.sin(t*3)*0.25; hub.scale.setScalar(pulse);
+    for(var i=0;i<planes.length;i++){
+      var tt=(t*0.12+planes[i].off)%1;
+      planes[i].m.position.copy(planes[i].c.getPoint(tt));
+    }
+    renderer.render(scene,camera);
+  })();
+})();
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+(function(){
+"use strict";
+if(typeof gsap==="undefined")return;
+gsap.registerPlugin(ScrollTrigger);
+const PR=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+const q=(s)=>document.querySelector(s);
+const qa=(s)=>Array.from(document.querySelectorAll(s));
+document.getElementById("yr").textContent=new Date().getFullYear();
+
+/* ══ SMOOTH SCROLL ══ */
+let lenis=null;
+if(!PR&&window.Lenis){
+  lenis=new Lenis({duration:1.15,smoothWheel:true});
+  lenis.on("scroll",ScrollTrigger.update);
+  gsap.ticker.add((t)=>lenis.raf(t*1000));
+  gsap.ticker.lagSmoothing(0);
+}
+document.addEventListener("click",(e)=>{
+  const a=e.target.closest('a[href^="#"]');
+  if(!a)return;
+  const id=a.getAttribute("href");
+  if(id.length<2)return;
+  const t=q(id); if(!t)return;
+  e.preventDefault();
+  if(lenis)lenis.scrollTo(t,{offset:-64,duration:1.4});
+  else window.scrollTo({top:t.getBoundingClientRect().top+scrollY-64,behavior:"smooth"});
+});
+
+/* ══ HEADER + PROGRESS ══ */
+const hdr=q("#hdr");
+window.addEventListener("scroll",()=>{
+  hdr.classList.toggle("s",scrollY>60);
+  q("#prog").style.transform="scaleX("+(scrollY/(document.body.scrollHeight-innerHeight||1))+")";
+},{passive:true});
+
+/* ══ MENU ══ */
+const burger=q("#bg"),menu=q("#menu");
+const mLinks=qa("#menu .m-links a"),mFoot=q("#menu .m-foot");
+let menuOpen=false;
+function toggleMenu(open){
+  menuOpen=open;
+  burger.classList.toggle("open",open);
+  menu.classList.toggle("open",open);
+  if(open){
+    if(lenis)lenis.stop();
+    gsap.fromTo(mLinks,{opacity:0,y:24},{opacity:1,y:0,duration:.65,stagger:.06,delay:.3,ease:"power3.out"});
+    gsap.fromTo(mFoot,{opacity:0},{opacity:1,duration:.6,delay:.7});
+  }else{
+    if(lenis)lenis.start();
+    gsap.set([mLinks,mFoot],{opacity:0});
+  }
+}
+burger.addEventListener("click",()=>toggleMenu(!menuOpen));
+mLinks.forEach(a=>a.addEventListener("click",()=>toggleMenu(false)));
+
+/* ══ CHAR SPLIT ══ */
+qa("[data-split]").forEach(el=>{
+  const text=el.textContent;
+  el.textContent="";
+  text.split("").forEach(c=>{
+    const m=document.createElement("span");m.className="chm";
+    const s=document.createElement("span");s.className="ch";
+    s.innerHTML=c===" "?"&nbsp;":c;
+    m.appendChild(s);el.appendChild(m);
+  });
+});
+
+/* ══ LOADER → SHUTTER → HERO IN ══ */
+function heroIn(){
+  if(PR)return;
+  const tl=gsap.timeline({defaults:{ease:"power3.out"}});
+  /* cinematic left→right wipe + Ken-Burns settle */
+  tl.fromTo("#heroMedia",{clipPath:"inset(0 100% 0 0)",scale:1.22},
+    {clipPath:"inset(0 0% 0 0)",scale:1,duration:1.7,ease:"expo.inOut"},0)
+    .fromTo(".ch",{yPercent:120,rotationX:-92,opacity:0},
+      {yPercent:0,rotationX:0,opacity:1,duration:1.15,stagger:.032,ease:"power4.out"},.5)
+    .to(".hero-c .kick",{opacity:1,duration:.8},.7)
+    .to(".hero-sub",{opacity:1,y:0,duration:.9},1.15)
+    .to(".hero-btns",{opacity:1,y:0,duration:.9},1.3)
+    .to(".hero-pills",{opacity:1,duration:.8},1.45)
+    .to("#heroScroll",{opacity:1,duration:.8},1.6)
+    .to("#heroHud",{opacity:1,duration:1,ease:"power2.out"},1.2);
+}
+if(PR){
+  q("#loader").style.display="none";
+  if(window.__killGlobe)window.__killGlobe();
+  gsap.set(".ch",{y:0});
+  gsap.set([".hero-c .kick",".hero-sub",".hero-btns",".hero-pills","#heroScroll","#heroHud"],{opacity:1});
+}else{
+  const o={v:0},fill=q("#loadFill"),num=q("#loadNum");
+  gsap.to(o,{v:100,duration:6,ease:"power1.inOut",
+    onUpdate:()=>{fill.style.width=o.v+"%";num.textContent=String(Math.floor(o.v)).padStart(2,"0");},
+    onComplete:()=>{
+      const tl=gsap.timeline();
+      tl.to(".load-in",{opacity:0,y:-20,duration:.35,ease:"power2.in"})
+        .to("#loadGlobe",{opacity:0,duration:.45,ease:"power2.in",onComplete:()=>{if(window.__killGlobe)window.__killGlobe();}},"<")
+        .set(["#shutterA","#shutterB"],{scaleY:1})
+        .set("#loader",{display:"none"})
+        .to("#shutterA",{scaleY:0,duration:.75,ease:"power4.inOut"},.15)
+        .to("#shutterB",{scaleY:0,duration:.75,ease:"power4.inOut",
+          onComplete:()=>ScrollTrigger.refresh()},.15)
+        .add(heroIn,.3);
+    }});
+}
+
+/* ══ HERO — cinematic settle + zoom on scroll ══ */
+if(!PR){
+  gsap.to("#heroMedia",{scale:1.14,ease:"none",
+    scrollTrigger:{trigger:"#hero",start:"top top",end:"bottom bottom",scrub:.6}});
+  gsap.to("#heroC",{yPercent:-16,opacity:0,ease:"power1.in",
+    scrollTrigger:{trigger:"#hero",start:"top top",end:"40% top",scrub:true}});
+  gsap.to("#heroHud",{opacity:0,ease:"none",
+    scrollTrigger:{trigger:"#hero",start:"top top",end:"18% top",scrub:true}});
+  gsap.to("#heroScroll",{opacity:0,ease:"none",
+    scrollTrigger:{trigger:"#hero",start:"top top",end:"12% top",scrub:true}});
+  gsap.fromTo("#heroPan",{xPercent:-1.8,scale:1.04},{xPercent:1.8,duration:19,yoyo:true,repeat:-1,ease:"sine.inOut"});
+  gsap.to("#heroPan",{yPercent:6,ease:"none",
+    scrollTrigger:{trigger:"#hero",start:"top top",end:"bottom bottom",scrub:true}});
+}
+
+/* ══ TICKER BANDS (velocity reactive) ══ */
+if(!PR){
+  const t1=qa('[data-band="1"]'),t2=qa('[data-band="2"]');
+  const tw1=gsap.to(t1,{xPercent:-100,ease:"none",duration:38,repeat:-1});
+  const tw2=gsap.fromTo(t2,{xPercent:-100},{xPercent:0,ease:"none",duration:32,repeat:-1});
+  ScrollTrigger.create({onUpdate:(self)=>{
+    const b=gsap.utils.clamp(1,3.6,1+Math.abs(self.getVelocity())/1000);
+    gsap.to([tw1,tw2],{timeScale:b,duration:.4,overwrite:true});
+  }});
+}
+
+/* ══ ABOUT — newspaper image reveal ══ */
+(function(){
+  const img=q(".about-img");if(!img)return;
+  gsap.from(img,{opacity:0,scale:1.05,duration:1.3,ease:"power3.out",
+    scrollTrigger:{trigger:"#about",start:"top 72%"}});
+})();
+
+/* ══ SERVICES — FULL-SCREEN HORIZONTAL STORYTELLING (pinned) ══ */
+(function(){
+  const track=q("#svcTrack"),sec=q("#services"),prog=q("#svcProg");
+  if(!track||!sec)return;
+  if(PR||innerWidth<=820)return;               /* mobile falls back to native swipe */
+  const amt=()=>Math.max(0,track.scrollWidth-innerWidth);
+  const scrollTween=gsap.to(track,{x:()=>-amt(),ease:"none",
+    scrollTrigger:{
+      trigger:sec,start:"top top",end:()=>"+="+amt(),
+      pin:true,scrub:1,invalidateOnRefresh:true,anticipatePin:1,
+      onUpdate:(self)=>{ if(prog)prog.style.width=(self.progress*100)+"%"; }
+    }});
+  /* per-panel depth: image drifts, giant numeral drifts more, text settles in front */
+  qa(".svc-panel").forEach((panel)=>{
+    const bg=panel.querySelector(".svc-bg"),
+          ghost=panel.querySelector(".svc-ghost"),
+          c=panel.querySelector(".svc-c");
+    const link=(el,from,to,end)=>gsap.fromTo(el,from,{...to,ease:"none",
+      scrollTrigger:{trigger:panel,containerAnimation:scrollTween,start:"left right",end:end||"right left",scrub:true}});
+    if(bg)   link(bg,{xPercent:-8},{xPercent:8});
+    if(ghost)link(ghost,{xPercent:26,opacity:.5},{xPercent:-26,opacity:1});
+    if(c)    link(c,{xPercent:7,opacity:.35},{xPercent:0,opacity:1},"center center");
+  });
+})();
+
+/* ══ HAJJ ARCH parallax ══ */
+if(!PR){
+  gsap.fromTo("#archImg",{yPercent:-9},{yPercent:9,ease:"none",
+    scrollTrigger:{trigger:".arch",start:"top bottom",end:"bottom top",scrub:true}});
+}
+
+/* ══ BENTO ══ */
+qa(".b-tile").forEach((t,i)=>{
+  gsap.to(t,{opacity:1,y:0,duration:.95,delay:(i%3)*.09,ease:"power3.out",
+    scrollTrigger:{trigger:t,start:"top 90%"}});
+});
+
+/* ══ STATS ══ */
+qa(".stat-item").forEach((el,i)=>{
+  gsap.to(el,{opacity:1,y:0,duration:.85,delay:i*.09,ease:"power3.out",
+    scrollTrigger:{trigger:el,start:"top 88%"}});
+});
+qa("[data-count]").forEach(sp=>{
+  const target=+sp.getAttribute("data-count");
+  ScrollTrigger.create({trigger:sp,start:"top 88%",once:true,onEnter:()=>{
+    const o={v:0};
+    gsap.to(o,{v:target,duration:1.9,ease:"power2.out",
+      onUpdate:()=>sp.textContent=Math.floor(o.v)});
+  }});
+});
+if(!PR){
+  const fp=q("#fpath");
+  if(fp)gsap.to(fp,{strokeDashoffset:-320,duration:9,repeat:-1,ease:"none"});
+}
+
+/* ══ HOTELS / FLEET ══ */
+qa(".hotel-card").forEach((c,i)=>{
+  gsap.to(c,{opacity:1,y:0,duration:.8,delay:(i%4)*.08,ease:"power3.out",
+    scrollTrigger:{trigger:c,start:"top 90%"}});
+});
+/* ══ FLEET — clean list reveal ══ */
+qa(".fl-row").forEach((r,i)=>{
+  gsap.to(r,{opacity:1,y:0,duration:.6,delay:(i%2)*.05,ease:"power3.out",
+    scrollTrigger:{trigger:r,start:"top 94%"}});
+});
+
+/* ══ QUOTE — word reveal ══ */
+(function(){
+  const bq=q("#quoteBq");if(!bq)return;
+  const walk=(node)=>{
+    Array.from(node.childNodes).forEach(n=>{
+      if(n.nodeType===3){
+        const frag=document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(part=>{
+          if(/^\s+$/.test(part)||part===""){frag.appendChild(document.createTextNode(part));}
+          else{const s=document.createElement("span");s.className="qw";s.textContent=part;frag.appendChild(s);}
+        });
+        node.replaceChild(frag,n);
+      }else if(n.nodeType===1){walk(n);}
+    });
+  };
+  walk(bq);
+  gsap.to("#quoteBq .qw",{opacity:1,stagger:.03,
+    scrollTrigger:{trigger:"#quote",start:"top 72%",end:"top 18%",scrub:true}});
+})();
+
+/* ══ CTA ══ */
+gsap.from("#cta .kick",{opacity:0,y:20,duration:.85,scrollTrigger:{trigger:"#cta",start:"top 78%"}});
+gsap.from("#cta h2",{opacity:0,y:44,duration:1,delay:.1,ease:"power3.out",scrollTrigger:{trigger:"#cta",start:"top 74%"}});
+gsap.from(".cta-sub",{opacity:0,y:20,duration:.8,delay:.18,scrollTrigger:{trigger:"#cta",start:"top 72%"}});
+gsap.from(".cta-btns .btn",{opacity:0,y:24,duration:.8,stagger:.1,delay:.26,scrollTrigger:{trigger:"#cta",start:"top 70%"}});
+qa(".c-block").forEach((b,i)=>{
+  gsap.to(b,{opacity:1,y:0,duration:.8,delay:i*.1,ease:"power3.out",
+    scrollTrigger:{trigger:b,start:"top 92%"}});
+});
+if(!PR){
+  gsap.to(".bl-1",{x:70,y:50,duration:10,yoyo:true,repeat:-1,ease:"sine.inOut"});
+  gsap.to(".bl-2",{x:-60,y:-40,duration:12,yoyo:true,repeat:-1,ease:"sine.inOut"});
+  gsap.to(".bl-3",{x:40,y:60,duration:9,yoyo:true,repeat:-1,ease:"sine.inOut"});
+}
+
+/* ══ HEADING WORD-MASK REVEALS (GSAP) ══ */
+if(!PR){
+  qa(".sec-head h2, #hajj h2").forEach(h=>{
+    if(h.querySelector(".w-in"))return;
+    const parts=[];
+    h.childNodes.forEach(n=>{
+      if(n.nodeType===3){
+        n.textContent.trim().split(/\s+/).filter(Boolean).forEach(w=>parts.push({t:w,em:false}));
+      }else if(n.nodeType===1&&n.tagName==="EM"){
+        n.textContent.trim().split(/\s+/).filter(Boolean).forEach(w=>parts.push({t:w,em:true}));
+      }else if(n.nodeType===1&&n.tagName==="BR"){parts.push({br:true});}
+    });
+    h.innerHTML=parts.map(p=>p.br?"<br>":
+      `<span style="display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.1em;margin-bottom:-.1em;">${p.em?"<em ":"<span "}class="w-in" style="display:inline-block;">${p.t}${p.em?"</em>":"</span>"}</span>`
+    ).join(" ");
+    gsap.from(h.querySelectorAll(".w-in"),{y:"110%",duration:.9,stagger:.07,ease:"power4.out",
+      scrollTrigger:{trigger:h,start:"top 86%"}});
+  });
+}
+
+/* ══ GENERIC ══ */
+qa(".rv").forEach(el=>{
+  gsap.to(el,{opacity:1,y:0,duration:1,ease:"power3.out",
+    scrollTrigger:{trigger:el,start:"top 87%"}});
+});
+
+
+window.addEventListener("load",()=>ScrollTrigger.refresh());
+})();
+</script>
+
+<!-- ═══ SHARED SITE SCRIPTS (config + nav) ═══ -->
+<script>
+(function(){
+  var onFile = location.protocol === 'file:';
+  var base = onFile ? '../shared/' : '/shared/';
+  ['config.js','nav.js'].forEach(function(f){
+    var s = document.createElement('script');
+    s.src = base + f; s.defer = true;
+    document.body.appendChild(s);
+  });
+  if (onFile) {
+    var a = document.getElementById('adminLoginLink');
+    if (a) a.href = '../admin/login.html';
+  }
+})();
+</script>
+</body>
+</html>

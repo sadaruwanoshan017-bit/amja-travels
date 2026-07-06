@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Hajj &amp; Umrah Packages in Sri Lanka | Amja Travels (Pvt) Ltd</title>
+<meta name="description" content="Amja Travels is Sri Lanka's leading Hajj & Umrah operator, approved by both the Government of Sri Lanka and the Kingdom of Saudi Arabia. Since 1998."/>
+<link rel="icon" id="fav" type="image/png" href=""/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --mid:#04080d;
+  --deep:#060f18;
+  --navy:#091525;
+  --forest:#0b1e14;
+  --emerald:#1a5c3a;
+  --em-light:#238c58;
+  --gold:#c9993d;
+  --gold-b:#e8c060;
+  --gold-p:rgba(201,153,61,.15);
+  --pearl:#f0e8d5;
+  --mist:rgba(240,232,213,.58);
+  --line:rgba(240,232,213,.1);
+  --ease:cubic-bezier(.16,.84,.44,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{background:var(--mid);scroll-behavior:auto;}
+body{background:var(--mid);color:var(--pearl);font-family:"Montserrat",sans-serif;font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.65;}
+h1,h2,h3,h4,.serif{font-family:"Cormorant",serif;font-weight:600;line-height:1.12;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+::selection{background:var(--gold);color:var(--mid);}
+.eyebrow{font-family:"Montserrat",sans-serif;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:var(--gold);display:inline-flex;align-items:center;gap:.55rem;}
+.eyebrow::before{content:"";width:18px;height:1.5px;background:var(--gold);}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(1.2rem,4.5vw,3.5rem);}
+
+/* PROGRESS */
+#prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--em-light));z-index:9999;transform-origin:left;transform:scaleX(0);pointer-events:none;}
+
+/* HEADER */
+header{position:fixed;top:0;left:0;right:0;z-index:800;padding:1.3rem 0;transition:background .4s ease,padding .3s ease;}
+header.s{background:rgba(4,8,13,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:.8rem 0;}
+.h-in{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;}
+.h-logo img{height:36px;width:auto;filter:drop-shadow(0 2px 8px rgba(0,0,0,.7));transition:height .3s;}
+header.s .h-logo img{height:30px;}
+.h-nav{display:flex;align-items:center;gap:2rem;}
+.h-nav a{font-size:.73rem;font-weight:500;letter-spacing:.06em;color:rgba(240,232,213,.75);transition:color .25s;}
+.h-nav a:hover,.h-nav a.active{color:var(--gold);}
+.h-cta{padding:.65rem 1.5rem;border:1px solid var(--gold);border-radius:100px;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);transition:background .3s,color .3s;}
+.h-cta:hover{background:var(--gold);color:var(--mid);}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;width:38px;height:38px;align-items:center;justify-content:center;}
+.burger span{display:block;width:22px;height:1.5px;background:var(--pearl);border-radius:2px;transition:all .3s ease;}
+.burger.o span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.burger.o span:nth-child(2){opacity:0;}
+.burger.o span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+@media(max-width:860px){.h-nav{display:none;}.h-cta{display:none;}.burger{display:flex;}}
+
+/* DRAWER */
+.drawer{position:fixed;top:0;right:0;width:min(84vw,340px);height:100vh;background:var(--deep);border-left:1px solid var(--line);z-index:900;transform:translateX(110%);transition:transform .45s var(--ease);padding:5.5rem 2rem 2rem;display:flex;flex-direction:column;gap:.3rem;overflow-y:auto;}
+.drawer.o{transform:translateX(0);}
+.drawer a{font-size:.95rem;font-weight:500;color:var(--pearl);padding:.78rem 0;border-bottom:1px solid var(--line);transition:color .2s;}
+.drawer a:hover{color:var(--gold);}
+.drawer .dcta{margin-top:1.4rem;padding:.95rem;border:1px solid var(--gold);border-radius:100px;color:var(--gold);text-align:center;font-size:.73rem;letter-spacing:.14em;text-transform:uppercase;}
+.overlay{position:fixed;inset:0;background:rgba(4,8,13,.6);z-index:850;opacity:0;pointer-events:none;transition:opacity .4s;}
+.overlay.o{opacity:1;pointer-events:auto;}
+
+/* GEOMETRIC PATTERN BG */
+.geo-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;opacity:.06;}
+.geo-bg svg{width:100%;height:100%;}
+
+/* HERO (unified with other pages — 100vh, bg parallax, split-line title) */
+#hero{position:relative;height:100vh;display:flex;align-items:flex-start;overflow:hidden;background:var(--mid);}
+.hero-bg{position:absolute;inset:0;background:url("../images/hajj-hero-bg.jpg") center/cover no-repeat;will-change:transform;}
+#hero::after{content:"";position:absolute;inset:0;z-index:2;background:transparent;pointer-events:none;}
+.hero-content{position:relative;z-index:3;width:100%;padding-top:clamp(7rem,20vh,13rem);}
+.hero-content .eyebrow{display:inline-flex;margin-bottom:1.3rem;opacity:0;transform:translateY(20px);}
+.hero-badge{display:inline-flex;align-items:center;gap:.6rem;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:rgba(240,232,213,.8);border:1px solid rgba(240,232,213,.25);padding:.5rem 1rem;border-radius:100px;margin-bottom:1.2rem;opacity:0;transform:translateY(20px);}
+.hero-title{font-size:clamp(3rem,10vw,8rem);line-height:.9;color:var(--pearl);margin-bottom:1.5rem;text-shadow:0 2px 24px rgba(0,0,0,.5),0 1px 4px rgba(0,0,0,.45);}
+.hero-title .lw{display:block;overflow:hidden;}
+.hero-title .lt{display:block;transform:translateY(110%);}
+.hero-title em{color:var(--gold);font-style:italic;}
+.hero-sub{font-size:1rem;font-weight:300;color:var(--mist);max-width:520px;opacity:0;transform:translateY(20px);line-height:1.8;}
+.hero-btns{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:2rem;opacity:0;transform:translateY(20px);}
+.btn-g{padding:.9rem 2rem;background:var(--gold);color:var(--mid);border-radius:100px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;transition:transform .3s var(--ease),box-shadow .3s;}
+.btn-g:hover{transform:translateY(-2px);box-shadow:0 10px 28px -10px rgba(201,153,61,.5);}
+.btn-o{padding:.9rem 2rem;border:1.5px solid rgba(240,232,213,.4);color:var(--pearl);border-radius:100px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;transition:border-color .3s,background .3s;}
+.btn-o:hover{border-color:var(--pearl);background:rgba(240,232,213,.07);}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;}
+.hero-scroll .ln{width:1px;height:46px;background:linear-gradient(var(--gold),transparent);overflow:hidden;position:relative;}
+.hero-scroll .drp{position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--gold-b);animation:drp 2s ease-in-out infinite;}
+@keyframes drp{0%{top:-100%;}60%{top:100%;}100%{top:100%;}}
+.hero-scroll span{font-size:.58rem;letter-spacing:.26em;color:var(--mist);text-transform:uppercase;writing-mode:vertical-rl;}
+
+/* MARQUEE */
+.mq{background:linear-gradient(90deg,var(--emerald),var(--forest) 40%,var(--emerald));border-top:1px solid rgba(201,153,61,.3);border-bottom:1px solid rgba(201,153,61,.3);padding:.8rem 0;overflow:hidden;white-space:nowrap;position:relative;z-index:5;}
+.mq .tk{display:inline-flex;gap:2.5rem;animation:mq 32s linear infinite;}
+.mq span{font-family:"Cormorant",serif;font-size:1.15rem;font-weight:600;letter-spacing:.05em;}
+.mq span.dot{color:rgba(201,153,61,.6);font-size:.7rem;}
+@keyframes mq{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* TABS: HAJJ / UMRAH */
+#packages{padding:3.5rem 0 9rem;background:var(--deep);}
+.tab-btns{display:flex;border:1px solid var(--line);border-radius:100px;padding:4px;width:fit-content;margin:2rem auto 3.5rem;gap:4px;}
+.tab-btn{padding:.8rem 2.2rem;border-radius:100px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--mist);transition:background .3s,color .3s;cursor:pointer;border:none;background:transparent;}
+.tab-btn.active{background:var(--gold);color:var(--mid);}
+.tab-pane{display:none;}
+.tab-pane.active{display:block;}
+
+/* PACKAGE HERO CARD */
+.pkg-hero{position:relative;border-radius:10px;overflow:hidden;min-height:480px;display:flex;align-items:flex-end;}
+.pkg-hero .bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.04);transition:transform 6s ease;}
+.pkg-hero:hover .bg{transform:scale(1.08);}
+.pkg-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(4,8,13,.95) 0%,rgba(4,8,13,.2) 60%);}
+.pkg-hero .body{position:relative;z-index:2;padding:2.5rem;width:100%;}
+.pkg-hero .badge{display:inline-block;background:var(--gold);color:var(--mid);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:.38rem .8rem;border-radius:100px;margin-bottom:1rem;}
+.pkg-hero h3{font-size:clamp(2rem,5vw,3.2rem);color:var(--pearl);margin-bottom:.5rem;}
+.pkg-hero .price-wrap{display:flex;align-items:baseline;gap:.6rem;margin-top:.8rem;}
+.pkg-hero .price-wrap small{font-size:.68rem;color:var(--mist);letter-spacing:.08em;text-transform:uppercase;}
+.pkg-hero .price{font-family:"Cormorant",serif;font-size:2.4rem;color:var(--gold);}
+
+/* INCLUDES GRID */
+.inc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem;}
+@media(max-width:800px){.inc-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.inc-grid{grid-template-columns:1fr;}}
+.inc-item{background:rgba(240,232,213,.04);border:1px solid var(--line);border-radius:8px;padding:1.5rem 1.4rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color .3s,background .3s;}
+.inc-item:hover{border-color:rgba(201,153,61,.35);background:rgba(201,153,61,.04);}
+.inc-icon{width:42px;height:42px;border-radius:8px;background:rgba(201,153,61,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.inc-icon svg{width:20px;height:20px;stroke:var(--gold);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.inc-item h4{font-family:"Cormorant",serif;font-size:1.1rem;color:var(--pearl);margin-bottom:.3rem;}
+.inc-item p{font-size:.78rem;color:var(--mist);line-height:1.65;}
+
+/* UMRAH PACKAGES GRID */
+.umrah-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2rem;}
+@media(max-width:860px){.umrah-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:520px){.umrah-grid{grid-template-columns:1fr;}}
+.umrah-card{background:rgba(240,232,213,.04);border:1px solid var(--line);border-radius:8px;overflow:hidden;transition:transform .35s var(--ease),border-color .3s,box-shadow .35s;}
+.umrah-card:hover{transform:translateY(-6px);border-color:rgba(201,153,61,.35);box-shadow:0 20px 40px -20px rgba(4,8,13,.6);}
+.umrah-card .thumb{aspect-ratio:16/10;overflow:hidden;position:relative;}
+.umrah-card .thumb img{width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform .7s var(--ease);}
+.umrah-card:hover .thumb img{transform:scale(1.1);}
+.umrah-card .info{padding:1.4rem;}
+.umrah-card .mo{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--gold);margin-bottom:.4rem;}
+.umrah-card h4{font-family:"Cormorant",serif;font-size:1.35rem;color:var(--pearl);margin-bottom:.6rem;}
+.umrah-card .price{font-family:"Cormorant",serif;font-size:1.5rem;color:var(--gold-b);}
+.umrah-card .from{font-size:.6rem;color:var(--mist);letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:.15rem;}
+.umrah-card .chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.9rem;}
+.umrah-card .chip{font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:var(--mist);border:1px solid var(--line);padding:.28rem .6rem;border-radius:100px;}
+
+/* ZOOM IMMERSION — MADINAH */
+#zoom-wrap{position:relative;height:250vh;background:var(--mid);}
+#zoom-stage{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+#zoom-img{position:absolute;inset:0;background:url("../images/hajj-madinah.jpg") center/cover no-repeat;will-change:transform;}
+.zoom-scrim{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(4,8,13,.25) 0%,rgba(4,8,13,.85) 100%);}
+.zoom-copy{position:relative;z-index:4;text-align:center;padding:0 1.5rem;}
+.zoom-copy .eyebrow{display:block;margin-bottom:1rem;justify-content:center;}
+.zoom-copy h2{font-size:clamp(2.2rem,7vw,6rem);color:var(--pearl);line-height:.95;}
+.zoom-copy h2 em{color:var(--gold);font-style:italic;}
+.zoom-copy p{font-size:.93rem;color:var(--mist);max-width:460px;margin:.9rem auto 0;line-height:1.8;}
+
+/* JOURNEY STEPS */
+#journey{padding:8rem 0 9rem;background:var(--mid);position:relative;overflow:hidden;}
+.journey-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;position:relative;z-index:2;}
+@media(max-width:860px){.journey-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.journey-grid{grid-template-columns:1fr;}}
+.journey-connector{position:absolute;top:36px;left:8%;right:8%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,153,61,.3) 20%,rgba(201,153,61,.3) 80%,transparent);z-index:0;}
+@media(max-width:860px){.journey-connector{display:none;}}
+.step-card{text-align:center;position:relative;z-index:2;}
+.step-num{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--emerald),var(--forest));border:1.5px solid rgba(201,153,61,.35);font-family:"Cormorant",serif;font-size:1.4rem;color:var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 1.3rem;font-weight:700;}
+.step-card h4{font-family:"Cormorant",serif;font-size:1.2rem;color:var(--pearl);margin-bottom:.5rem;}
+.step-card p{font-size:.8rem;color:var(--mist);line-height:1.7;}
+
+
+/* WHY CHOOSE US */
+#why{padding:8rem 0;background:var(--forest);position:relative;overflow:hidden;}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;}
+@media(max-width:860px){.why-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.why-grid{grid-template-columns:1fr;}}
+.why-card{padding:2rem 1.7rem;border:1px solid rgba(240,232,213,.1);border-radius:8px;transition:border-color .3s,background .3s,transform .35s var(--ease);}
+.why-card:hover{border-color:rgba(201,153,61,.35);background:rgba(201,153,61,.04);transform:translateY(-4px);}
+.why-num{font-family:"Cormorant",serif;font-size:2.8rem;color:rgba(201,153,61,.2);line-height:1;margin-bottom:.9rem;}
+.why-card h3{font-family:"Cormorant",serif;font-size:1.3rem;color:var(--pearl);margin-bottom:.5rem;}
+.why-card p{font-size:.82rem;color:rgba(240,232,213,.6);line-height:1.75;}
+
+/* FAQ */
+#faq{padding:8rem 0;background:var(--mid);}
+.faq-list{max-width:780px;margin:2.5rem auto 0;display:flex;flex-direction:column;gap:.7rem;}
+.faq-item{border:1px solid var(--line);border-radius:6px;overflow:hidden;}
+.faq-q{padding:1.3rem 1.6rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:background .25s;}
+.faq-q:hover,.faq-item.open .faq-q{background:rgba(201,153,61,.06);}
+.faq-q span{font-size:.92rem;font-weight:500;color:var(--pearl);padding-right:1rem;}
+.faq-icon{width:22px;height:22px;flex-shrink:0;border:1px solid rgba(201,153,61,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .3s,transform .3s;}
+.faq-item.open .faq-icon{background:var(--gold);transform:rotate(45deg);}
+.faq-icon svg{width:10px;height:10px;stroke:var(--gold);fill:none;stroke-width:2.5;stroke-linecap:round;transition:stroke .3s;}
+.faq-item.open .faq-icon svg{stroke:var(--mid);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease),padding .3s;}
+.faq-a p{padding:0 1.6rem 1.4rem;font-size:.85rem;color:var(--mist);line-height:1.8;}
+.faq-item.open .faq-a{max-height:300px;}
+
+/* CTA / CONTACT */
+#cta{position:relative;padding:9rem 0 8rem;text-align:center;overflow:hidden;background:radial-gradient(ellipse at 50% 20%,rgba(26,92,58,.25),transparent 60%),var(--mid);}
+#cta .eyebrow{display:block;margin-bottom:1rem;justify-content:center;}
+#cta h2{font-size:clamp(2.5rem,8vw,6rem);line-height:.95;color:var(--pearl);}
+#cta h2 em{color:var(--gold);font-style:italic;}
+#cta p{margin:1.2rem auto 2.4rem;max-width:500px;color:var(--mist);font-size:.95rem;}
+.cta-contact{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;max-width:860px;margin:3.5rem auto 0;}
+@media(max-width:720px){.cta-contact{grid-template-columns:1fr;}}
+.c-blk{border:1px solid rgba(201,153,61,.2);border-radius:8px;padding:1.5rem;text-align:left;}
+.c-blk .lbl{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--gold);margin-bottom:.45rem;}
+.c-blk .val{font-size:.87rem;color:var(--pearl);line-height:1.65;font-weight:300;}
+.mag-btn{display:inline-flex;align-items:center;gap:.7rem;padding:1rem 2.5rem;border:1.5px solid var(--gold);border-radius:100px;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--pearl);position:relative;overflow:hidden;transition:color .4s;}
+.mag-btn::before{content:"";position:absolute;inset:0;background:var(--gold);border-radius:100px;transform:translateY(102%);transition:transform .45s var(--ease);z-index:-1;}
+.mag-btn:hover{color:var(--mid);}
+.mag-btn:hover::before{transform:translateY(0);}
+
+/* FOOTER */
+footer{background:#02050a;border-top:1px solid var(--line);padding:4.5rem 0 0;}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid var(--line);}
+@media(max-width:720px){.foot-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:420px){.foot-grid{grid-template-columns:1fr;}}
+.flogo img{height:32px;filter:brightness(0) invert(1);opacity:.8;margin-bottom:.9rem;}
+.fabout{font-size:.82rem;color:rgba(240,232,213,.45);line-height:1.85;max-width:260px;margin-bottom:1rem;}
+.fbadge{display:inline-block;font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;border:1px solid rgba(201,153,61,.28);padding:.28rem .62rem;border-radius:100px;color:rgba(201,153,61,.65);margin-right:.4rem;margin-bottom:.4rem;}
+.fcol h5{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--pearl);font-weight:700;margin-bottom:1rem;}
+.fcol ul li{margin-bottom:.58rem;}
+.fcol ul a{font-size:.8rem;color:rgba(240,232,213,.45);transition:color .2s;}
+.fcol ul a:hover{color:var(--gold);}
+.foot-bot{display:flex;justify-content:space-between;align-items:center;padding:1.4rem 0;flex-wrap:wrap;gap:.6rem;font-size:.68rem;letter-spacing:.05em;color:rgba(240,232,213,.3);}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(32px);}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;}*{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+</style>
+</head>
+<body>
+
+<!-- PROGRESS -->
+<div id="prog"></div>
+
+<!-- DRAWER + OVERLAY -->
+<div class="overlay" id="ov"></div>
+<div class="drawer" id="dr">
+  <a href="index.html">Home</a>
+  <a href="#packages" class="active">Hajj &amp; Umrah</a>
+  <a href="#journey">The Journey</a>
+  <a href="#faq">FAQ</a>
+  <a href="#cta">Contact</a>
+  <a href="tel:+94112335657" class="dcta">+94 11 233 5657</a>
+</div>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div class="wrap h-in">
+    <a href="index.html" class="h-logo"><img id="li" alt="Amja Travels"/></a>
+    <nav class="h-nav">
+      <a href="index.html">Home</a>
+      <a href="#packages" class="active">Hajj &amp; Umrah</a>
+      <a href="#journey">Journey</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="#cta" class="h-cta">Enquire Now</a>
+    <div class="burger" id="bg"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-content">
+    <h1 class="hero-title" id="hTitle">
+      <span class="lw"><span class="lt">Hajj &amp; Umrah</span></span>
+      <span class="lw"><span class="lt">With <em>Amja Travels</em></span></span>
+    </h1>
+  </div>
+</section>
+
+<!-- PACKAGES: HAJJ + UMRAH TABS -->
+<section id="packages">
+  <div class="wrap">
+    <div style="text-align:center;" class="rv">
+      <span class="eyebrow">Our Pilgrimage Packages</span>
+      <h2 style="font-size:clamp(2rem,5vw,3.2rem);margin:.5rem 0 0;">Hajj &amp; Umrah Packages from Sri Lanka</h2>
+    </div>
+    <div class="tab-btns">
+      <button class="tab-btn active" data-tab="hajj">Hajj Packages</button>
+      <button class="tab-btn" data-tab="umrah">Umrah Packages</button>
+    </div>
+
+    <!-- HAJJ TAB - DYNAMIC FROM ADMIN -->
+    <div class="tab-pane active" id="tab-hajj">
+      <div class="pkg-grid" data-packages="hajj" data-empty="No Hajj packages available yet. Please check back soon."></div>
+    </div>
+
+    <!-- UMRAH TAB - DYNAMIC FROM ADMIN -->
+    <div class="tab-pane" id="tab-umrah">
+      <div class="pkg-grid" data-packages="umrah" data-empty="No Umrah packages available yet. Please check back soon."></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ENQUIRY FORM ═══ -->
+<section class="amja-section" id="enquire">
+  <div class="wrap">
+    <div style="text-align:center;" class="rv">
+      <span class="eyebrow">Get in Touch</span>
+      <h2 style="font-size:clamp(2rem,5vw,3.2rem);margin:.5rem 0 1.5rem;">Make an Enquiry</h2>
+    </div>
+    <form class="enq-form" data-enquiry-form="hajj">
+      <h3>Send us your details</h3>
+      <p class="enq-note" data-enquiry-note></p>
+      <input type="hidden" name="item_id">
+      <input type="hidden" name="item_title">
+      <div class="enq-row">
+        <input type="text" name="name" placeholder="Your Name *" required>
+        <input type="tel" name="phone" placeholder="Phone Number *" required>
+      </div>
+      <input type="email" name="email" placeholder="Email (optional)">
+      <div class="enq-extra" data-enquiry-extra></div>
+      <textarea name="message" placeholder="Tell us which package you're interested in..."></textarea>
+      <button type="submit" class="enq-submit">Send Enquiry</button>
+      <p class="enq-msg" data-enquiry-msg></p>
+    </form>
+  </div>
+</section>
+
+<!-- ZOOM: MADINAH -->
+<section id="zoom-wrap">
+  <div id="zoom-stage">
+    <div id="zoom-img"></div>
+    <div class="zoom-scrim"></div>
+    <div class="zoom-copy" id="zCopy">
+      <span class="eyebrow">Al-Madinah al-Munawwarah</span>
+      <h2>The City of<br><em>The Prophet</em></h2>
+      <p>Every Amja Umrah and Hajj package includes guided Ziyarah visits to Masjid al-Nabawi and the historically significant sites of Madinah — accompanied by learned Ulama who bring the sacred history to life.</p>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY STEPS -->
+<section id="journey">
+  <div class="geo-bg">
+    <svg viewBox="0 0 1400 600" preserveAspectRatio="xMidYMid slice">
+      <defs><pattern id="geo" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse"><polygon points="40,0 80,20 80,60 40,80 0,60 0,20" fill="none" stroke="#c9993d" stroke-width=".8"/></pattern></defs>
+      <rect width="1400" height="600" fill="url(#geo)"/>
+    </svg>
+  </div>
+  <div class="wrap" style="position:relative;z-index:2;">
+    <div style="text-align:center;margin-bottom:3.5rem;" class="rv">
+      <span class="eyebrow">The Pilgrimage Journey</span>
+      <h2 style="font-size:clamp(2rem,4.5vw,3rem);margin:.5rem 0 .8rem;">From Colombo to<br><em>the Holy Land</em></h2>
+      <p style="font-size:.88rem;color:var(--mist);max-width:480px;margin:0 auto;">Every step of your journey is arranged by our team so you can focus solely on your spiritual experience.</p>
+    </div>
+    <div class="journey-grid">
+      <div class="journey-connector"></div>
+      <div class="step-card rv">
+        <div class="step-num">01</div>
+        <h4>Registration &amp; Documentation</h4>
+        <p>We handle all government approvals, visa applications and travel documentation from Colombo on your behalf.</p>
+      </div>
+      <div class="step-card rv">
+        <div class="step-num">02</div>
+        <h4>Pre-Departure Briefing</h4>
+        <p>Our learned Ulama conduct detailed sessions on the rituals, duas and etiquette of Hajj and Umrah before departure.</p>
+      </div>
+      <div class="step-card rv">
+        <div class="step-num">03</div>
+        <h4>Flight &amp; Arrival</h4>
+        <p>Return flights from CMB to Jeddah or Madinah, with A/C transport waiting at the airport to your hotel.</p>
+      </div>
+      <div class="step-card rv">
+        <div class="step-num">04</div>
+        <h4>Guided Pilgrimage</h4>
+        <p>Expert Ulama lead the group through every ritual — Tawaf, Sa'i, Arafat, Muzdalifah, Mina and all Ziyarah visits.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- WHY CHOOSE US -->
+<section id="why">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:3rem;" class="rv">
+      <span class="eyebrow">Why Choose Amja Travels</span>
+      <h2 style="font-size:clamp(1.9rem,4vw,2.8rem);margin:.5rem 0;">The Amja Difference</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card rv">
+        <div class="why-num">01</div>
+        <h3>Dual Government Approved</h3>
+        <p>Officially recognised by both the Government of Sri Lanka and the Kingdom of Saudi Arabia as a certified Hajj &amp; Umrah operator.</p>
+      </div>
+      <div class="why-card rv">
+        <div class="why-num">02</div>
+        <h3>Experienced Ulama Guides</h3>
+        <p>Learned Islamic scholars travel with every group — guiding rituals, sharing sacred knowledge and ensuring every pilgrim's journey is spiritually fulfilling.</p>
+      </div>
+      <div class="why-card rv">
+        <div class="why-num">03</div>
+        <h3>Star-Class Accommodation</h3>
+        <p>We arrange premium hotels near Haram in Makkah and Masjid al-Nabawi in Madinah, minimising travel and maximising time for worship.</p>
+      </div>
+      <div class="why-card rv">
+        <div class="why-num">04</div>
+        <h3>Complete Package Care</h3>
+        <p>Flights, visas, hotels, meals, transport and guided Ziyarah — everything is handled by our team so you carry no administrative burden.</p>
+      </div>
+      <div class="why-card rv">
+        <div class="why-num">05</div>
+        <h3>Monthly Umrah Departures</h3>
+        <p>We schedule Umrah groups monthly throughout the year, with special Ramadan packages offering an even more spiritually elevated experience.</p>
+      </div>
+      <div class="why-card rv">
+        <div class="why-num">06</div>
+        <h3>25+ Years of Trust</h3>
+        <p>Since 1998, thousands of Sri Lankan pilgrims have placed their most sacred journey in our hands. That trust is something we guard with every step we take.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:1rem;" class="rv">
+      <span class="eyebrow">Common Questions</span>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.7rem);margin:.5rem 0;">Frequently Asked<br><em>Questions</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item rv">
+        <div class="faq-q"><span>What is included in the Hajj package?</span><div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="faq-a"><p>Our Hajj package includes return airfare from Colombo, 5-star accommodation in Zam Zam Tower (zero mileage to Haram), three-time daily buffet meals, A/C transport throughout, guided Ziyarah visits to Makkah and Madinah, and accompaniment by experienced Ulama from Sri Lanka for the entire duration.</p></div>
+      </div>
+      <div class="faq-item rv">
+        <div class="faq-q"><span>How do I register for Hajj or Umrah through Amja Travels?</span><div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="faq-a"><p>Contact us by phone (+94 11 233 5657 or +94 77 730 8079), email (amjatrvl@sltnet.lk) or visit our office at No. 30, Dias Place, Colombo 12. Our team will guide you through all documentation, government approvals and payment requirements step by step.</p></div>
+      </div>
+      <div class="faq-item rv">
+        <div class="faq-q"><span>When do Umrah groups depart from Sri Lanka?</span><div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="faq-a"><p>We schedule Umrah departures monthly throughout the year. Special Ramadan packages are also available during the holy month. Contact us to find the next available group departure that suits your schedule.</p></div>
+      </div>
+      <div class="faq-item rv">
+        <div class="faq-q"><span>What documents are required for Hajj and Umrah?</span><div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="faq-a"><p>Generally you will need a valid Sri Lankan passport (6+ months validity), NIC, 4 recent passport photographs and a completed application form. For Hajj, additional registration with the government Hajj authority is required. Our team handles the complete documentation process on your behalf.</p></div>
+      </div>
+      <div class="faq-item rv">
+        <div class="faq-q"><span>Is the Hajj package price inclusive of everything?</span><div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="faq-a"><p>Our advertised price of Rs. 945,000 covers flights, accommodation, meals, transport and Ulama guidance. Certain personal expenses such as souvenirs, laundry and optional activities are not included. We are completely transparent — no hidden charges. Contact us for a full breakdown before you commit.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="wrap">
+    <span class="eyebrow">Begin Your Sacred Journey</span>
+    <h2>Ready to<br><em>Perform Hajj or Umrah?</em></h2>
+    <p>Speak to our pilgrimage team in Colombo — we will guide you through every step, from the first document to the final prayer.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="tel:+94112335657" class="btn-g">Call +94 11 233 5657</a>
+      <a href="mailto:amjatrvl@sltnet.lk" class="btn-o">Email Us</a>
+    </div>
+    <div class="cta-contact rv">
+      <div class="c-blk">
+        <div class="lbl">Head Office</div>
+        <div class="val">No. 30, Dias Place (Purwarama Place),<br>Gunasinghapura, Colombo 12, Sri Lanka</div>
+      </div>
+      <div class="c-blk">
+        <div class="lbl">Telephone &amp; Fax</div>
+        <div class="val">+94 11 233 5657<br>+94 77 730 8079<br>Fax: +94 11 243 7308</div>
+      </div>
+      <div class="c-blk">
+        <div class="lbl">Email &amp; Hours</div>
+        <div class="val">amjatrvl@sltnet.lk<br><br>Mon–Sat · 8:30 AM – 5:30 PM</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="flogo"><img id="fi" alt="Amja Travels"/></div>
+        <p class="fabout">Sri Lanka's leading Hajj &amp; Umrah operator, approved by both the Government of Sri Lanka and the Kingdom of Saudi Arabia. Guiding pilgrims since 1998.</p>
+        <span class="fbadge">IATA</span><span class="fbadge">TAASL</span><span class="fbadge">Sri Lanka Approved</span><span class="fbadge">Saudi Arabia Approved</span>
+      </div>
+      <div class="fcol">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#packages">Hajj Packages</a></li>
+          <li><a href="#packages">Umrah Packages</a></li>
+          <li><a href="#journey">The Journey</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#cta">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h5>Contact</h5>
+        <ul>
+          <li style="color:rgba(240,232,213,.45);font-size:.8rem;line-height:1.75;">No. 30, Dias Place,<br>Gunasinghapura,<br>Colombo 12, Sri Lanka</li>
+          <li><a href="tel:+94112335657">+94 11 233 5657</a></li>
+          <li><a href="tel:+94777308079">+94 77 730 8079</a></li>
+          <li><a href="mailto:amjatrvl@sltnet.lk">amjatrvl@sltnet.lk</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span id="yr"></span> Amja Travels (Pvt) Ltd. All Rights Reserved.</span>
+      <span>Approved Hajj &amp; Umrah Operator · Sri Lanka</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+// LOGO USING LOCAL IMAGE - IN IMAGES FOLDER
+const LOGO_URI = "../images/logo.png";
+document.getElementById("li").src = LOGO_URI;
+document.getElementById("fi").src = LOGO_URI;
+document.getElementById("fav").href = LOGO_URI;
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+// Hajj & Umrah packages are now rendered dynamically by /shared/render.js
+// (via the [data-packages="hajj"] and [data-packages="umrah"] containers).
+
+// ---- GSAP AND OTHER SCRIPTS ----
+gsap.registerPlugin(ScrollTrigger);
+const PR = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+/* PROGRESS */
+const prog = document.getElementById("prog");
+window.addEventListener("scroll", () => prog.style.transform = "scaleX(" + (scrollY / (document.body.scrollHeight - innerHeight)) + ")", { passive: true });
+
+/* LENIS */
+let lenis;
+if (!PR && window.Lenis) {
+  lenis = new Lenis({ duration: 1.05, smoothWheel: true, lerp: .075 });
+  lenis.on("scroll", ScrollTrigger.update);
+  gsap.ticker.add(t => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+}
+
+/* SMOOTH ANCHORS */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener("click", e => {
+    const id = a.getAttribute("href");
+    if (!id || id.length < 2) return;
+    const t = document.querySelector(id);
+    if (!t) return;
+    e.preventDefault();
+    if (lenis) lenis.scrollTo(t, { duration: 1.2, offset: -80 });
+    else window.scrollTo({ top: t.getBoundingClientRect().top + scrollY - 80, behavior: "smooth" });
+  });
+});
+
+/* HEADER */
+const hdr = document.getElementById("hdr");
+window.addEventListener("scroll", () => hdr.classList.toggle("s", scrollY > 55), { passive: true });
+
+/* BURGER */
+const bg = document.getElementById("bg"), dr = document.getElementById("dr"), ov = document.getElementById("ov");
+function tog(v) { bg.classList.toggle("o", v); dr.classList.toggle("o", v); ov.classList.toggle("o", v); }
+bg.addEventListener("click", () => tog(!dr.classList.contains("o")));
+ov.addEventListener("click", () => tog(false));
+dr.querySelectorAll("a").forEach(a => a.addEventListener("click", () => tog(false)));
+
+/* HERO ENTRANCE (split-line fly-in — unified across pages) */
+setTimeout(() => {
+  if (PR) { document.querySelectorAll(".hero-title .lt").forEach(l => l.style.transform = "none"); gsap.set(["#hEye","#hBadge","#hSub","#hBtns","#hScr"],{opacity:1,y:0}); return; }
+  const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+  tl.to("#hEye", { opacity: 1, y: 0, duration: .7 }, 0)
+    .to("#hBadge", { opacity: 1, y: 0, duration: .7 }, .1)
+    .to(".hero-title .lt", { y: 0, duration: 1.1, stagger: .12, ease: "power4.out" }, .2)
+    .to("#hSub", { opacity: 1, y: 0, duration: .9 }, .6)
+    .to("#hBtns", { opacity: 1, y: 0, duration: .8 }, .78)
+    .to("#hScr", { opacity: 1, duration: .8 }, .98);
+}, 250);
+
+/* HERO — subtle background parallax on scroll */
+if (!PR) gsap.to(".hero-bg", { y: "12%", ease: "none", scrollTrigger: { trigger: "#hero", start: "top top", end: "bottom top", scrub: true } });
+
+/* ZOOM MADINAH */
+gsap.to("#zoom-img", { scale: 1.75, ease: "none", scrollTrigger: { trigger: "#zoom-wrap", start: "top top", end: "bottom bottom", scrub: 1 } });
+gsap.fromTo("#zCopy", { opacity: 0, scale: .88, y: 28 }, { opacity: 1, scale: 1, y: 0, ease: "power2.out", scrollTrigger: { trigger: "#zoom-wrap", start: "top top", end: "28% top", scrub: true } });
+gsap.to("#zCopy", { opacity: 0, y: -32, ease: "power2.in", scrollTrigger: { trigger: "#zoom-wrap", start: "66% top", end: "bottom bottom", scrub: true } });
+
+/* SCROLL REVEALS */
+gsap.utils.toArray(".rv").forEach(el => {
+  gsap.to(el, { opacity: 1, y: 0, duration: .85, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 90%" } });
+});
+
+/* TABS */
+document.querySelectorAll(".tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("active"));
+    btn.classList.add("active");
+    const pane = document.getElementById("tab-" + btn.getAttribute("data-tab"));
+    if (pane) {
+      pane.classList.add("active");
+      pane.querySelectorAll(".rv").forEach(el => {
+        gsap.to(el, { opacity: 1, y: 0, duration: .75, ease: "power3.out", delay: .05 });
+      });
+      ScrollTrigger.refresh();
+    }
+  });
+});
+
+/* STEP CARDS STAGGER */
+gsap.utils.toArray(".step-card").forEach((c, i) => {
+  gsap.fromTo(c, { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: .8, delay: i * .1, ease: "power3.out", scrollTrigger: { trigger: c, start: "top 90%" } });
+});
+
+/* DEST CARDS STAGGER */
+gsap.utils.toArray(".dest-card").forEach((c, i) => {
+  gsap.fromTo(c, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .7, delay: i * .07, ease: "power2.out", scrollTrigger: { trigger: c, start: "top 92%" } });
+});
+
+/* WHY CARDS STAGGER */
+gsap.utils.toArray(".why-card").forEach((c, i) => {
+  gsap.fromTo(c, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: .8, delay: (i % 3) * .09, ease: "power2.out", scrollTrigger: { trigger: c, start: "top 90%" } });
+});
+
+/* FAQ ACCORDION */
+document.querySelectorAll(".faq-item").forEach(item => {
+  item.querySelector(".faq-q").addEventListener("click", () => {
+    const open = item.classList.contains("open");
+    document.querySelectorAll(".faq-item").forEach(x => x.classList.remove("open"));
+    if (!open) item.classList.add("open");
+  });
+});
+
+/* MAGNETIC BUTTON */
+const mb = document.getElementById("magBtn");
+if (mb && !PR) {
+  mb.addEventListener("mousemove", e => {
+    const r = mb.getBoundingClientRect();
+    gsap.to(mb, { x: (e.clientX - r.left - r.width / 2) * .3, y: (e.clientY - r.top - r.height / 2) * .5, duration: .35, ease: "power2.out" });
+  });
+  mb.addEventListener("mouseleave", () => gsap.to(mb, { x: 0, y: 0, duration: .6, ease: "elastic.out(1,.4)" }));
+}
+
+window.addEventListener("load", () => ScrollTrigger.refresh());
+</script>
+<!-- ═══ SHARED SITE SCRIPTS (config + nav) ═══ -->
+<script>
+(function(){
+  var onFile = location.protocol === 'file:';
+  var base = onFile ? '../shared/' : '/shared/';
+  // shared client stylesheet
+  var link = document.createElement('link');
+  link.rel = 'stylesheet'; link.href = base + 'client.css';
+  document.head.appendChild(link);
+  // shared scripts (order matters: config → nav/render)
+  var cfg = document.createElement('script'); cfg.src = base + 'config.js';
+  cfg.onload = function(){
+    ['nav.js','render.js','footer.js'].forEach(function(f){
+      var s = document.createElement('script'); s.src = base + f; s.defer = true;
+      document.body.appendChild(s);
+    });
+  };
+  document.body.appendChild(cfg);
+})();
+</script>
+</body>
+</html>

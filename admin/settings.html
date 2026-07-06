@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings · Amja Travels Admin</title>
+  <link rel="stylesheet" href="css/admin.css">
+  <style>
+    .settings-container{max-width:620px;}
+    .settings-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:2rem;box-shadow:var(--shadow);}
+    .settings-card h2{color:var(--ink);font-size:1.25rem;font-weight:800;margin-bottom:.35rem;letter-spacing:-.01em;}
+    .settings-card .desc{color:var(--muted);font-size:.9rem;margin-bottom:1.6rem;}
+    .current-username{background:var(--brand-soft);padding:.85rem 1.1rem;border-radius:var(--r-sm);margin-bottom:1.6rem;color:var(--ink-2);font-size:.9rem;}
+    .current-username strong{color:var(--brand);font-weight:700;}
+    .settings-card .btn-save{width:100%;justify-content:center;margin-top:.4rem;padding:.9rem;font-size:.95rem;}
+    .message{padding:.75rem 1rem;border-radius:var(--r-sm);margin-top:1rem;display:none;font-size:.88rem;font-weight:500;}
+    .message.success{display:block;background:var(--success-soft);color:var(--success);}
+    .message.error{display:block;background:var(--danger-soft);color:var(--danger);}
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <aside class="sidebar"></aside>
+
+    <main class="main-content">
+      <header class="top-header">
+        <h1>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
+          Settings
+        </h1>
+        <div class="admin-info">
+          <span>Welcome, <span id="displayUsername">Admin</span></span>
+        </div>
+      </header>
+
+      <div class="settings-container">
+        <div class="settings-card">
+          <h2>Change Admin Credentials</h2>
+          <p class="desc">Update your admin username and password.</p>
+
+          <div class="current-username">
+            Current Username: <strong id="currentUsername">admin</strong>
+          </div>
+
+          <form id="settingsForm">
+            <div class="form-group">
+              <label>Current Password <span class="required">*</span></label>
+              <input type="password" id="currentPassword" placeholder="Enter current password" required>
+            </div>
+            <div class="form-group">
+              <label>New Username <span class="required">*</span></label>
+              <input type="text" id="newUsername" placeholder="Enter new username" required>
+            </div>
+            <div class="form-group">
+              <label>New Password <span class="required">*</span></label>
+              <input type="password" id="newPassword" placeholder="Enter new password" required>
+            </div>
+
+            <button type="submit" class="btn-save">Update Credentials</button>
+
+            <div class="message" id="settingsMessage"></div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/admin-categories.js"></script>
+  <script src="js/admin-core.js"></script>
+  <script>
+    const API_BASE = window.ADMIN_API_BASE;
+    AdminCore.requireLogin('');
+    AdminCore.renderSidebar(document.querySelector('.sidebar'), '', 'settings');
+    AdminCore.refreshNotifications();
+    setInterval(AdminCore.refreshNotifications, 20000);
+
+    const username = localStorage.getItem('adminUsername') || 'Admin';
+    document.getElementById('displayUsername').textContent = username;
+    document.getElementById('currentUsername').textContent = username;
+
+    async function loadUsername() {
+      try {
+        const response = await fetch(API_BASE + '/api/admin/credentials');
+        const data = await response.json();
+        if (data.success) {
+          document.getElementById('currentUsername').textContent = data.username;
+          document.getElementById('displayUsername').textContent = data.username;
+        }
+      } catch (error) {
+        console.error('Error loading username:', error);
+      }
+    }
+    loadUsername();
+
+    document.getElementById('settingsForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const currentPassword = document.getElementById('currentPassword').value;
+      const newUsername = document.getElementById('newUsername').value.trim();
+      const newPassword = document.getElementById('newPassword').value.trim();
+
+      if (!currentPassword || !newUsername || !newPassword) {
+        AdminCore.toast('All fields are required.', 'error');
+        return;
+      }
+      if (newPassword.length < 4) {
+        AdminCore.toast('Password must be at least 4 characters.', 'error');
+        return;
+      }
+
+      try {
+        const response = await fetch(API_BASE + '/api/admin/credentials', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ currentPassword, newUsername, newPassword })
+        });
+        const data = await response.json();
+        if (data.success) {
+          AdminCore.toast(data.message || 'Credentials updated.', 'success');
+          document.getElementById('currentUsername').textContent = newUsername;
+          document.getElementById('displayUsername').textContent = newUsername;
+          localStorage.setItem('adminUsername', newUsername);
+          document.getElementById('currentPassword').value = '';
+          document.getElementById('newUsername').value = '';
+          document.getElementById('newPassword').value = '';
+        } else {
+          AdminCore.toast(data.message || 'Update failed.', 'error');
+        }
+      } catch (error) {
+        AdminCore.toast('Error connecting to server.', 'error');
+      }
+    });
+  </script>
+</body>
+</html>

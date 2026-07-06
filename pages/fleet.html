@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Rent a Car in Sri Lanka | Best Rental Cars | Amja Travels (Pvt) Ltd</title>
+<meta name="description" content="Amja Travels offers the best rental cars in Sri Lanka at the lowest price — Mini Cars, Standard, Executive, Luxury, SUV 4x4, Minivan. Experienced drivers, A/C, island-wide."/>
+<link rel="icon" id="fav" type="image/png" href=""/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#07080c;
+  --steel:#0e1018;
+  --plate:#151820;
+  --chrome:#8a909c;
+  --red:#bc2e28;
+  --red-l:#d8382f;
+  --gold:#c5943a;
+  --gold-b:#daa84a;
+  --silver:#c8cdd5;
+  --pearl:#f0eee8;
+  --mist:rgba(240,238,232,.52);
+  --line:rgba(240,238,232,.09);
+  --ease:cubic-bezier(.16,.84,.44,1);
+  --spring:cubic-bezier(.34,1.56,.64,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{background:var(--ink);scroll-behavior:auto;}
+body{background:var(--ink);color:var(--pearl);font-family:"Montserrat",sans-serif;font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.65;}
+h1,h2,h3,h4,.serif{font-family:"Cormorant",serif;font-weight:600;line-height:1.1;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+::selection{background:var(--red);color:#fff;}
+.wrap{max-width:1280px;margin:0 auto;padding:0 clamp(1.2rem,4.5vw,3.5rem);}
+.eyebrow{font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;font-weight:700;color:var(--gold);display:inline-flex;align-items:center;gap:.5rem;}
+.eyebrow::before{content:"";width:18px;height:1px;background:var(--gold-b);}
+/* GRAIN */
+body::before{content:"";position:fixed;inset:0;z-index:9000;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.024;background-size:160px;}
+/* PROGRESS */
+#prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--red),var(--gold));z-index:9999;transform-origin:left;transform:scaleX(0);pointer-events:none;}
+/* HEADER */
+header{position:fixed;top:0;left:0;right:0;z-index:800;padding:1.3rem 0;transition:background .4s,padding .3s,border-color .4s;border-bottom:1px solid transparent;}
+header.s{background:rgba(7,8,12,.95);backdrop-filter:blur(20px);border-color:var(--line);padding:.8rem 0;}
+.h-in{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;}
+.h-logo img{height:36px;filter:drop-shadow(0 2px 10px rgba(0,0,0,.8));transition:height .3s;}
+header.s .h-logo img{height:30px;}
+.h-nav{display:flex;align-items:center;gap:1.8rem;}
+.h-nav a{font-size:.71rem;font-weight:500;letter-spacing:.05em;color:rgba(240,238,232,.6);transition:color .25s;}
+.h-nav a:hover,.h-nav a.cur{color:var(--pearl);}
+.h-pill{padding:.6rem 1.4rem;background:var(--red);border-radius:100px;font-size:.69rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#fff;transition:background .3s,transform .3s;}
+.h-pill:hover{background:var(--red-l);transform:translateY(-1px);}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;width:38px;height:38px;align-items:center;justify-content:center;}
+.burger span{display:block;width:22px;height:1px;background:var(--pearl);transition:all .3s;}
+.burger.o span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+.burger.o span:nth-child(2){opacity:0;}
+.burger.o span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+@media(max-width:860px){.h-nav,.h-pill{display:none;}.burger{display:flex;}}
+/* DRAWER */
+.drawer{position:fixed;top:0;right:0;width:min(84vw,340px);height:100vh;background:var(--steel);border-left:1px solid var(--line);z-index:900;transform:translateX(110%);transition:transform .45s var(--ease);padding:5.5rem 2rem 2rem;display:flex;flex-direction:column;gap:.25rem;overflow-y:auto;}
+.drawer.o{transform:translateX(0);}
+.drawer a{font-size:.92rem;font-weight:500;color:var(--pearl);padding:.75rem 0;border-bottom:1px solid var(--line);transition:color .2s;}
+.drawer a:hover{color:var(--gold);}
+.drawer .dcta{margin-top:1.4rem;padding:.9rem;background:var(--red);border-radius:100px;color:#fff;text-align:center;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;}
+.ov{position:fixed;inset:0;background:rgba(7,8,12,.7);z-index:850;opacity:0;pointer-events:none;transition:opacity .4s;}
+.ov.o{opacity:1;pointer-events:auto;}
+/* ═══ HERO ═══ */
+#hero{position:relative;height:100vh;display:flex;align-items:flex-start;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:url("../images/fleet-hero-bg.jpg") center/cover no-repeat;transform:scale(1.06);will-change:transform;}
+.hero-bg::after{content:"";position:absolute;inset:0;background:transparent;}
+.hero-content{position:relative;z-index:2;padding:clamp(7rem,20vh,13rem) 0 0;width:100%;}
+.h-pretag{display:inline-flex;align-items:center;gap:.6rem;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--gold);border:1px solid rgba(197,148,58,.3);padding:.4rem .9rem;border-radius:100px;background:rgba(197,148,58,.07);margin-bottom:1.4rem;opacity:0;transform:translateY(14px);}
+.hero-title{font-size:clamp(3rem,9vw,7rem);line-height:.9;color:var(--pearl);margin-bottom:1.3rem;overflow:hidden;text-shadow:0 2px 24px rgba(0,0,0,.5),0 1px 4px rgba(0,0,0,.45);}
+.hero-title .lw{display:block;overflow:hidden;}
+.hero-title .lt{display:block;transform:translateY(110%);}
+.hero-title em{color:var(--red);font-style:italic;}
+.hero-row{display:flex;align-items:flex-start;justify-content:flex-start;gap:2rem;flex-wrap:wrap;}
+.hero-sub{font-size:.92rem;color:var(--mist);max-width:460px;line-height:1.85;opacity:0;transform:translateY(16px);}
+.hero-chips{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.2rem;opacity:0;transform:translateY(16px);}
+.hero-chip{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:rgba(240,238,232,.7);border:1px solid rgba(240,238,232,.2);padding:.38rem .8rem;border-radius:100px;}
+.hero-acts{display:flex;gap:.85rem;flex-shrink:0;opacity:0;transform:translateY(16px);}
+.btn-red{padding:.9rem 2rem;background:var(--red);color:#fff;border-radius:100px;font-size:.71rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;transition:background .3s,transform .3s var(--ease),box-shadow .3s;}
+.btn-red:hover{background:var(--red-l);transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(188,46,40,.5);}
+.btn-ghost{padding:.9rem 2rem;border:1.5px solid rgba(240,238,232,.28);color:var(--pearl);border-radius:100px;font-size:.71rem;letter-spacing:.12em;text-transform:uppercase;transition:border-color .3s,background .3s;}
+.btn-ghost:hover{border-color:var(--pearl);background:rgba(240,238,232,.07);}
+/* ═══ TRUST ═══ */
+#trust{background:linear-gradient(90deg,var(--plate),var(--steel) 40%,var(--plate));border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:.8rem 0;overflow:hidden;white-space:nowrap;}
+#trust .tk{display:inline-flex;gap:3rem;animation:mq 28s linear infinite;}
+#trust .ti{display:inline-flex;align-items:center;gap:.5rem;font-size:.68rem;font-weight:500;color:rgba(240,238,232,.6);}
+#trust .ti::before{content:"✦";color:var(--gold);font-size:.44rem;}
+@keyframes mq{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+/* ═══ STICKY FILTER ═══ */
+#filter{position:sticky;top:0;z-index:300;background:rgba(7,8,12,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);padding:.9rem 0;}
+.filter-in{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.cats{display:flex;gap:.4rem;overflow-x:auto;scrollbar-width:none;padding:.2rem 0;}
+.cats::-webkit-scrollbar{display:none;}
+.cat{padding:.6rem 1.2rem;border-radius:100px;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:rgba(240,238,232,.45);border:1px solid var(--line);cursor:pointer;transition:all .3s var(--ease);white-space:nowrap;background:transparent;}
+.cat.on{background:var(--red);color:#fff;border-color:var(--red);}
+.cat:hover:not(.on){color:var(--pearl);border-color:rgba(240,238,232,.25);}
+.fcount{font-size:.66rem;color:var(--chrome);letter-spacing:.05em;white-space:nowrap;flex-shrink:0;}
+.fcount b{color:var(--gold);}
+/* ═══ VEHICLES GRID ═══ */
+#fleet-wrap{padding:3.5rem 0 7rem;}
+.fleet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;}
+@media(max-width:1000px){.fleet-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.fleet-grid{grid-template-columns:1fr;}}
+/* VEHICLE CARD */
+.v-card{background:var(--steel);border:1px solid var(--line);border-radius:10px;overflow:hidden;transition:border-color .4s,box-shadow .4s,transform .4s var(--ease);opacity:0;transform:translateY(38px);display:flex;flex-direction:column;}
+.v-card.visible{opacity:1;transform:translateY(0);}
+.v-card:hover{border-color:rgba(188,46,40,.35);box-shadow:0 24px 50px -20px rgba(7,8,12,.8);transform:translateY(-5px)!important;}
+.v-card.hidden{display:none!important;}
+.v-thumb{position:relative;background:var(--plate);aspect-ratio:16/10;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:1.5rem;}
+.v-thumb img{max-height:140px;width:auto;max-width:100%;object-fit:contain;transition:transform .7s var(--ease);filter:drop-shadow(0 12px 28px rgba(7,8,12,.5));}
+.v-card:hover .v-thumb img{transform:scale(1.06) translateY(-4px);}
+.v-cat-badge{position:absolute;top:.85rem;left:.85rem;background:rgba(7,8,12,.85);backdrop-filter:blur(8px);border:1px solid rgba(197,148,58,.3);color:var(--gold);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:.3rem .7rem;border-radius:100px;}
+.v-thumb .speed-lines{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .4s;}
+.v-card:hover .speed-lines{opacity:1;}
+.v-body{padding:1.4rem;flex:1;display:flex;flex-direction:column;}
+.v-model{font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--chrome);margin-bottom:.3rem;}
+.v-name{font-family:"Cormorant",serif;font-size:1.35rem;color:var(--pearl);margin-bottom:.8rem;line-height:1.1;}
+.v-specs{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1rem;}
+.spec{display:flex;align-items:center;gap:.4rem;font-size:.72rem;color:var(--chrome);}
+.spec svg{width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+.spec span{color:var(--pearl);font-weight:500;}
+.v-chips{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.1rem;}
+.vchip{font-size:.56rem;letter-spacing:.07em;text-transform:uppercase;font-weight:700;color:var(--chrome);border:1px solid var(--line);padding:.24rem .55rem;border-radius:100px;}
+.v-foot{display:flex;gap:.65rem;margin-top:auto;padding-top:1rem;border-top:1px solid var(--line);}
+.v-enquire{flex:1;padding:.78rem 1rem;background:var(--red);color:#fff;border-radius:100px;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;text-align:center;cursor:pointer;transition:background .3s,transform .3s;border:none;}
+.v-enquire:hover{background:var(--red-l);transform:translateY(-1px);}
+.v-call{padding:.78rem 1rem;border:1px solid var(--line);color:var(--chrome);border-radius:100px;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;text-align:center;cursor:pointer;transition:border-color .3s,color .3s;background:transparent;}
+.v-call:hover{border-color:var(--gold);color:var(--gold);}
+/* ═══ BOOKING MODAL ═══ */
+#modal-overlay{position:fixed;inset:0;background:rgba(7,8,12,.82);z-index:1000;opacity:0;pointer-events:none;transition:opacity .4s;backdrop-filter:blur(8px);}
+#modal-overlay.open{opacity:1;pointer-events:auto;}
+#modal{position:fixed;left:50%;bottom:0;transform:translateX(-50%) translateY(100%);width:min(95vw,600px);background:var(--steel);border:1px solid rgba(197,148,58,.25);border-radius:12px 12px 0 0;z-index:1001;padding:2.2rem 2rem 2.5rem;transition:transform .5s var(--ease);max-height:92vh;overflow-y:auto;}
+#modal.open{transform:translateX(-50%) translateY(0);}
+.modal-handle{width:40px;height:3px;background:rgba(240,238,232,.2);border-radius:2px;margin:0 auto 1.6rem;}
+.modal-title{font-family:"Cormorant",serif;font-size:1.6rem;color:var(--pearl);margin-bottom:.3rem;}
+.modal-sub{font-size:.75rem;color:var(--chrome);margin-bottom:1.6rem;letter-spacing:.04em;}
+.modal-close{position:absolute;top:1.2rem;right:1.2rem;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--chrome);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:border-color .3s,color .3s;}
+.modal-close:hover{border-color:var(--red);color:var(--red);}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
+@media(max-width:500px){.form-grid{grid-template-columns:1fr;}}
+.form-group{display:flex;flex-direction:column;gap:.4rem;}
+.form-group.full{grid-column:1/-1;}
+.form-group label{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--gold);}
+.form-group input,.form-group select,.form-group textarea{background:var(--plate);border:1px solid var(--line);border-radius:6px;padding:.78rem 1rem;font-size:.82rem;color:var(--pearl);font-family:"Montserrat",sans-serif;font-weight:400;outline:none;transition:border-color .3s;width:100%;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:rgba(197,148,58,.5);}
+.form-group select option{background:var(--steel);}
+.form-group textarea{resize:vertical;min-height:80px;}
+.form-vehicle-tag{background:rgba(188,46,40,.12);border:1px solid rgba(188,46,40,.3);border-radius:6px;padding:.75rem 1rem;font-size:.78rem;color:var(--red);font-weight:500;margin-bottom:.4rem;grid-column:1/-1;}
+.btn-submit{width:100%;padding:.95rem;background:var(--red);color:#fff;border:none;border-radius:100px;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;cursor:pointer;transition:background .3s,transform .3s;margin-top:.5rem;font-family:"Montserrat",sans-serif;}
+.btn-submit:hover{background:var(--red-l);transform:translateY(-1px);}
+.form-note{font-size:.68rem;color:var(--chrome);text-align:center;margin-top:.7rem;line-height:1.6;}
+/* SUCCESS STATE */
+.form-success{display:none;text-align:center;padding:2rem 0;}
+.form-success .tick{width:56px;height:56px;border-radius:50%;background:rgba(50,160,80,.15);border:1.5px solid rgba(50,160,80,.4);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-size:1.4rem;}
+.form-success h3{font-family:"Cormorant",serif;font-size:1.6rem;color:var(--pearl);margin-bottom:.5rem;}
+.form-success p{font-size:.82rem;color:var(--chrome);line-height:1.7;}
+/* ═══ WHY SECTION ═══ */
+#why{padding:6rem 0 7rem;background:var(--plate);}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem;}
+@media(max-width:860px){.why-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.why-grid{grid-template-columns:1fr;}}
+.why-card{padding:1.8rem 1.5rem;border:1px solid var(--line);border-radius:8px;transition:border-color .35s,background .35s,transform .35s var(--ease);opacity:0;transform:translateY(26px);}
+.why-card:hover{border-color:rgba(188,46,40,.3);background:rgba(188,46,40,.04);transform:translateY(-4px)!important;}
+.why-num{font-family:"Cormorant",serif;font-size:2.5rem;color:rgba(188,46,40,.18);margin-bottom:.8rem;line-height:1;}
+.why-card h3{font-family:"Cormorant",serif;font-size:1.18rem;color:var(--pearl);margin-bottom:.4rem;}
+.why-card p{font-size:.78rem;color:var(--chrome);line-height:1.75;}
+/* ═══ CTA ═══ */
+/* ── OUR PROCESS ── */
+#process{padding:7rem 0;background:var(--plate);}
+#process .eyebrow{justify-content:center;}
+#process h2{font-size:clamp(2rem,4.5vw,3.2rem);text-align:center;margin:.4rem 0 3.5rem;}
+#process h2 em{color:var(--red);font-style:italic;}
+.proc-row{display:flex;gap:0;position:relative;}
+.proc-row::before{content:"";position:absolute;top:28px;left:6%;right:6%;height:1px;background:linear-gradient(90deg,transparent,rgba(197,148,58,.3) 20%,rgba(197,148,58,.3) 80%,transparent);}
+@media(max-width:760px){.proc-row{flex-direction:column;gap:1.6rem;}.proc-row::before{display:none;}}
+.proc-step{flex:1;text-align:center;padding:0 1rem;opacity:0;transform:translateY(26px);}
+.proc-step .pn{width:56px;height:56px;border-radius:50%;border:1.5px solid rgba(197,148,58,.4);font-family:"Cormorant",serif;font-size:1.4rem;color:var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;background:var(--ink);font-weight:700;transition:background .4s,border-color .4s,color .4s;}
+.proc-step:hover .pn{background:var(--red);border-color:var(--red);color:#fff;}
+.proc-step h4{font-family:"Cormorant",serif;font-size:1.2rem;color:var(--pearl);margin-bottom:.45rem;}
+.proc-step p{font-size:.8rem;color:var(--mist);line-height:1.7;}
+
+#cta{padding:8rem 0 7rem;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(188,46,40,.15),transparent 60%),var(--ink);}
+#cta .eyebrow{display:block;margin-bottom:1rem;justify-content:center;}
+#cta h2{font-size:clamp(2.4rem,7vw,5.5rem);line-height:.93;color:var(--pearl);}
+#cta h2 em{color:var(--red);font-style:italic;}
+#cta p{font-size:.9rem;color:var(--mist);max-width:440px;margin:1.2rem auto 2.4rem;line-height:1.85;}
+.cta-btns{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;}
+.mag-btn{display:inline-flex;align-items:center;gap:.7rem;padding:1rem 2.3rem;border:1.5px solid var(--gold);border-radius:100px;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--pearl);position:relative;overflow:hidden;transition:color .4s;}
+.mag-btn::before{content:"";position:absolute;inset:0;background:var(--gold);border-radius:100px;transform:translateY(102%);transition:transform .45s var(--ease);z-index:-1;}
+.mag-btn:hover{color:var(--ink);}
+.mag-btn:hover::before{transform:translateY(0);}
+.c-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;max-width:860px;margin:3.2rem auto 0;}
+@media(max-width:680px){.c-grid{grid-template-columns:1fr;}}
+.cblk{border:1px solid rgba(197,148,58,.18);border-radius:8px;padding:1.4rem;text-align:left;opacity:0;transform:translateY(20px);}
+.cblk .cl{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold);margin-bottom:.4rem;}
+.cblk .cv{font-size:.84rem;color:var(--pearl);line-height:1.7;font-weight:300;}
+/* FOOTER */
+footer{background:#040508;border-top:1px solid var(--line);padding:4.5rem 0 0;}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid var(--line);}
+@media(max-width:680px){.foot-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:400px){.foot-grid{grid-template-columns:1fr;}}
+.flogo img{height:32px;filter:brightness(0) invert(1);opacity:.75;margin-bottom:.9rem;}
+.fa{font-size:.8rem;color:rgba(240,238,232,.4);line-height:1.85;max-width:260px;margin-bottom:.9rem;}
+.fbdg{display:inline-block;font-size:.56rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;border:1px solid rgba(197,148,58,.22);padding:.26rem .6rem;border-radius:100px;color:rgba(197,148,58,.55);margin:.2rem .3rem .2rem 0;}
+.fcol h5{font-size:.63rem;letter-spacing:.15em;text-transform:uppercase;color:var(--pearl);font-weight:700;margin-bottom:1rem;}
+.fcol ul li{margin-bottom:.55rem;}
+.fcol ul a{font-size:.78rem;color:rgba(240,238,232,.4);transition:color .2s;}
+.fcol ul a:hover{color:var(--gold);}
+.faddr{font-size:.78rem;color:rgba(240,238,232,.4);line-height:1.85;}
+.faddr a{display:block;transition:color .2s;}
+.faddr a:hover{color:var(--gold);}
+.fbot{display:flex;justify-content:space-between;padding:1.4rem 0;flex-wrap:wrap;gap:.6rem;font-size:.66rem;color:rgba(240,238,232,.28);}
+.rv{opacity:0;transform:translateY(26px);}
+@media(prefers-reduced-motion:reduce){.rv,.v-card,.why-card,.cblk,.proc-step{opacity:1;transform:none;}*{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div class="ov" id="ov"></div>
+<div class="drawer" id="dr">
+  <a href="index.html">Home</a>
+  <a href="#fleet-wrap" class="cur">All Vehicles</a>
+  <a href="#why">Why Choose Us</a>
+  <a href="#cta">Contact</a>
+  <a href="tel:+94112335657" class="dcta">+94 11 233 5657</a>
+</div>
+<header id="hdr">
+  <div class="wrap h-in">
+    <a href="index.html" class="h-logo"><img id="li" alt="Amja Travels"/></a>
+    <nav class="h-nav">
+      <a href="index.html">Home</a>
+      <a href="#fleet-wrap" class="cur">Fleet</a>
+      <a href="#why">Why Us</a>
+      <a href="amja-tours.html">Tours</a>
+      <a href="amja-hotels.html">Hotels</a>
+    </nav>
+    <a href="#cta" class="h-pill">Book Now</a>
+    <div class="burger" id="bg"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-content">
+    <div class="hero-row">
+      <div>
+        <h1 class="hero-title">
+          <span class="lw"><span class="lt" id="lt1">Sri Lanka's Best</span></span>
+          <span class="lw"><span class="lt" id="lt2">Rental <em>Fleet</em></span></span>
+        </h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLEET GRID -->
+<section id="fleet-wrap">
+  <div class="wrap">
+    <div class="fleet-head rv" style="text-align:center;margin-bottom:2.8rem;">
+      <span class="eyebrow" style="justify-content:center;">Our Fleet</span>
+      <h2 style="font-size:clamp(2rem,5vw,3.4rem);margin:.5rem 0 .7rem;">Choose Your <em style="color:var(--red);font-style:italic;">Vehicle</em></h2>
+      <p style="font-size:.9rem;color:var(--mist);max-width:540px;margin:0 auto;line-height:1.8;">Air-conditioned vehicles with experienced drivers — from compact city cars to large SUVs and vans. Select a category below to see the options.</p>
+    </div>
+    <!-- DYNAMIC FLEET (managed in admin panel, grouped by vehicle category) -->
+    <div data-packages="fleet" data-group-by="vehicle_category" data-empty="No vehicles listed yet. Add them from the admin panel."></div>
+
+  </div>
+</section>
+
+<!-- BOOKING MODAL -->
+<div id="modal-overlay"></div>
+<div id="modal">
+  <div class="modal-handle"></div>
+  <button class="modal-close" id="modalClose">✕</button>
+  <div id="formWrap">
+    <div class="modal-title">Book Your Vehicle</div>
+    <div class="modal-sub" id="modalSub">Complete the form and our team will confirm your booking within 2 hours.</div>
+    <form id="bookForm" autocomplete="off">
+      <div class="form-grid">
+        <div class="form-group full"><div class="form-vehicle-tag" id="fvTag">Selected Vehicle: —</div></div>
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input type="text" name="name" placeholder="Your full name" required/>
+        </div>
+        <div class="form-group">
+          <label>Phone Number *</label>
+          <input type="tel" name="phone" placeholder="+94 XX XXX XXXX" required/>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" name="email" placeholder="your@email.com"/>
+        </div>
+        <div class="form-group">
+          <label>Vehicle Category</label>
+          <select name="category" id="catSelect">
+            <option value="">— Select Category —</option>
+            <option value="Mini Car">Mini Car</option>
+            <option value="Standard Car">Standard Car</option>
+            <option value="Semi Executive Car">Semi Executive Car</option>
+            <option value="Executive Car">Executive Car</option>
+            <option value="Luxury Car">Luxury Car</option>
+            <option value="Mini SUV (4x4)">Mini SUV (4×4)</option>
+            <option value="Large SUV (4x4)">Large SUV (4×4)</option>
+            <option value="Minivan / Station Wagon">Minivan / Station Wagon</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Pickup Date *</label>
+          <input type="date" name="pickup_date" required/>
+        </div>
+        <div class="form-group">
+          <label>Return Date *</label>
+          <input type="date" name="return_date" required/>
+        </div>
+        <div class="form-group full">
+          <label>Pickup Location *</label>
+          <input type="text" name="pickup" placeholder="e.g. Bandaranaike Airport, Colombo Hotel..." required/>
+        </div>
+        <div class="form-group full">
+          <label>Additional Notes</label>
+          <textarea name="notes" placeholder="Drop-off location, special requirements, number of passengers..."></textarea>
+        </div>
+        <div class="form-group full">
+          <button type="submit" class="btn-submit">Send Booking Request</button>
+          <div class="form-note">Our team will respond within 2 hours · +94 11 233 5657 · amjatrvl@sltnet.lk</div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="form-success" id="formSuccess">
+    <div class="tick">✓</div>
+    <h3>Booking Request Sent!</h3>
+    <p>Thank you — our team will contact you within 2 hours to confirm your vehicle and pricing.<br><br><strong>Call us directly:</strong><br>+94 11 233 5657 / +94 77 730 8079</p>
+  </div>
+</div>
+
+<!-- WHY -->
+<section id="why">
+  <div class="wrap">
+    <div class="rv" style="text-align:center;margin-bottom:.5rem;">
+      <span class="eyebrow">Why Choose Our Fleet</span>
+      <h2 style="font-size:clamp(2rem,4.5vw,3.2rem);margin:.4rem 0;">The Amja Fleet<br><em>Difference</em></h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-num">01</div><h3>Best Price Guarantee</h3><p>We match or beat any comparable offer in Sri Lanka. Our rental rates are competitive, transparent and confirmed before you commit.</p></div>
+      <div class="why-card"><div class="why-num">02</div><h3>Experienced Drivers</h3><p>All our drivers are licensed, experienced and knowledgeable about Sri Lanka's roads, routes and regions — your safety is always the priority.</p></div>
+      <div class="why-card"><div class="why-num">03</div><h3>All A/C Vehicles</h3><p>Every vehicle in our fleet is fully air-conditioned and regularly maintained — so you travel in comfort regardless of Sri Lanka's climate.</p></div>
+      <div class="why-card"><div class="why-num">04</div><h3>No Hidden Charges</h3><p>The price we quote is the price you pay. Fuel, driver, tolls — everything is discussed and agreed upfront with complete transparency.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OUR PROCESS ═══ -->
+<section id="process">
+  <div class="wrap">
+    <div class="rv" style="text-align:center;">
+      <span class="eyebrow">Our Process</span>
+      <h2>How Renting <em>Works</em></h2>
+    </div>
+    <div class="proc-row">
+      <div class="proc-step"><div class="pn">01</div><h4>Choose Your Vehicle</h4><p>Browse our categories and pick the vehicle that best suits your trip, group size and budget.</p></div>
+      <div class="proc-step"><div class="pn">02</div><h4>Send a Request</h4><p>Share your dates, pickup location and details through the enquiry form or a quick call.</p></div>
+      <div class="proc-step"><div class="pn">03</div><h4>We Confirm</h4><p>Our team confirms availability, your driver and fully transparent pricing — usually within 2 hours.</p></div>
+      <div class="proc-step"><div class="pn">04</div><h4>Hit the Road</h4><p>Your air-conditioned vehicle and experienced driver arrive on time, ready for the journey.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="wrap">
+    <span class="eyebrow">Reserve Your Vehicle</span>
+    <h2>Ready to <em>Hit the Road?</em></h2>
+    <p>Call our team or submit a booking request — we'll confirm your vehicle, driver and pricing within 2 hours.</p>
+    <div class="cta-btns">
+      <a href="tel:+94112335657" class="btn-red">Call +94 11 233 5657</a>
+      <a href="tel:+94777308079" class="btn-ghost">+94 77 730 8079</a>
+    </div>
+    <div class="c-grid">
+      <div class="cblk"><div class="cl">Head Office</div><div class="cv">No. 30, Dias Place, Gunasinghapura, Colombo 12, Sri Lanka</div></div>
+      <div class="cblk"><div class="cl">Telephone &amp; Fax</div><div class="cv">+94 11 233 5657<br>+94 77 730 8079<br>Fax: +94 11 243 7308</div></div>
+      <div class="cblk"><div class="cl">Email &amp; Hours</div><div class="cv">amjatrvl@sltnet.lk<br>Mon – Sat · 8:30 AM – 5:30 PM</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ENQUIRY FORM ═══ -->
+<section class="amja-section" id="enquire">
+  <h2>Make an <em>Enquiry</em></h2>
+  <form class="enq-form" data-enquiry-form="fleet">
+    <h3>Send us your details</h3>
+    <p class="enq-note" data-enquiry-note></p>
+    <input type="hidden" name="item_id">
+    <input type="hidden" name="item_title">
+    <div class="enq-row">
+      <input type="text" name="name" placeholder="Your Name *" required>
+      <input type="tel" name="phone" placeholder="Phone Number *" required>
+    </div>
+    <input type="email" name="email" placeholder="Email (optional)">
+    <div class="enq-extra" data-enquiry-extra></div>
+    <textarea name="message" placeholder="Your message or requirements..."></textarea>
+    <button type="submit" class="enq-submit">Send Enquiry</button>
+    <p class="enq-msg" data-enquiry-msg></p>
+  </form>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="flogo"><img id="fi" alt="Amja Travels"/></div>
+        <p class="fa">Sri Lanka's trusted car rental partner since 1998 — 8 vehicle categories, experienced drivers, island-wide coverage and the best price guarantee.</p>
+        <span class="fbdg">IATA</span><span class="fbdg">TAASL</span><span class="fbdg">Best Price</span>
+      </div>
+      <div class="fcol">
+        <h5>Vehicle Categories</h5>
+        <ul>
+          <li><a href="#fleet-wrap">Mini Cars</a></li>
+          <li><a href="#fleet-wrap">Standard Cars</a></li>
+          <li><a href="#fleet-wrap">Executive Cars</a></li>
+          <li><a href="#fleet-wrap">Luxury Cars</a></li>
+          <li><a href="#fleet-wrap">SUV (4×4)</a></li>
+          <li><a href="#fleet-wrap">Minivan / Wagon</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h5>Contact</h5>
+        <div class="faddr">
+          No. 30, Dias Place,<br>Gunasinghapura,<br>Colombo 12, Sri Lanka<br><br>
+          <a href="tel:+94112335657">+94 11 233 5657</a>
+          <a href="tel:+94777308079">+94 77 730 8079</a>
+          <a href="mailto:amjatrvl@sltnet.lk">amjatrvl@sltnet.lk</a>
+        </div>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© <span id="yr"></span> Amja Travels (Pvt) Ltd. All Rights Reserved.</span>
+      <span>Rent A Car Sri Lanka · Est. 1998</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+const LOGO="../images/logo.png";
+document.getElementById("li").src=LOGO;
+document.getElementById("fi").src=LOGO;
+document.getElementById("fav").href=LOGO;
+document.getElementById("yr").textContent=new Date().getFullYear();
+
+gsap.registerPlugin(ScrollTrigger);
+const PR=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+/* PROGRESS */
+const prog=document.getElementById("prog");
+window.addEventListener("scroll",()=>prog.style.transform="scaleX("+(scrollY/(document.body.scrollHeight-innerHeight))+")",{passive:true});
+
+/* LENIS */
+let lenis;
+if(!PR&&window.Lenis){
+  lenis=new Lenis({duration:1.05,smoothWheel:true,lerp:.075});
+  lenis.on("scroll",ScrollTrigger.update);
+  gsap.ticker.add(t=>lenis.raf(t*1000));
+  gsap.ticker.lagSmoothing(0);
+}
+
+/* SMOOTH ANCHORS */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener("click",e=>{
+    const id=a.getAttribute("href");
+    if(!id||id.length<2)return;
+    const t=document.querySelector(id);
+    if(!t)return;
+    e.preventDefault();
+    if(lenis)lenis.scrollTo(t,{duration:1.2,offset:-90});
+    else window.scrollTo({top:t.getBoundingClientRect().top+scrollY-90,behavior:"smooth"});
+  });
+});
+
+/* HEADER */
+const hdr=document.getElementById("hdr");
+window.addEventListener("scroll",()=>hdr.classList.toggle("s",scrollY>55),{passive:true});
+
+/* BURGER */
+const bgEl=document.getElementById("bg"),dr=document.getElementById("dr"),ov=document.getElementById("ov");
+function tog(v){bgEl.classList.toggle("o",v);dr.classList.toggle("o",v);ov.classList.toggle("o",v);}
+bgEl.addEventListener("click",()=>tog(!dr.classList.contains("o")));
+ov.addEventListener("click",()=>tog(false));
+dr.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>tog(false)));
+
+/* HERO ENTRANCE */
+setTimeout(()=>{
+  if(PR)return;
+  const tl=gsap.timeline({defaults:{ease:"power3.out"}});
+  tl.to("#hTag",{opacity:1,y:0,duration:.7},0)
+    .to(["#lt1","#lt2"],{y:"0%",duration:1,stagger:.12},.08)
+    .to("#hSub",{opacity:1,y:0,duration:.85},.5)
+    .to("#hChips",{opacity:1,y:0,duration:.7},.68)
+    .to("#hActs",{opacity:1,y:0,duration:.75},.8);
+},200);
+
+/* HERO PARALLAX */
+if(!PR)gsap.to(".hero-bg",{y:"12%",ease:"none",scrollTrigger:{trigger:"#hero",start:"top top",end:"bottom top",scrub:true}});
+
+/* FILTER TABS */
+const cats=document.querySelectorAll(".cat");
+const cards=document.querySelectorAll(".v-card");
+const vcount=document.getElementById("vcount");
+cats.forEach(cat=>{
+  cat.addEventListener("click",()=>{
+    cats.forEach(c=>c.classList.remove("on"));
+    cat.classList.add("on");
+    const sel=cat.getAttribute("data-cat");
+    let vis=0;
+    cards.forEach((card,i)=>{
+      const match=sel==="all"||card.getAttribute("data-cat")===sel;
+      if(match){
+        card.classList.remove("hidden");
+        gsap.fromTo(card,{opacity:0,y:28},{opacity:1,y:0,duration:.55,delay:(vis%3)*.07,ease:"power2.out"});
+        vis++;
+      } else {
+        card.classList.add("hidden");
+      }
+    });
+    vcount.textContent=vis;
+    ScrollTrigger.refresh();
+  });
+});
+
+/* PROCESS STEPS REVEAL */
+gsap.utils.toArray(".proc-step").forEach((c,i)=>{
+  gsap.to(c,{opacity:1,y:0,duration:.7,delay:i*.1,ease:"power3.out",
+    scrollTrigger:{trigger:"#process",start:"top 82%"}});
+});
+
+/* VEHICLE CARDS SCROLL REVEAL */
+gsap.utils.toArray(".v-card").forEach((c,i)=>{
+  gsap.to(c,{opacity:1,y:0,duration:.75,delay:(i%3)*.08,ease:"power3.out",
+    scrollTrigger:{trigger:c,start:"top 90%",toggleActions:"play none none none"}
+  });
+  /* subtle 3D tilt */
+  if(!PR){
+    c.addEventListener("mousemove",e=>{
+      const r=c.getBoundingClientRect();
+      const px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;
+      gsap.to(c,{rotateY:px*7,rotateX:-py*5,duration:.4,ease:"power2.out",transformPerspective:1000});
+    });
+    c.addEventListener("mouseleave",()=>gsap.to(c,{rotateY:0,rotateX:0,duration:.5,ease:"power3.out"}));
+  }
+});
+
+/* BOOKING MODAL */
+const modalOv=document.getElementById("modal-overlay"),modal=document.getElementById("modal"),modalClose=document.getElementById("modalClose");
+const fvTag=document.getElementById("fvTag"),catSelect=document.getElementById("catSelect");
+
+function openModal(vehicleName){
+  fvTag.textContent="Selected: "+vehicleName;
+  /* set the dropdown to match if possible */
+  const opts=catSelect.options;
+  for(let i=0;i<opts.length;i++){
+    if(vehicleName.toLowerCase().includes(opts[i].value.toLowerCase())){
+      catSelect.selectedIndex=i; break;
+    }
+  }
+  document.getElementById("formWrap").style.display="block";
+  document.getElementById("formSuccess").style.display="none";
+  modalOv.classList.add("open");
+  modal.classList.add("open");
+  document.body.style.overflow="hidden";
+}
+function closeModal(){
+  modal.classList.remove("open");
+  modalOv.classList.remove("open");
+  document.body.style.overflow="";
+}
+modalClose.addEventListener("click",closeModal);
+modalOv.addEventListener("click",closeModal);
+
+document.querySelectorAll(".v-enquire").forEach(btn=>{
+  btn.addEventListener("click",()=>openModal(btn.getAttribute("data-vehicle")));
+});
+
+/* FORM SUBMIT */
+document.getElementById("bookForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  /* Simulate submission — in production POST to server/email */
+  const btn=e.target.querySelector(".btn-submit");
+  btn.textContent="Sending...";btn.disabled=true;
+  setTimeout(()=>{
+    document.getElementById("formWrap").style.display="none";
+    document.getElementById("formSuccess").style.display="block";
+    setTimeout(closeModal,4000);
+  },900);
+});
+
+/* GENERIC REVEALS */
+gsap.utils.toArray(".rv").forEach(el=>{
+  gsap.to(el,{opacity:1,y:0,duration:.85,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 90%"}});
+});
+
+/* WHY CARDS */
+gsap.utils.toArray(".why-card").forEach((c,i)=>{
+  gsap.to(c,{opacity:1,y:0,duration:.75,delay:(i%4)*.07,ease:"power2.out",
+    scrollTrigger:{trigger:c,start:"top 90%"}});
+});
+
+/* CTA BLOCKS */
+gsap.utils.toArray(".cblk").forEach((b,i)=>{
+  gsap.to(b,{opacity:1,y:0,duration:.8,delay:i*.09,ease:"power3.out",
+    scrollTrigger:{trigger:b,start:"top 90%"}});
+});
+
+/* MAGNETIC BUTTON */
+const mb=document.getElementById("magBtn");
+if(mb&&!PR){
+  mb.addEventListener("mousemove",e=>{
+    const r=mb.getBoundingClientRect();
+    gsap.to(mb,{x:(e.clientX-r.left-r.width/2)*.3,y:(e.clientY-r.top-r.height/2)*.5,duration:.35,ease:"power2.out"});
+  });
+  mb.addEventListener("mouseleave",()=>gsap.to(mb,{x:0,y:0,duration:.6,ease:"elastic.out(1,.4)"}));
+  mb.addEventListener("click",e=>{e.preventDefault();openModal("General Fleet Enquiry");});
+}
+
+/* SET MIN DATE FOR DATE PICKERS */
+const today=new Date().toISOString().split("T")[0];
+document.querySelectorAll('input[type="date"]').forEach(i=>i.setAttribute("min",today));
+
+window.addEventListener("load",()=>ScrollTrigger.refresh());
+</script>
+<!-- ═══ SHARED SITE SCRIPTS (config + nav) ═══ -->
+<script>
+(function(){
+  var onFile = location.protocol === 'file:';
+  var base = onFile ? '../shared/' : '/shared/';
+  var link = document.createElement('link');
+  link.rel = 'stylesheet'; link.href = base + 'client.css';
+  document.head.appendChild(link);
+  var cfg = document.createElement('script'); cfg.src = base + 'config.js';
+  cfg.onload = function(){
+    ['nav.js','render.js','footer.js'].forEach(function(f){
+      var s = document.createElement('script'); s.src = base + f; s.defer = true;
+      document.body.appendChild(s);
+    });
+  };
+  document.body.appendChild(cfg);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-Command claude -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-Command npm -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-Command npx -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-Command python -ErrorAction SilentlyContinue)",
+      "PowerShell(npm install -g ui-ux-pro-max-cli 2>&1)",
+      "PowerShell(npm ls -g --depth=0 2>&1)",
+      "Bash(python scripts/search.py \"editorial luxury travel storytelling horizontal scroll\" --domain gsap -n 3)",
+      "Bash(awk 'NR>=468 && NR<=478{printf \"%d: %s\\\\n\",NR,$0}' tours.html)"
+    ]
+  }
+}
