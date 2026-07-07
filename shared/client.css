@@ -7,7 +7,8 @@
 
 .pkg-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  /* min(300px, 100%) prevents horizontal overflow on small phones */
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
   gap: 1.5rem;
 }
 .pkg-loading, .pkg-empty { text-align: center; opacity: 0.6; padding: 2rem; grid-column: 1 / -1; }
@@ -93,3 +94,24 @@
 .enq-msg.loading { color: #b0552a; }
 .enq-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 @media (max-width: 500px) { .enq-row { grid-template-columns: 1fr; } }
+
+/* ── Mobile hero tuning (subpages share #hero + .hero-title) ── */
+@media (max-width: 640px) {
+  #hero { min-height: 90vh; }
+  .hero-title { overflow-wrap: break-word; word-break: normal; }
+  /* bring the headline up a bit so it isn't pushed too low on phones */
+  .hero-in, .hero-content, .hero-body { padding-top: clamp(5.5rem, 15vh, 8.5rem) !important; }
+}
+
+/* ── Mobile safety net for all dynamically-rendered sections ── */
+.pkg-img img, .pkg img { max-width: 100%; }
+@media (max-width: 600px) {
+  .amja-section { padding: 2.8rem 1.1rem; }
+  .amja-section h2 { font-size: 1.65rem; margin-bottom: 1.1rem; }
+  .pkg-grid { gap: 1.1rem; }
+  .pkg-title { font-size: 1.15rem; }
+  .pkg-content { padding: 1.1rem; }
+  .pkg-foot { flex-wrap: wrap; gap: 0.6rem; }
+  .pkg-filter { gap: 0.4rem; margin-bottom: 1.4rem; }
+  .pkg-filter-btn { padding: 0.45rem 0.9rem; font-size: 0.72rem; }
+}

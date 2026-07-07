@@ -110,7 +110,7 @@ nav a.cur{background:var(--gold);color:var(--ink);}
 .hero-title{font-size:clamp(3.2rem,10.5vw,8.8rem);line-height:.92;color:var(--cream);max-width:12ch;}
 .hero-title em{color:var(--gold-l);}
 .chm{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.07em;margin-bottom:-.07em;perspective:640px;}
-.ch{display:inline-block;transform:translateY(120%) rotateX(-92deg);transform-origin:bottom center;will-change:transform;}
+.ch{display:inline-block;transform-origin:bottom center;will-change:transform;}
 .hero-row{display:flex;justify-content:space-between;align-items:flex-end;gap:2.5rem;margin-top:2.2rem;flex-wrap:wrap;}
 .hero-sub{font-size:.92rem;color:var(--cream-70);max-width:480px;line-height:1.85;opacity:0;}
 .hero-btns{display:flex;gap:.9rem;flex-wrap:wrap;opacity:0;}
@@ -1235,6 +1235,22 @@ window.addEventListener("load",()=>ScrollTrigger.refresh());
     var a = document.getElementById('adminLoginLink');
     if (a) a.href = '../admin/login.html';
   }
+})();
+</script>
+
+<!-- Hero title safety net: guarantee the big headline is visible even if the
+     intro animation stalls (GSAP hiccup / slow CDN). No effect if it played. -->
+<script>
+(function(){
+  function showHero(){
+    document.querySelectorAll('#heroC .ch, #heroC .hero-title, #heroC .hero-title span').forEach(function(el){
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+  }
+  // If reduced motion, show immediately; otherwise as a fallback after the loader window.
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches) showHero();
+  setTimeout(showHero, 7500);
 })();
 </script>
 </body>

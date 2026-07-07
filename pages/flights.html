@@ -94,6 +94,18 @@ header.s .h-logo img{height:30px;}
 .sf-row.main{grid-template-columns:1fr 1fr 1fr 1fr auto;}
 @media(max-width:900px){.sf-row.main{grid-template-columns:1fr 1fr;}}
 @media(max-width:520px){.sf-row.main{grid-template-columns:1fr;}}
+/* Mobile: stack the whole search widget (overrides inline-styled grids) */
+@media(max-width:640px){
+  .search-form{padding:1.1rem;}
+  #search-section{padding:2.4rem 0!important;}
+  #pane-simple .sf-row:first-child > div{flex-direction:column!important;gap:.9rem!important;}
+  #swapBtn{align-self:center!important;margin:0!important;}
+  #mc1,#mc2,#pane-multi .sf-row{grid-template-columns:1fr!important;}
+  #pane-multi .sf-row > div:not(.sf-field){display:none!important;}
+  .pax-row{grid-template-columns:1fr!important;}
+  .search-tabs{flex-wrap:wrap;}
+  .stab{flex:1;text-align:center;padding:.8rem .6rem;}
+}
 .sf-field{display:flex;flex-direction:column;gap:.35rem;position:relative;}
 .sf-label{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold);}
 .sf-input{background:rgba(238,242,248,.05);border:1px solid var(--line);border-radius:7px;padding:.82rem 1rem;font-size:.85rem;color:var(--pearl);font-family:"Montserrat",sans-serif;outline:none;transition:border-color .3s,background .3s;width:100%;}

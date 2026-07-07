@@ -43,6 +43,21 @@
         return `<a href="${l.href}"${active}>${l.label}</a>`;
       }).join('');
     }
+
+    // Mobile drawer menu (subpages only — leave the landing page untouched).
+    // Rebuild it with the same site links so phones can navigate between pages,
+    // preserving the page's call-to-action / phone button.
+    if (page !== 'index') {
+      const drawer = document.querySelector('.drawer');
+      if (drawer) {
+        const cta = drawer.querySelector('.dcta') || drawer.querySelector('a[href^="tel:"]');
+        const linksHTML = LINKS.map((l) => {
+          const active = l.match.includes(page) ? ' class="cur"' : '';
+          return `<a href="${l.href}"${active}>${l.label}</a>`;
+        }).join('');
+        drawer.innerHTML = linksHTML + (cta ? cta.outerHTML : '');
+      }
+    }
   }
 
   if (document.readyState === 'loading') {
