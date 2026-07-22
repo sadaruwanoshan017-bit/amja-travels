@@ -92,60 +92,75 @@
     });
   </script>
 
-  <!-- Interactive ambient background — soft aurora glow that follows the cursor (no 3D model) -->
+  <!-- Full-screen starfield: cruising through space, cursor parallax — in brand colours -->
   <script>
   (function () {
     const canvas = document.getElementById('bg3d');
     if (!canvas || !canvas.getContext) return;
     const ctx = canvas.getContext('2d');
-    let W, H, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let W, H, cx, cy, dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     function resize() {
       W = canvas.width = innerWidth * dpr;
       H = canvas.height = innerHeight * dpr;
       canvas.style.width = innerWidth + 'px';
       canvas.style.height = innerHeight + 'px';
+      cx = W / 2; cy = H / 2;
     }
     resize();
     addEventListener('resize', resize);
 
-    // A few soft colour "blobs" that drift, plus one that eases toward the cursor.
-    const blobs = [
-      { x: .18, y: .12, r: .55, col: [124, 92, 246], base: .32, spd: .00013, ph: 0 },   // violet
-      { x: .85, y: .9,  r: .6,  col: [86, 72, 230],  base: .30, spd: .00010, ph: 2 },    // indigo
-      { x: .7,  y: .2,  r: .42, col: [139, 92, 246], base: .22, spd: .00016, ph: 4 },    // purple
-      { x: .3,  y: .85, r: .48, col: [56, 120, 220], base: .20, spd: .00012, ph: 1 },    // blue accent
-    ];
-    // Cursor-follow blob
-    const cursor = { x: .5, y: .5, tx: .5, ty: .5 };
-    addEventListener('mousemove', (e) => { cursor.tx = e.clientX / innerWidth; cursor.ty = e.clientY / innerHeight; });
-    addEventListener('touchmove', (e) => { if (e.touches[0]) { cursor.tx = e.touches[0].clientX / innerWidth; cursor.ty = e.touches[0].clientY / innerHeight; } }, { passive: true });
-
-    function paintBlob(cx, cy, r, col, alpha) {
-      const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
-      g.addColorStop(0, `rgba(${col[0]},${col[1]},${col[2]},${alpha})`);
-      g.addColorStop(1, `rgba(${col[0]},${col[1]},${col[2]},0)`);
-      ctx.fillStyle = g;
-      ctx.fillRect(0, 0, W, H);
+    // Brand star palette (teal/gold/soft cream) instead of plain white.
+    const COLORS = ['232,200,106', '54,201,166', '236,242,232', '143,216,200'];
+    const STARS = 700, FOCAL = 340 * dpr;
+    const stars = [];
+    function reset(s, front) {
+      s.x = (Math.random() - 0.5) * W * 2.2;
+      s.y = (Math.random() - 0.5) * H * 2.2;
+      s.z = front ? Math.random() * (FOCAL * 3) : FOCAL * 3;
+      s.c = COLORS[(Math.random() * COLORS.length) | 0];
+      s.px = null;
     }
+    for (let i = 0; i < STARS; i++) { const s = {}; reset(s, true); stars.push(s); }
 
-    function frame(t) {
+    // Cursor parallax (eased) + gentle cruise speed.
+    const m = { tx: 0, ty: 0, x: 0, y: 0 };
+    addEventListener('mousemove', (e) => { m.tx = (e.clientX / innerWidth - 0.5); m.ty = (e.clientY / innerHeight - 0.5); });
+    addEventListener('touchmove', (e) => { if (e.touches[0]) { m.tx = (e.touches[0].clientX / innerWidth - 0.5); m.ty = (e.touches[0].clientY / innerHeight - 0.5); } }, { passive: true });
+
+    const SPEED = 2.6 * dpr;
+    function frame() {
       requestAnimationFrame(frame);
-      cursor.x += (cursor.tx - cursor.x) * 0.04;
-      cursor.y += (cursor.ty - cursor.y) * 0.04;
-      ctx.clearRect(0, 0, W, H);
-      ctx.globalCompositeOperation = 'lighter';
-      const minWH = Math.min(W, H);
-      blobs.forEach((b) => {
-        const dx = Math.sin(t * b.spd + b.ph) * 0.06;
-        const dy = Math.cos(t * b.spd * 1.3 + b.ph) * 0.06;
-        const a = b.base + Math.sin(t * b.spd * 2 + b.ph) * 0.06;
-        paintBlob((b.x + dx) * W, (b.y + dy) * H, b.r * minWH, b.col, Math.max(0, a));
-      });
-      // cursor glow
-      paintBlob(cursor.x * W, cursor.y * H, 0.42 * minWH, [168, 140, 255], 0.22);
-      ctx.globalCompositeOperation = 'source-over';
+      m.x += (m.tx - m.x) * 0.04;
+      m.y += (m.ty - m.y) * 0.04;
+
+      // Trailing fade for a subtle motion-blur streak
+      ctx.fillStyle = 'rgba(4,18,15,0.32)';
+      ctx.fillRect(0, 0, W, H);
+
+      const offX = m.x * 90 * dpr, offY = m.y * 90 * dpr;
+      for (let i = 0; i < STARS; i++) {
+        const s = stars[i];
+        s.z -= SPEED;
+        if (s.z < 1) { reset(s, false); continue; }
+        const k = FOCAL / s.z;
+        const sx = cx + (s.x + offX) * k;
+        const sy = cy + (s.y + offY) * k;
+        if (sx < 0 || sx > W || sy < 0 || sy > H) { s.px = null; continue; }
+        const size = (1 - s.z / (FOCAL * 3)) * 2.4 * dpr;
+        const a = Math.min(1, (1 - s.z / (FOCAL * 3)) * 1.2);
+        if (s.px != null) {
+          ctx.strokeStyle = 'rgba(' + s.c + ',' + (a * 0.85) + ')';
+          ctx.lineWidth = size;
+          ctx.beginPath(); ctx.moveTo(s.px, s.py); ctx.lineTo(sx, sy); ctx.stroke();
+        }
+        ctx.fillStyle = 'rgba(' + s.c + ',' + a + ')';
+        ctx.beginPath(); ctx.arc(sx, sy, size, 0, 6.283); ctx.fill();
+        s.px = sx; s.py = sy;
+      }
     }
+    // Prime the canvas dark so the first fade doesn't flash.
+    ctx.fillStyle = '#04120f'; ctx.fillRect(0, 0, W, H);
     requestAnimationFrame(frame);
   })();
   </script>
