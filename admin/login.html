@@ -92,76 +92,79 @@
     });
   </script>
 
-  <!-- Full-screen starfield: cruising through space, cursor parallax — in brand colours -->
+  <!-- Full-screen moving starfield (three.js) — brand teal/gold colours, cursor parallax -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script>
   (function () {
+    if (!window.THREE) return;
     const canvas = document.getElementById('bg3d');
-    if (!canvas || !canvas.getContext) return;
-    const ctx = canvas.getContext('2d');
-    let W, H, cx, cy, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 1, 1000);
+    camera.position.z = 1;
 
-    function resize() {
-      W = canvas.width = innerWidth * dpr;
-      H = canvas.height = innerHeight * dpr;
-      canvas.style.width = innerWidth + 'px';
-      canvas.style.height = innerHeight + 'px';
-      cx = W / 2; cy = H / 2;
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.setSize(innerWidth, innerHeight);
+
+    // Star positions + per-star brand colour (teal / gold / cream / soft-teal).
+    const starCount = 2000;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(starCount * 3);
+    const colors = new Float32Array(starCount * 3);
+    const velocities = new Float32Array(starCount);
+    const PALETTE = [
+      [0.91, 0.78, 0.42],  // gold
+      [0.21, 0.79, 0.65],  // teal
+      [0.93, 0.95, 0.91],  // cream
+      [0.56, 0.85, 0.78],  // soft teal
+    ];
+    for (let i = 0; i < starCount; i++) {
+      positions[i * 3]     = (Math.random() - 0.5) * 1200;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 1200;
+      positions[i * 3 + 2] = Math.random() * 1000;
+      const c = PALETTE[(Math.random() * PALETTE.length) | 0];
+      colors[i * 3] = c[0]; colors[i * 3 + 1] = c[1]; colors[i * 3 + 2] = c[2];
+      velocities[i] = 0.4 + Math.random() * 0.7;
     }
-    resize();
-    addEventListener('resize', resize);
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
-    // Brand star palette (teal/gold/soft cream) instead of plain white.
-    const COLORS = ['232,200,106', '54,201,166', '236,242,232', '143,216,200'];
-    const STARS = 700, FOCAL = 340 * dpr;
-    const stars = [];
-    function reset(s, front) {
-      s.x = (Math.random() - 0.5) * W * 2.2;
-      s.y = (Math.random() - 0.5) * H * 2.2;
-      s.z = front ? Math.random() * (FOCAL * 3) : FOCAL * 3;
-      s.c = COLORS[(Math.random() * COLORS.length) | 0];
-      s.px = null;
-    }
-    for (let i = 0; i < STARS; i++) { const s = {}; reset(s, true); stars.push(s); }
+    const starMaterial = new THREE.PointsMaterial({
+      size: 1.7, transparent: true, opacity: 0.92,
+      vertexColors: true, blending: THREE.AdditiveBlending, depthWrite: false,
+    });
+    const starField = new THREE.Points(geometry, starMaterial);
+    scene.add(starField);
 
-    // Cursor parallax (eased) + gentle cruise speed.
-    const m = { tx: 0, ty: 0, x: 0, y: 0 };
-    addEventListener('mousemove', (e) => { m.tx = (e.clientX / innerWidth - 0.5); m.ty = (e.clientY / innerHeight - 0.5); });
-    addEventListener('touchmove', (e) => { if (e.touches[0]) { m.tx = (e.touches[0].clientX / innerWidth - 0.5); m.ty = (e.touches[0].clientY / innerHeight - 0.5); } }, { passive: true });
+    // Cursor parallax
+    let mouseX = 0, mouseY = 0;
+    addEventListener('mousemove', (e) => { mouseX = e.clientX / innerWidth - 0.5; mouseY = e.clientY / innerHeight - 0.5; });
+    addEventListener('touchmove', (e) => { if (e.touches[0]) { mouseX = e.touches[0].clientX / innerWidth - 0.5; mouseY = e.touches[0].clientY / innerHeight - 0.5; } }, { passive: true });
 
-    const SPEED = 2.6 * dpr;
-    function frame() {
-      requestAnimationFrame(frame);
-      m.x += (m.tx - m.x) * 0.04;
-      m.y += (m.ty - m.y) * 0.04;
-
-      // Trailing fade for a subtle motion-blur streak
-      ctx.fillStyle = 'rgba(4,18,15,0.32)';
-      ctx.fillRect(0, 0, W, H);
-
-      const offX = m.x * 90 * dpr, offY = m.y * 90 * dpr;
-      for (let i = 0; i < STARS; i++) {
-        const s = stars[i];
-        s.z -= SPEED;
-        if (s.z < 1) { reset(s, false); continue; }
-        const k = FOCAL / s.z;
-        const sx = cx + (s.x + offX) * k;
-        const sy = cy + (s.y + offY) * k;
-        if (sx < 0 || sx > W || sy < 0 || sy > H) { s.px = null; continue; }
-        const size = (1 - s.z / (FOCAL * 3)) * 2.4 * dpr;
-        const a = Math.min(1, (1 - s.z / (FOCAL * 3)) * 1.2);
-        if (s.px != null) {
-          ctx.strokeStyle = 'rgba(' + s.c + ',' + (a * 0.85) + ')';
-          ctx.lineWidth = size;
-          ctx.beginPath(); ctx.moveTo(s.px, s.py); ctx.lineTo(sx, sy); ctx.stroke();
+    function animate() {
+      requestAnimationFrame(animate);
+      const pos = geometry.attributes.position.array;
+      for (let i = 0; i < starCount; i++) {
+        pos[i * 3 + 2] -= velocities[i];
+        if (pos[i * 3 + 2] < 0) {
+          pos[i * 3]     = (Math.random() - 0.5) * 1200;
+          pos[i * 3 + 1] = (Math.random() - 0.5) * 1200;
+          pos[i * 3 + 2] = 1000;
         }
-        ctx.fillStyle = 'rgba(' + s.c + ',' + a + ')';
-        ctx.beginPath(); ctx.arc(sx, sy, size, 0, 6.283); ctx.fill();
-        s.px = sx; s.py = sy;
       }
+      geometry.attributes.position.needsUpdate = true;
+      camera.position.x += (mouseX * 25 - camera.position.x) * 0.03;
+      camera.position.y += (-mouseY * 25 - camera.position.y) * 0.03;
+      camera.lookAt(0, 0, 0);
+      renderer.render(scene, camera);
     }
-    // Prime the canvas dark so the first fade doesn't flash.
-    ctx.fillStyle = '#04120f'; ctx.fillRect(0, 0, W, H);
-    requestAnimationFrame(frame);
+    animate();
+
+    addEventListener('resize', () => {
+      camera.aspect = innerWidth / innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(innerWidth, innerHeight);
+    });
   })();
   </script>
 
