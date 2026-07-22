@@ -92,136 +92,63 @@
     });
   </script>
 
-  <!-- Interactive 3D background — travel globe + orbiting flight ring (teal/gold) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Interactive ambient background — soft aurora glow that follows the cursor (no 3D model) -->
   <script>
   (function () {
-    if (!window.THREE) return;
     const canvas = document.getElementById('bg3d');
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.1, 200);
-    camera.position.z = 34;
+    if (!canvas || !canvas.getContext) return;
+    const ctx = canvas.getContext('2d');
+    let W, H, dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-    renderer.setSize(innerWidth, innerHeight);
-
-    // A gently rotating group holds the whole scene.
-    const world = new THREE.Group();
-    scene.add(world);
-
-    // ── Wireframe globe (latitude/longitude sphere) ──
-    const globe = new THREE.Mesh(
-      new THREE.SphereGeometry(9, 30, 20),
-      new THREE.MeshBasicMaterial({ color: 0x1f9e83, wireframe: true, transparent: true, opacity: 0.30 })
-    );
-    world.add(globe);
-
-    // Solid inner sphere for depth
-    const core = new THREE.Mesh(
-      new THREE.SphereGeometry(8.6, 32, 24),
-      new THREE.MeshBasicMaterial({ color: 0x0a2a24, transparent: true, opacity: 0.55 })
-    );
-    world.add(core);
-
-    // ── Dotted "cities" scattered on the globe surface ──
-    const CITY = 320, cpos = new Float32Array(CITY * 3);
-    for (let i = 0; i < CITY; i++) {
-      const th = Math.acos(2 * Math.random() - 1), ph = 2 * Math.PI * Math.random(), r = 9.05;
-      cpos[i*3] = r * Math.sin(th) * Math.cos(ph);
-      cpos[i*3+1] = r * Math.cos(th);
-      cpos[i*3+2] = r * Math.sin(th) * Math.sin(ph);
+    function resize() {
+      W = canvas.width = innerWidth * dpr;
+      H = canvas.height = innerHeight * dpr;
+      canvas.style.width = innerWidth + 'px';
+      canvas.style.height = innerHeight + 'px';
     }
-    const cGeo = new THREE.BufferGeometry();
-    cGeo.setAttribute('position', new THREE.BufferAttribute(cpos, 3));
-    const cities = new THREE.Points(cGeo, new THREE.PointsMaterial({
-      color: 0xe8c86a, size: 0.22, transparent: true, opacity: 0.9,
-      blending: THREE.AdditiveBlending, depthWrite: false,
-    }));
-    world.add(cities);
+    resize();
+    addEventListener('resize', resize);
 
-    // ── Two tilted orbit rings (flight paths) ──
-    function ring(radius, tiltX, tiltZ, color, op) {
-      const g = new THREE.RingGeometry(radius, radius + 0.06, 120);
-      const m = new THREE.MeshBasicMaterial({ color, side: THREE.DoubleSide, transparent: true, opacity: op });
-      const r = new THREE.Mesh(g, m);
-      r.rotation.x = tiltX; r.rotation.z = tiltZ;
-      return r;
+    // A few soft colour "blobs" that drift, plus one that eases toward the cursor.
+    const blobs = [
+      { x: .18, y: .12, r: .55, col: [124, 92, 246], base: .32, spd: .00013, ph: 0 },   // violet
+      { x: .85, y: .9,  r: .6,  col: [86, 72, 230],  base: .30, spd: .00010, ph: 2 },    // indigo
+      { x: .7,  y: .2,  r: .42, col: [139, 92, 246], base: .22, spd: .00016, ph: 4 },    // purple
+      { x: .3,  y: .85, r: .48, col: [56, 120, 220], base: .20, spd: .00012, ph: 1 },    // blue accent
+    ];
+    // Cursor-follow blob
+    const cursor = { x: .5, y: .5, tx: .5, ty: .5 };
+    addEventListener('mousemove', (e) => { cursor.tx = e.clientX / innerWidth; cursor.ty = e.clientY / innerHeight; });
+    addEventListener('touchmove', (e) => { if (e.touches[0]) { cursor.tx = e.touches[0].clientX / innerWidth; cursor.ty = e.touches[0].clientY / innerHeight; } }, { passive: true });
+
+    function paintBlob(cx, cy, r, col, alpha) {
+      const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+      g.addColorStop(0, `rgba(${col[0]},${col[1]},${col[2]},${alpha})`);
+      g.addColorStop(1, `rgba(${col[0]},${col[1]},${col[2]},0)`);
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, W, H);
     }
-    const ringA = ring(13, 1.15, 0.3, 0xe8c86a, 0.5);
-    const ringB = ring(15.5, 0.6, -0.5, 0x36c9a6, 0.32);
-    world.add(ringA); world.add(ringB);
 
-    // Small orbiting glow "planes" on the rings
-    const orbiters = [];
-    [[13, 1.15, 0.3, 0xe8c86a], [15.5, 0.6, -0.5, 0x36c9a6]].forEach(([rad, tx, tz, col], k) => {
-      const dot = new THREE.Mesh(new THREE.SphereGeometry(0.28, 12, 12),
-        new THREE.MeshBasicMaterial({ color: col }));
-      dot.userData = { rad, tx, tz, off: k * 2.1, spd: 0.5 + k * 0.25 };
-      world.add(dot); orbiters.push(dot);
-    });
-
-    // Faint starfield backdrop
-    const STAR = 500, spos = new Float32Array(STAR * 3);
-    for (let i = 0; i < STAR; i++) {
-      spos[i*3] = (Math.random()-0.5)*160; spos[i*3+1] = (Math.random()-0.5)*110; spos[i*3+2] = (Math.random()-0.5)*90 - 30;
-    }
-    const sGeo = new THREE.BufferGeometry();
-    sGeo.setAttribute('position', new THREE.BufferAttribute(spos, 3));
-    scene.add(new THREE.Points(sGeo, new THREE.PointsMaterial({ color: 0x8fd8c8, size: 0.14, transparent: true, opacity: 0.5 })));
-
-    // ── Cursor interaction ──
-    const target = { x: 0, y: 0 }, cur = { x: 0, y: 0 };
-    addEventListener('mousemove', (e) => {
-      target.x = (e.clientX / innerWidth - 0.5) * 2;
-      target.y = (e.clientY / innerHeight - 0.5) * 2;
-    });
-    addEventListener('touchmove', (e) => {
-      if (!e.touches[0]) return;
-      target.x = (e.touches[0].clientX / innerWidth - 0.5) * 2;
-      target.y = (e.touches[0].clientY / innerHeight - 0.5) * 2;
-    }, { passive: true });
-
-    const clock = new THREE.Clock();
-    function animate() {
-      requestAnimationFrame(animate);
-      const t = clock.getElapsedTime();
-      cur.x += (target.x - cur.x) * 0.05;
-      cur.y += (target.y - cur.y) * 0.05;
-
-      globe.rotation.y = t * 0.06;
-      cities.rotation.y = t * 0.06;
-      core.rotation.y = t * 0.06;
-
-      // Whole world tilts toward the cursor
-      world.rotation.y += ((cur.x * 0.6) - world.rotation.y) * 0.05;
-      world.rotation.x += ((-cur.y * 0.4) - world.rotation.x) * 0.05;
-
-      ringA.rotation.z += 0.0016;
-      ringB.rotation.z -= 0.0012;
-
-      orbiters.forEach((o) => {
-        const a = t * o.userData.spd + o.userData.off, R = o.userData.rad;
-        const x = Math.cos(a) * R, y = Math.sin(a) * R;
-        const v = new THREE.Vector3(x, y, 0);
-        v.applyEuler(new THREE.Euler(o.userData.tx, 0, o.userData.tz));
-        o.position.copy(v);
+    function frame(t) {
+      requestAnimationFrame(frame);
+      cursor.x += (cursor.tx - cursor.x) * 0.04;
+      cursor.y += (cursor.ty - cursor.y) * 0.04;
+      ctx.clearRect(0, 0, W, H);
+      ctx.globalCompositeOperation = 'lighter';
+      const minWH = Math.min(W, H);
+      blobs.forEach((b) => {
+        const dx = Math.sin(t * b.spd + b.ph) * 0.06;
+        const dy = Math.cos(t * b.spd * 1.3 + b.ph) * 0.06;
+        const a = b.base + Math.sin(t * b.spd * 2 + b.ph) * 0.06;
+        paintBlob((b.x + dx) * W, (b.y + dy) * H, b.r * minWH, b.col, Math.max(0, a));
       });
-
-      camera.position.x += (cur.x * 4 - camera.position.x) * 0.04;
-      camera.position.y += (-cur.y * 3 - camera.position.y) * 0.04;
-      camera.lookAt(0, 0, 0);
-
-      renderer.render(scene, camera);
+      // cursor glow
+      paintBlob(cursor.x * W, cursor.y * H, 0.42 * minWH, [168, 140, 255], 0.22);
+      ctx.globalCompositeOperation = 'source-over';
     }
-    animate();
-
-    addEventListener('resize', () => {
-      camera.aspect = innerWidth / innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(innerWidth, innerHeight);
-    });
+    requestAnimationFrame(frame);
   })();
   </script>
+
 </body>
 </html>
