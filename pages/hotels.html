@@ -214,7 +214,9 @@ header.s .h-logo img{height:30px;}
 
 /* ═══ CTA ═══ */
 /* ── OUR PROCESS ── */
-#process{padding:7rem 0;background:var(--char);}
+#process{padding:7rem 0;background:var(--char);position:relative;overflow:hidden;}
+.geo-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;opacity:.07;z-index:0;}
+.geo-bg svg{width:100%;height:100%;}
 #process .eyebrow{justify-content:center;}
 #process h2{font-size:clamp(2rem,4.5vw,3.2rem);text-align:center;margin:.4rem 0 3.5rem;}
 #process h2 em{color:var(--gold);font-style:italic;}
@@ -525,7 +527,13 @@ footer{background:#020304;border-top:1px solid var(--line);padding:5rem 0 0;}
 <!-- ═══ CTA ═══ -->
 <!-- ═══ OUR PROCESS ═══ -->
 <section id="process">
-  <div class="wrap">
+  <div class="geo-bg" aria-hidden="true">
+    <svg viewBox="0 0 1400 600" preserveAspectRatio="xMidYMid slice">
+      <defs><pattern id="geoH" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse"><polygon points="40,0 80,20 80,60 40,80 0,60 0,20" fill="none" stroke="#c5943a" stroke-width=".8"/></pattern></defs>
+      <rect width="1400" height="600" fill="url(#geoH)"/>
+    </svg>
+  </div>
+  <div class="wrap" style="position:relative;z-index:2;">
     <div class="rv" style="text-align:center;">
       <span class="eyebrow">Our Process</span>
       <h2>How Booking <em>Works</em></h2>

@@ -186,12 +186,18 @@ header.s .h-logo img{height:30px;}
 #airlines{padding:5rem 0;background:var(--sky);}
 .airlines-head{text-align:center;margin-bottom:2.5rem;}
 .airlines-head h2{font-size:clamp(1.8rem,3.5vw,2.6rem);}
-.airline-strip{display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;}
-.airline-chip{display:flex;align-items:center;gap:.5rem;padding:.7rem 1.2rem;border:1px solid var(--line);border-radius:8px;transition:border-color .3s,background .3s,transform .3s var(--ease);cursor:default;opacity:0;transform:translateY(20px);}
-.airline-chip:hover{border-color:rgba(37,112,208,.4);background:rgba(37,112,208,.07);transform:translateY(-2px)!important;}
+.airline-marquee{overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);}
+.airline-track{display:flex;align-items:center;gap:1.4rem;width:max-content;animation:airlineScroll 40s linear infinite;}
+.airline-marquee:hover .airline-track{animation-play-state:paused;}
+@keyframes airlineScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.airline-chip{display:flex;align-items:center;gap:.6rem;padding:.7rem 1.2rem;border:1px solid var(--line);border-radius:8px;transition:border-color .3s,background .3s;cursor:default;flex-shrink:0;}
+.airline-chip:hover{border-color:rgba(37,112,208,.4);background:rgba(37,112,208,.07);}
+.airline-chip .ac-logo{height:26px;width:auto;max-width:78px;object-fit:contain;filter:grayscale(1) brightness(1.5);opacity:.85;transition:filter .3s,opacity .3s;}
+.airline-chip:hover .ac-logo{filter:none;opacity:1;}
 .airline-chip .ac-code{font-size:.65rem;letter-spacing:.1em;font-weight:700;color:var(--pearl);text-transform:uppercase;}
-.airline-chip .ac-name{font-size:.7rem;color:var(--chrome);}
+.airline-chip .ac-name{font-size:.7rem;color:var(--chrome);white-space:nowrap;}
 .airline-chip .ac-icon{font-size:1.1rem;}
+@media(prefers-reduced-motion:reduce){.airline-track{animation:none;flex-wrap:wrap;justify-content:center;width:100%;}}
 
 /* ═══ HOW TO BOOK ═══ */
 #howtobk{padding:6rem 0;background:var(--hzn);position:relative;overflow:hidden;}
@@ -557,27 +563,30 @@ footer{background:#020406;border-top:1px solid var(--line);padding:5rem 0 0;}
       <span class="eyebrow">Airlines We Work With</span>
       <h2>All Major Airlines,<br>One <em>Trusted Agent</em></h2>
     </div>
-    <div class="airline-strip">
-      <div class="airline-chip"><span class="ac-icon">✈</span><div><div class="ac-code">UL</div><div class="ac-name">SriLankan Airlines</div></div></div>
-      <div class="airline-chip"><span class="ac-icon">✈</span><div><div class="ac-code">EK</div><div class="ac-name">Emirates</div></div></div>
-      <div class="airline-chip"><span class="ac-icon">✈</span><div><div class="ac-code">QR</div><div class="ac-name">Qatar Airways</div></div></div>
-      <div class="airline-chip"><span class="ac-icon">✈</span><div><div class="ac-code">SQ</div><div class="ac-name">Singapore Airlines</div></div></div>
-      <div class="airline-chip"><span class="ac-icon">✈</span><div><div class="ac-code">EY</div><div class="ac-name">Etihad Airways</div></div></div>
-      <div class="airline-chip"><span class="ac-icon">✈</span><div><div class="ac-code">BA</div><div class="ac-name">British Airways</div></div></div>
-      <div class="airline-chip"><span class="ac-icon">✈</span><div><div class="ac-code">TG</div><div class="ac-name">Thai Airways</div></div></div>
-      <div class="airline-chip"><span class="ac-icon">✈</span><div><div class="ac-code">MH</div><div class="ac-name">Malaysia Airlines</div></div></div>
-      <div class="airline-chip"><span class="ac-icon">✈</span><div><div class="ac-code">AI</div><div class="ac-name">Air India</div></div></div>
-      <div class="airline-chip"><span class="ac-icon">✈</span><div><div class="ac-code">KU</div><div class="ac-name">Kuwait Airways</div></div></div>
+    <div class="airline-marquee rv">
+      <div class="airline-track" id="airlineTrack">
+        <div class="airline-chip"><img class="ac-logo" src="https://images.kiwi.com/airlines/64/UL.png" alt="SriLankan Airlines" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"><span class="ac-icon" style="display:none">✈</span><div><div class="ac-code">UL</div><div class="ac-name">SriLankan Airlines</div></div></div>
+        <div class="airline-chip"><img class="ac-logo" src="https://images.kiwi.com/airlines/64/EK.png" alt="Emirates" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"><span class="ac-icon" style="display:none">✈</span><div><div class="ac-code">EK</div><div class="ac-name">Emirates</div></div></div>
+        <div class="airline-chip"><img class="ac-logo" src="https://images.kiwi.com/airlines/64/QR.png" alt="Qatar Airways" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"><span class="ac-icon" style="display:none">✈</span><div><div class="ac-code">QR</div><div class="ac-name">Qatar Airways</div></div></div>
+        <div class="airline-chip"><img class="ac-logo" src="https://images.kiwi.com/airlines/64/SQ.png" alt="Singapore Airlines" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"><span class="ac-icon" style="display:none">✈</span><div><div class="ac-code">SQ</div><div class="ac-name">Singapore Airlines</div></div></div>
+        <div class="airline-chip"><img class="ac-logo" src="https://images.kiwi.com/airlines/64/EY.png" alt="Etihad Airways" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"><span class="ac-icon" style="display:none">✈</span><div><div class="ac-code">EY</div><div class="ac-name">Etihad Airways</div></div></div>
+        <div class="airline-chip"><img class="ac-logo" src="https://images.kiwi.com/airlines/64/BA.png" alt="British Airways" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"><span class="ac-icon" style="display:none">✈</span><div><div class="ac-code">BA</div><div class="ac-name">British Airways</div></div></div>
+        <div class="airline-chip"><img class="ac-logo" src="https://images.kiwi.com/airlines/64/TG.png" alt="Thai Airways" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"><span class="ac-icon" style="display:none">✈</span><div><div class="ac-code">TG</div><div class="ac-name">Thai Airways</div></div></div>
+        <div class="airline-chip"><img class="ac-logo" src="https://images.kiwi.com/airlines/64/MH.png" alt="Malaysia Airlines" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"><span class="ac-icon" style="display:none">✈</span><div><div class="ac-code">MH</div><div class="ac-name">Malaysia Airlines</div></div></div>
+        <div class="airline-chip"><img class="ac-logo" src="https://images.kiwi.com/airlines/64/AI.png" alt="Air India" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"><span class="ac-icon" style="display:none">✈</span><div><div class="ac-code">AI</div><div class="ac-name">Air India</div></div></div>
+        <div class="airline-chip"><img class="ac-logo" src="https://images.kiwi.com/airlines/64/KU.png" alt="Kuwait Airways" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"><span class="ac-icon" style="display:none">✈</span><div><div class="ac-code">KU</div><div class="ac-name">Kuwait Airways</div></div></div>
+      </div>
     </div>
   </div>
+  <script>/* duplicate the track once for a seamless infinite marquee (chips still show if this doesn't run) */(function(){var t=document.getElementById('airlineTrack');if(t)t.innerHTML+=t.innerHTML;})();</script>
 </section>
 
 <!-- ═══ HOW TO BOOK ═══ -->
 <section id="howtobk">
   <div class="htb-geo">
-    <svg viewBox="0 0 1400 400" preserveAspectRatio="xMidYMid slice">
-      <defs><pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="#1a5cb0"/></pattern></defs>
-      <rect width="1400" height="400" fill="url(#dots)"/>
+    <svg viewBox="0 0 1400 600" preserveAspectRatio="xMidYMid slice">
+      <defs><pattern id="geoF" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse"><polygon points="40,0 80,20 80,60 40,80 0,60 0,20" fill="none" stroke="#3b82d6" stroke-width=".8"/></pattern></defs>
+      <rect width="1400" height="600" fill="url(#geoF)"/>
     </svg>
   </div>
   <div class="wrap" style="position:relative;z-index:2;">
@@ -811,11 +820,7 @@ gsap.utils.toArray(".dest-card").forEach((c,i)=>{
     scrollTrigger:{trigger:c,start:"top 92%"}});
 });
 
-/* AIRLINE CHIPS */
-gsap.utils.toArray(".airline-chip").forEach((c,i)=>{
-  gsap.to(c,{opacity:1,y:0,duration:.65,delay:(i%5)*.06,ease:"power2.out",
-    scrollTrigger:{trigger:c,start:"top 92%"}});
-});
+/* AIRLINE CHIPS now use a continuous CSS marquee (see .airline-track). */
 
 /* HOW TO BOOK STEPS */
 gsap.utils.toArray(".htb-step").forEach((s,i)=>{
